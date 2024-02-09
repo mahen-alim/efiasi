@@ -14,16 +14,16 @@
             <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Servis</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sparepart</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                 </tr>
             </thead>
             <tbody class="hoverable">
-                @foreach ($service as $serve)
+                @foreach ($service as $index => $serve)
                 <tr>
-                  <td class="px-4">{{ $serve->id }}</td>
+                  <td class="px-4">{{ $index + 1 }}</td>
                   <td class="px-4">{{ $serve->tipe_service }}</td>
                   <td class="px-4">{{ $serve->sparepart }}</td>
                   <td class="px-4">{{ $serve->price }}</td>
