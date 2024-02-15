@@ -9,4 +9,9 @@ class Operational extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function reports()
+    {
+        return $this->belongsToMany(Report::class, 'operational_report');
+    }
 }

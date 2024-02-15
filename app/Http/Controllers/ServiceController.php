@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pagination;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $service = Service::all();
+        $service = Service::paginate(5)->withQueryString();
         return view('service.index', compact(['service']));
     }
 
@@ -68,11 +69,25 @@ class ServiceController extends Controller
         return redirect('/service')->with('success', 'Data service berhasil diperbarui');
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         // Mencari data service
         $service = Service::find($id);
         $service->delete();
 
         return redirect('/service')->with('success', 'Data service berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('name');
+
+        if ($keyword) {
+            $service = Service::where('tipe_service', 'LIKE', "%$keyword%")->get();
+        } else {
+            $service = Service::all();
+        }    
+
+        return view('service.index', compact('service'));
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('price_total');
             $table->integer('income');
             $table->date('trans_time');
+            $table->enum('money_type', ['Transaksi Penjualan', 'Investasi']);
             $table->timestamps();
         });
     }

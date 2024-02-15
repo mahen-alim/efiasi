@@ -1,0 +1,21 @@
+/* Contoh gaya untuk pagination */
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination > .page-item > .page-link {
+    border: 1px solid #FF8577;
+    color: #FF8577;
+}
+
+.pagination > .page-item.active > .page-link {
+    background-image: linear-gradient(to right top, #FF8577, #FFD8C2);
+    color: white;
+    border: none;
+}
+
+.pagination > .page-item.disabled > .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: not-allowed;
+}

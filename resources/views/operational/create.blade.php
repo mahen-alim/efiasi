@@ -31,8 +31,14 @@
                     <label for="exampleInputPrice">Kategori</label>
                     <select name="category" class="form-control" id="exampleInputPrice" placeholder="Masukkan Kategori">
                         <option value="Administrasi">Administrasi</option>
-                        <option value="Produksi">Produksi</option>
-                        <option value="Penjualan">Penjualan</option>
+                        <option value="Bahan Baku & Persediaan">Bahan Baku & Persediaan</option>
+                        <option value="Penjualan">Keamanan</option>
+                        <option value="Asuransi">Asuransi</option>
+                        <option value="Pembiayaan">Pembiayaan</option>
+                        <option value="Penyusutan">Penyusutan</option>
+                        <option value="Pemeliharaan & Perbaikan">Pemeliharaan & Perbaikan</option>
+                        <option value="Transportasi">Transportasi</option>
+                        <option value="Penggajian">Penggajian</option>
                         <!-- Tambahkan opsi lain sesuai kebutuhan -->
                     </select>
                     <div class="form-group">

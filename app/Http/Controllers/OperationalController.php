@@ -9,7 +9,7 @@ class OperationalController extends Controller
 {
     public function index()
     {
-        $operational = Operational::all();
+        $operational = Operational::paginate(5)->withQueryString();
         return view('operational.index', compact(['operational']));
     }
 
@@ -77,5 +77,18 @@ class OperationalController extends Controller
         $operational->delete();
 
         return redirect('/operational')->with('success', 'Data operasional berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('name');
+
+        if ($keyword) {
+            $operational = Operational::where('type_cost', 'LIKE', "%$keyword%")->get();
+        } else {
+            $operational = Operational::all();
+        }    
+
+        return view('operational.index', compact('operational'));
     }
 }

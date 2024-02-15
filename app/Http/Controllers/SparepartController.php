@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Report;
 use App\Models\Sparepart;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class SparepartController extends Controller
 {
     public function index()
     {
-        $sparepart = Sparepart::all();
+        $sparepart = Sparepart::paginate(5);
         return view('sparepart.index', compact(['sparepart']));
     }
 
@@ -20,6 +21,7 @@ class SparepartController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi data dari request
         $request->validate([
             'name' => 'required|min:5',
             'jumlah' => 'required',
@@ -27,15 +29,28 @@ class SparepartController extends Controller
             'price' => 'required|min:5',
         ]);
 
-        Sparepart::create([
+        // Simpan data ke dalam tabel spareparts
+        $sparepart = Sparepart::create([
             'name' => $request->name,
             'jumlah' => $request->jumlah,
             'merk' => $request->merk,
             'price' => $request->price,
         ]);
 
+        $data = [
+            'sparepart' => $request->name,
+            'qty' => $request->jumlah,
+            'price_total' => $request->price,
+            'income' => $request->price,
+        ];
+
+        // Membuat entri baru dalam tabel reports menggunakan model Eloquent
+        Report::create($data);
+
+        // Redirect dengan pesan sukses
         return redirect('/sparepart')->with('success', 'Data sparepart berhasil ditambahkan');
     }
+
     public function edit($id)
     {
         $sparepart = Sparepart::where('id', $id)->first();
@@ -72,11 +87,25 @@ class SparepartController extends Controller
         return redirect('/sparepart')->with('success', 'Data sparepart berhasil diperbarui');
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         // Mencari data service
         $sparepart = Sparepart::find($id);
         $sparepart->delete();
 
         return redirect('/sparepart')->with('success', 'Data sparepart berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('name');
+
+        if ($keyword) {
+            $sparepart = Sparepart::where('name', 'LIKE', "%$keyword%")->get();
+        } else {
+            $sparepart = Sparepart::all();
+        }    
+
+        return view('sparepart.index', compact('sparepart'));
     }
 }
