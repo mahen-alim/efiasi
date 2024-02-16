@@ -44,7 +44,7 @@
         font-family: "DM Sans", sans-serif;
     }
     span {
-        background-image: linear-gradient(to bottom, #FF8577, #FFD8C2);
+        background-image: linear-gradient(to right top, #FF8577, #FFD8C2);
     }
     #title{
         margin-top: -20px;
@@ -57,8 +57,9 @@
         color: #FF8577;
     }
     #regis-btn:hover{
-        background-image: linear-gradient(to bottom, #FF8577, #FFD8C2);
+        background-image: linear-gradient(to right top, #FF8577, #FFD8C2);
         color: white;
+        border: none;
     }
     #login-btn{
         color: black;
@@ -78,7 +79,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-5 text-center mx-auto" id="title">
               <h1 class="text-white mb-2">Selamat Datang!</h1>
-              <p class="text-lead text-white">Masukkan username, email dan password untuk register.</p>
+              <p class="text-lead text-white">Masukkan username, email dan password untuk mendaftarkan akun Anda.</p>
             </div>
           </div>
         </div>

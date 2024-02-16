@@ -46,7 +46,7 @@
                       <textarea name="description" class="form-control" id="exampleInputDescription" rows="3" placeholder="Masukkan Catatan"></textarea>
                     </div>                  
                 </div>                
-                <button type="submit" class="btn btn-primary">Tambahkan</button>
+                <button type="submit" class="btn form-control" id="search-btn">Simpan</button>
               </form>
         </div>
     </div>

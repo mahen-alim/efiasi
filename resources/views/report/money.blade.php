@@ -21,7 +21,7 @@
                 <label for="exampleInputEmail1">Tanggal</label>
                 <input name="date" type="datetime-local" class="form-control" id="date" aria-describedby="emailHelp" placeholder="Masukkan Tanggal">
             </div>
-            <button type="submit" class="btn btn-primary">Cari</button>
+            <button type="submit" class="btn form-control" id="search-btn">Cari</button>
           </form>
         </div>
       </div>

@@ -65,8 +65,9 @@
       color: #FF8577;
     }
     #search-btn:hover{
-      background-color: #FF8577;
+      background-image: linear-gradient(to right top, #FF8577, #FFD8C2);
       color: white;
+      border: none;
     }
     .btn.btn-outline-warning:hover {
     color: #fff; /* Warna teks menjadi putih */
@@ -85,7 +86,7 @@
     }
     /* Aturan untuk menyesuaikan latar belakang saat menu aktif */
     .nav-link.active .icon-shape {
-      background-image: linear-gradient(to bottom, #FF8577, #FFD8C2) !important; /* Warna latar belakang oranye dengan !important */
+      background-image: linear-gradient(to , #FF8577, #FFD8C2) !important; /* Warna latar belakang oranye dengan !important */
     }
     #info-bengkel{
       background-image: linear-gradient(to right top, #FF8577, #FFD8C2);

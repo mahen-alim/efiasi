@@ -35,7 +35,7 @@
                     <label for="exampleInputEmail1">Harga Barang</label>
                     <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga Barang">
                   </div>
-                <button type="submit" class="btn btn-primary">Tambahkan</button>
+                <button type="submit" class="btn form-control" id="search-btn">Simpan</button>
               </form>
         </div>
     </div>

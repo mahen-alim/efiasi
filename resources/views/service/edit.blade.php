@@ -32,7 +32,7 @@
                     <label for="exampleInputEmail1">Harga</label>
                     <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $service->price}}">
                   </div>
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn form-control" id="search-btn">Simpan</button>
               </form>
         </div>
     </div>

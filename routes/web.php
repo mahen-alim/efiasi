@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\OperationalController;
 use App\Http\Controllers\PaginationController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SparepartController;
 use App\Http\Controllers\TemplateController;
 use App\Models\Pagination;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -55,9 +57,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/report/money', [RekapUangController::class, 'index']);
     Route::get('/report/money/table', [RekapUangController::class, 'table']);
     Route::get('/notif', [NotifController::class, 'index']);
-    
-   
 });
+
+Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/call-back', [GoogleAuthController::class, 'callback']);
 
 Auth::routes();
 
