@@ -46,7 +46,7 @@
                     <label for="exampleInputEmail1">Catatan</label>
                     <input name="description" type="textarea" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Catatan" value="{{ $operational->description}}">
                   </div>
-                <button type="submit" class="btn form-control" id="search-btn">Simpan</button>
+                <button type="submit" class="btn form-control" id="search-btn">Simpan Perubahan</button>
               </form>
         </div>
     </div>

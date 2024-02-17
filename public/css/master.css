@@ -1,0 +1,96 @@
+body {
+    font-family: "DM Sans", sans-serif;
+}
+.img-white {
+    filter: brightness(0) invert(1);
+}
+
+.img-black {
+    filter: brightness(100%) invert(0);
+}
+.icon {
+    background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
+    color: white;
+}
+#add-btn {
+    background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
+}
+#search-btn {
+    border: 1px solid #ff8577;
+    color: #ff8577;
+}
+#search-btn:hover {
+    background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
+    color: white;
+    border: none;
+}
+.btn.btn-outline-warning:hover {
+    color: #fff; /* Warna teks menjadi putih */
+    background-color: #ffc107; /* Warna latar belakang menjadi warna dari btn-warning */
+}
+.btn.btn-outline-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+}
+#ikhtisar-pesanan {
+    margin-top: 5px;
+}
+/* Aturan untuk menyesuaikan warna ikon saat menu aktif */
+.nav-link.active .icon-shape svg path {
+    fill: white; /* Warna ikon */
+}
+/* Aturan untuk menyesuaikan latar belakang saat menu aktif */
+.nav-link.active .icon-shape {
+    background-image: linear-gradient(
+        to bottom,
+        #ff8577,
+        #ffd8c2
+    ) !important; /* Warna latar belakang oranye dengan !important */
+}
+#info-bengkel {
+    background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
+}
+#trans-card {
+    background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
+}
+#title-trans {
+    color: white;
+}
+#shadow-2 {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 20px;
+    color: #fff;
+    background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
+}
+#card-notif {
+    margin-right: 20px;
+}
+#badge-notif {
+    margin-left: 60px;
+    border: 1px solid #ff8577;
+    background-color: none;
+    color: #ff8577;
+}
+#btn-confirm {
+    margin-right: 10px;
+    border: 1px solid #28a745;
+    color: #28a745;
+}
+#btn-confirm:hover {
+    background-color: #28a745;
+    color: white;
+}
+#btn-cancel {
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+#btn-cancel:hover {
+    background-color: #dc3545;
+    color: white;
+}
+#profile_picture {
+    border-radius: 10px;
+}

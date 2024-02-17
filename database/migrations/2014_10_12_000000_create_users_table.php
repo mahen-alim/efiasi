@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('quote')->nullable(); // Menetapkan nilai default untuk text
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->string('profile_picture')->nullable();
             $table->enum('level', ['ADMIN', 'END USER'])->default('ADMIN'); // Kolom level menggunakan tipe enum
             $table->string('google_id')->nullable(); // Kolom google_id diberi nullable
             $table->rememberToken();

@@ -22,7 +22,7 @@
                 <input type="text" class="form-control" id="quote" name="quote" value="{{ $profil->quote }}">
             </div>
             <!-- Tambahkan bidang lainnya sesuai kebutuhan -->
-            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            <button type="submit" class="btn form-control mt-3" id="search-btn">Simpan Perubahan</button>
         </form>        
     </div>
 @endsection

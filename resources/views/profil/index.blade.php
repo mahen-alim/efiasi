@@ -8,11 +8,12 @@
       </div>
         <div class="card card-body blur shadow-blur mx-4 mt-n12 mb-5 overflow-hidden">
             <div class="row gx-4">
-                <div class="col-auto">
-                    <div class="avatar avatar-xl position-relative mt-1">
-                    <img src="{{ asset ('img/bruce-mars.jpg') }}" class="w-100 border-radius-lg shadow-sm">
-                    </div>
+              <div class="col-auto">
+                <div class="avatar avatar-xl position-relative mt-1">
+                    <img src="{{ auth()->user()->profile_picture }}" alt="Profile Picture" id="profile_picture">
                 </div>
+            </div>
+            
                 <div class="col-auto my-auto">
                     <div class="h-100">
                     <h5 class="mb-1">
@@ -48,7 +49,7 @@
               <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> {{ auth()->user()->email }}</li>
               <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Alamat:</strong> {{ auth()->user()->location }}</li>
               <li class="list-group-item border-0 ps-0 pb-0">
-                <strong class="text-dark text-sm">Social:</strong> &nbsp;
+                <strong class="text-dark text-sm">Sosial Media:</strong> &nbsp;
                 <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
                   <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
                 </a>
