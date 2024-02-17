@@ -5,6 +5,7 @@ use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\OperationalController;
 use App\Http\Controllers\PaginationController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RekapUangController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceController;
@@ -57,6 +58,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/report/money', [RekapUangController::class, 'index']);
     Route::get('/report/money/table', [RekapUangController::class, 'table']);
     Route::get('/notif', [NotifController::class, 'index']);
+    Route::get('/profil', [ProfilController::class, 'index']);
+    Route::get('/profil/edit/{id}', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::put('/profil/update/{id}', [ProfilController::class, 'update'])->name('profil.update');
 });
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');

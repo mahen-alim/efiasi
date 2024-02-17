@@ -13,13 +13,16 @@ class OperationalController extends Controller
         return view('operational.index', compact(['operational']));
     }
 
+    //Method untuk menampilkan formulir penambahan data operasional
     public function create()
     {
         return view('operational.create');
     }
 
+    //Method untuk menyimpan data operasional setelah dilakukan validasi dan penambahan datanya
     public function store(Request $request)
     {
+        //Properti untuk melakukan permintaan dari Request untuk memvalidasi data
         $request->validate([
             'type_cost' => 'required|min:5',
             'nominal' => 'required|min:5',
@@ -27,6 +30,7 @@ class OperationalController extends Controller
             'description' => 'required|min:10',
         ]);
 
+        //Proses penambahan data permintaan dari request 
         Operational::create([
             'type_cost' => $request->type_cost,
             'nominal' => $request->nominal,
@@ -34,6 +38,7 @@ class OperationalController extends Controller
             'description' => $request->description,
         ]);
 
+        //Pengembalian nilai untuk beralih ke halaman operational.index jika data berhasil ditambahkan
         return redirect('/operational')->with('success', 'Data operasional berhasil ditambahkan');
     }
     public function edit($id)

@@ -29,7 +29,10 @@ class GoogleAuthController extends Controller
                     'name' => $google_user->getName(),
                     'email' => $google_user->getEmail(),
                     'google_id' => $google_user->getId(),
-                ]);
+                    'location' => 'Nganjuk', // Ganti 'Alamat default' dengan alamat yang sesuai dari Google
+                    'mobile_phone' => 1234567890, // Assign the value directly as an integer
+                    'password' => bcrypt('12345'),
+                ]);                              
 
                 Auth::login($new_user);
 
