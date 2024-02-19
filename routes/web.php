@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\InfoBengkelController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\OperationalController;
 use App\Http\Controllers\PaginationController;
@@ -61,6 +62,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profil', [ProfilController::class, 'index']);
     Route::get('/profil/edit/{id}', [ProfilController::class, 'edit'])->name('profil.edit');
     Route::put('/profil/update/{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::get('/info-bengkel', [InfoBengkelController::class, 'index'])->name('info.bengkel');
 });
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('mobile_phone')->nullable(); // Menetapkan nilai default untuk integer
+            $table->string('mobile_phone')->nullable(); // Menetapkan nilai default untuk integer
             $table->string('location')->nullable(); // Menetapkan nilai default untuk text
-            $table->text('quote')->nullable(); // Menetapkan nilai default untuk text
+            $table->text('quote'); // Menetapkan nilai default untuk text
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('profile_picture')->nullable();

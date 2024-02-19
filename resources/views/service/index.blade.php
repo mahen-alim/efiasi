@@ -5,7 +5,7 @@
   <div class="col-12">
     <div class="card mb-4">
       <div class="card-header pb-0">
-        <h6>Service Table</h6>
+        <h6>Detailing Table</h6>
         <div class="d-flex">
           <form action="{{ url('/service/search') }}" method="GET" class="flex-grow-1 me-10">
             <div class="d-flex">
