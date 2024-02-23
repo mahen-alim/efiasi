@@ -120,7 +120,7 @@
                   </p>
                 </div>
             </div>
-                <div class="card-body">
+              <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -166,11 +166,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                        <p class="mb-4 text-sm mx-auto" id="link-register">
-                            Don't have an account?
-                            <a href="/register" class="font-weight-bold" id="regis-btn">Register</a>
-                        </p>
+                    <div class="card-footer text-center pt-0 px-lg-2 px-1 mt-5">
                         <p class="mb-4 text-sm mx-auto" id="link-reset">
                             Forgot Your Password?
                             @if (Route::has('password.request'))
@@ -180,9 +176,7 @@
                             @endif
                         </p>                    
                     </div>
-                    
-                   
-            </div>
+              </div>
           </div>
         </div>
       </div>

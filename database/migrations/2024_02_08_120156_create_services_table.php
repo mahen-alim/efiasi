@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('tipe_service');
             $table->string('price');
             $table->string('sparepart');
+            $table->integer('qty');
             $table->timestamps();
         });
     }

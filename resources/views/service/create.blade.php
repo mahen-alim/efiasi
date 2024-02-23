@@ -24,13 +24,17 @@
                   <input name="type" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan tipe layanan">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Suku Cadang</label>
-                    <input name="sparepart" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Suku Cadang">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Harga</label>
-                    <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga">
-                  </div>
+                  <label for="exampleInputEmail1">Suku Cadang</label>
+                  <input name="sparepart" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Suku Cadang">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Jumlah Suku Cadang</label>
+                  <input name="qty" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Suku Cadang">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Harga</label>
+                  <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga">
+                </div>
                 <button type="submit" class="btn form-control" id="search-btn">Simpan</button>
               </form>
         </div>

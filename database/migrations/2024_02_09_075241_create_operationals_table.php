@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('type_cost');
             $table->integer('nominal');
-            $table->enum('category', ['Administrasi', 'Produksi', 'Penjualan'])->unique();
+            $table->enum('category', ['Administrasi', 'Bahan Baku & Persediaan', 'Penjualan', 'Asuransi', 'Pembiayaan', 'Penyusutan', 'Pemeliharaan & Perbaikan', 'Transportasi', 'Penggajian']);
             $table->text('description');
             $table->timestamps();
         });

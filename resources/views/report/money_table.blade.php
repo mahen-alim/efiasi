@@ -32,7 +32,7 @@
                     <td class="px-4 d-flex">          
                     </td>                
                   </tr>
-                  @endforeach
+                @endforeach
               </tbody>
           </table>        
           </div>
@@ -41,3 +41,4 @@
     </div>
   </div>
 @endsection
+

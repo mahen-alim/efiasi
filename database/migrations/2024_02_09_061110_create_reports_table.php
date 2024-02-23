@@ -13,14 +13,18 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('tipe_service')->unique();
-            $table->string('sparepart')->unique();
-            $table->integer('qty');
-            $table->integer('price_total');
-            $table->integer('income');
-            $table->date('trans_time');
+            $table->unsignedBigInteger('service_id'); // Tambahkan kolom service_id
+            $table->string('tipe_service');
+            $table->string('sparepart');
+            $table->integer('qty')->default(0);
+            $table->integer('price_total')->default(0);
+            $table->integer('income')->default(0);
+            $table->date('trans_time')->default(now()); 
             $table->enum('money_type', ['Transaksi Penjualan', 'Investasi']);
             $table->timestamps();
+
+            // Definisikan kunci asing untuk menghubungkan dengan tabel services
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 

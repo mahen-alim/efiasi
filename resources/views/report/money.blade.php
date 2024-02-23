@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="row">
+  <div class="row">
     <div class="col-12">
       <div class="card mb-4">
         <div class="card-header pb-0">
@@ -12,10 +12,15 @@
                 <label for="exampleInputEmail1">Kategori Keuangan</label>
                 <select name="category" class="form-control" id="exampleInputPrice" placeholder="Pilih Kategori Keuangan">
                   <option value="" disabled selected>Pilih Kategori Keuangan</option>
-                  <option value="Pendapatan">Pendapatan</option>
-                  <option value="Pengeluaran">Pengeluaran</option>
-                  <option value="Trans_Jual">Transaksi Penjualan</option>
-                  <option value="Investasi">Investasi</option>
+                  <option value="Administrasi">Administrasi</option>
+                  <option value="Bahan Baku & Persediaan">Bahan Baku & Persediaan</option>
+                  <option value="Penjualan">Keamanan</option>
+                  <option value="Asuransi">Asuransi</option>
+                  <option value="Pembiayaan">Pembiayaan</option>
+                  <option value="Penyusutan">Penyusutan</option>
+                  <option value="Pemeliharaan & Perbaikan">Pemeliharaan & Perbaikan</option>
+                  <option value="Transportasi">Transportasi</option>
+                  <option value="Penggajian">Penggajian</option>
                   <!-- Tambahkan opsi lain sesuai kebutuhan -->
               </select>              
                 <label for="exampleInputEmail1">Tanggal</label>

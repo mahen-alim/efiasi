@@ -94,3 +94,31 @@ body {
 #profile_picture {
     border-radius: 10px;
 }
+#btn-excel {
+    display: inline-block;
+    align-item: center;
+    padding: 10px;
+    border: 2px solid #217346;
+    border-radius: 5px;
+    background-color: white;
+    color: #217346;
+    text-decoration: none;
+    transition: background-color 1s, color 1s, border-color 1s;
+}
+#btn-excel:hover {
+    background-color: #217346;
+    border-color: none;
+    color: white;
+}
+
+#btn-excel svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    fill: #217346;
+}
+
+#btn-excel:hover svg{
+    fill: white;
+}
+

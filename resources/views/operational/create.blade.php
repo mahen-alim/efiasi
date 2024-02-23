@@ -43,7 +43,7 @@
                     </select>
                     <div class="form-group">
                       <label for="exampleInputDescription">Catatan</label>
-                      <textarea name="description" class="form-control" id="exampleInputDescription" rows="3" placeholder="Masukkan Catatan"></textarea>
+                      <input type="text" name="description" class="form-control" id="exampleInputEmail" placeholder="Masukkan Catatan"></input>
                     </div>                  
                 </div>                
                 <button type="submit" class="btn form-control" id="search-btn">Simpan</button>

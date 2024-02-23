@@ -56,7 +56,7 @@
         <li class="nav-item">
           <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="/dashboard">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm320 96c0-26.9-16.5-49.9-40-59.3V88c0-13.3-10.7-24-24-24s-24 10.7-24 24V292.7c-23.5 9.5-40 32.5-40 59.3c0 35.3 28.7 64 64 64s64-28.7 64-64zM144 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm-16 80a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM400 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 488V171.3c0-26.2 15.9-49.7 40.2-59.4L308.1 4.8c7.6-3.1 16.1-3.1 23.8 0L599.8 111.9c24.3 9.7 40.2 33.3 40.2 59.4V488c0 13.3-10.7 24-24 24H568c-13.3 0-24-10.7-24-24V224c0-17.7-14.3-32-32-32H128c-17.7 0-32 14.3-32 32V488c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24zm488 24l-336 0c-13.3 0-24-10.7-24-24V432H512l0 56c0 13.3-10.7 24-24 24zM128 400V336H512v64H128zm0-96V224H512l0 80H128z"/></svg>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
@@ -86,7 +86,7 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/4674/4674994.png" width="13" height="13" alt="" title="" class="{{ request()->is('sparepart') ? 'img-white' : 'img-white' }}">   
             </div>
             <span class="nav-link-text ms-1">Variasi</span>
-        </a>        
+          </a>        
         </li>
         <li class="nav-item">
           <a class="nav-link {{ request()->is('operational') ? 'active' : '' }}" href="/operational">
@@ -161,37 +161,37 @@
                
           <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
             <a class="opacity-5 text-dark">
-                @if(Request::is('service/create'))
-                    Tambah Servis
-                @elseif(Request::is('service/*/edit'))
-                    Edit Servis
-                @elseif(Request::is('service'))
-                    Servis
-                @elseif(Request::is('sparepart/create'))
-                    Tambah Sparepart
-                @elseif(Request::is('sparepart/*/edit'))
-                    Edit Sparepart
-                @elseif(Request::is('sparepart'))
-                    Sparepart
-                @elseif(Request::is('operational/create'))
-                    Tambah Operasional
-                @elseif(Request::is('operational/*/edit'))
-                    Edit Operasional
-                @elseif(Request::is('operational'))
-                    Operasional
-                @elseif(Request::is('report/money'))
-                    Formulir Rekap Keuangan
-                @elseif(Request::is('report/money/table'))
-                    Tabel Rekap Keuangan
-                @elseif(Request::is('report'))
-                    Laporan
-                @elseif(Request::is('dashboard'))
-                    Dashboard
-                @elseif(Request::is('profil/edit/*'))
-                    Edit Profil
-                @elseif(Request::is('profil'))
-                    Profil
-                @endif  
+              @if(Request::is('service/create'))
+                  Tambah Servis
+              @elseif(Request::is('service/*/edit'))
+                  Edit Servis
+              @elseif(Request::is('service'))
+                  Servis
+              @elseif(Request::is('sparepart/create'))
+                  Tambah Sparepart
+              @elseif(Request::is('sparepart/*/edit'))
+                  Edit Sparepart
+              @elseif(Request::is('sparepart'))
+                  Sparepart
+              @elseif(Request::is('operational/create'))
+                  Tambah Operasional
+              @elseif(Request::is('operational/*/edit'))
+                  Edit Operasional
+              @elseif(Request::is('operational'))
+                  Operasional
+              @elseif(Request::is('report/money'))
+                  Formulir Rekap Keuangan
+              @elseif(Request::is('report/money/table'))
+                  Tabel Rekap Keuangan
+              @elseif(Request::is('report'))
+                  Laporan
+              @elseif(Request::is('dashboard'))
+                  Dashboard
+              @elseif(Request::is('profil/edit/*'))
+                  Edit Profil
+              @elseif(Request::is('profil'))
+                  Profil
+              @endif  
             </a>
         </li>
         

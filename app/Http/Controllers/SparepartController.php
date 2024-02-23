@@ -10,7 +10,7 @@ class SparepartController extends Controller
 {
     public function index()
     {
-        $sparepart = Sparepart::paginate(5);
+        $sparepart = Sparepart::paginate(5)->withQueryString();
         return view('sparepart.index', compact(['sparepart']));
     }
 
@@ -36,16 +36,6 @@ class SparepartController extends Controller
             'merk' => $request->merk,
             'price' => $request->price,
         ]);
-
-        $data = [
-            'sparepart' => $request->name,
-            'qty' => $request->jumlah,
-            'price_total' => $request->price,
-            'income' => $request->price,
-        ];
-
-        // Membuat entri baru dalam tabel reports menggunakan model Eloquent
-        Report::create($data);
 
         // Redirect dengan pesan sukses
         return redirect('/sparepart')->with('success', 'Data sparepart berhasil ditambahkan');

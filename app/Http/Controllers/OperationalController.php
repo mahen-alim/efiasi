@@ -12,13 +12,11 @@ class OperationalController extends Controller
         $operational = Operational::paginate(5)->withQueryString();
         return view('operational.index', compact(['operational']));
     }
-
     //Method untuk menampilkan formulir penambahan data operasional
     public function create()
     {
         return view('operational.create');
     }
-
     //Method untuk menyimpan data operasional setelah dilakukan validasi dan penambahan datanya
     public function store(Request $request)
     {
@@ -27,7 +25,7 @@ class OperationalController extends Controller
             'type_cost' => 'required|min:5',
             'nominal' => 'required|min:5',
             'category' => 'required',
-            'description' => 'required|min:10',
+            'description' => 'required|min:5',
         ]);
 
         //Proses penambahan data permintaan dari request 
@@ -53,7 +51,7 @@ class OperationalController extends Controller
             'type_cost' => 'required|min:5',
             'nominal' => 'required|min:5',
             'category' => 'required',
-            'description' => 'required|min:10',
+            'description' => 'required|min:5',
         ]);
 
         // Mencari data service
@@ -76,7 +74,8 @@ class OperationalController extends Controller
         return redirect('/operational')->with('success', 'Data operasional berhasil diperbarui');
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         // Mencari data service
         $operational = Operational::find($id);
         $operational->delete();
@@ -92,7 +91,7 @@ class OperationalController extends Controller
             $operational = Operational::where('type_cost', 'LIKE', "%$keyword%")->get();
         } else {
             $operational = Operational::all();
-        }    
+        }
 
         return view('operational.index', compact('operational'));
     }

@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     use HasFactory;
-    protected $fillable = ['tipe_service', 'sparepart', 'qty', 'price_total', 'income', 'trans_time', 'money_type'];
+    protected $fillable = ['service_id', 'tipe_service', 'sparepart', 'qty', 'price_total', 'income', 'trans_time', 'money_type'];
 
     public function spareparts()
     {
         return $this->belongsToMany(Sparepart::class);
     }
 
-    public function services()
+    public function service()
     {
-        return $this->belongsToMany(Service::class, 'report_service');
+        return $this->belongsTo(Service::class);
     }
 
     public function operationals()

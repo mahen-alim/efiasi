@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ServiceExport;
+use App\Exports\ServisExport;
 use App\Models\Pagination;
+use App\Models\Report;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ServiceController extends Controller
 {
@@ -21,20 +25,34 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi data input
         $request->validate([
             'type' => 'required|min:5',
             'price' => 'required|min:5',
             'sparepart' => 'required|min:5',
+            'qty' => 'required',
         ]);
 
-        Service::create([
+        // Simpan data pada tabel services
+        $service = Service::create([
             'tipe_service' => $request->type,
             'price' => $request->price,
             'sparepart' => $request->sparepart,
+            'qty' => $request->qty
         ]);
 
+        Report::create([
+            'service_id' => $service->id, // Menghubungkan laporan dengan layanan yang sesuai
+            'tipe_service' => $request->type,
+            'sparepart' => $request->sparepart,
+            'qty' => $request->qty
+            // Tambahkan kolom lainnya sesuai kebutuhan
+        ]);
+
+        // Redirect ke halaman tertentu setelah data berhasil ditambahkan
         return redirect('/service')->with('success', 'Data service berhasil ditambahkan');
     }
+
     public function edit($id)
     {
         $service = Service::where('id', $id)->first();
@@ -86,8 +104,13 @@ class ServiceController extends Controller
             $service = Service::where('tipe_service', 'LIKE', "%$keyword%")->get();
         } else {
             $service = Service::all();
-        }    
+        }
 
         return view('service.index', compact('service'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new ServiceExport, 'servis.xlsx');
     }
 }

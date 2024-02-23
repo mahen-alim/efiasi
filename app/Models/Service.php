@@ -12,6 +12,6 @@ class Service extends Model
 
     public function reports()
     {
-        return $this->belongsToMany(Report::class, 'report_service');
+        return $this->hasMany(Report::class);
     }
 }

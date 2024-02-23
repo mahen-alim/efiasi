@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/service/{id}/edit', [ServiceController::class, 'edit']);
     Route::put('/service/{id}', [ServiceController::class, 'update']);
     Route::delete('/service/{id}', [ServiceController::class, 'destroy']);
+    Route::get('/servis/export', [ServiceController::class, 'export'])->name('servis.export');
     Route::get('/sparepart', [SparepartController::class, 'index']);
     Route::post('/sparepart', [SparepartController::class, 'store']);
     Route::get('/sparepart/search', [SparepartController::class, 'search']);
