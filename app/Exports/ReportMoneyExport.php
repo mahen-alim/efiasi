@@ -2,11 +2,11 @@
 
 namespace App\Exports;
 
-use App\Models\Service;
+use App\Models\Report;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ServiceExport implements FromCollection, WithHeadings
+class ReportMoneyExport implements FromCollection, WithHeadings
 {
     /**
      * Mendapatkan data yang akan diekspor ke Excel.
@@ -15,8 +15,8 @@ class ServiceExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return Service::select('id', 'tipe_service', 'sparepart', 'price')->get();
-    }    
+        return Report::select('id', 'sparepart', 'qty', 'tipe_service', 'trans_time')->get();
+    }
 
     /**
      * Menentukan judul kolom untuk file Excel.
@@ -27,9 +27,10 @@ class ServiceExport implements FromCollection, WithHeadings
     {
         return [
             'No',
-            'Jenis Servis',
             'Sparepart',
-            'Harga',
+            'Jumlah Barang',
+            'Jenis Layanan',
+            'Tanggal'
         ];
     }
 }

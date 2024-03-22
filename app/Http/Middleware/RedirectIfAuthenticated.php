@@ -15,14 +15,11 @@ class RedirectIfAuthenticated
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string ...$guards): Response
+    public function handle(Request $request, Closure $next)
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+        if (Auth::check()) {
+            // Jika pengguna sudah terotentikasi dan bukan mengakses halaman login, arahkan mereka ke halaman yang sesuai
+            return redirect(RouteServiceProvider::HOME);
         }
 
         return $next($request);

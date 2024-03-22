@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\ServiceExport;
-use App\Exports\ServisExport;
-use App\Models\Pagination;
 use App\Models\Report;
 use App\Models\Service;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ServiceController extends Controller
 {
@@ -42,11 +38,10 @@ class ServiceController extends Controller
         ]);
 
         Report::create([
-            'service_id' => $service->id, // Menghubungkan laporan dengan layanan yang sesuai
+            'service_id' => $service->id, 
             'tipe_service' => $request->type,
             'sparepart' => $request->sparepart,
-            'qty' => $request->qty
-            // Tambahkan kolom lainnya sesuai kebutuhan
+            'stock' => $request->qty
         ]);
 
         // Redirect ke halaman tertentu setelah data berhasil ditambahkan
@@ -74,7 +69,7 @@ class ServiceController extends Controller
         // Menangani kasus ketika data tidak ditemukan
         if (!$service) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
-            return redirect()->back()->with('error', 'Data service tidak ditemukan.');
+            return redirect()->back()->with('error', 'Data detailing tidak ditemukan.');
         }
 
         // Update data service
@@ -84,7 +79,7 @@ class ServiceController extends Controller
             'sparepart' => $request->sparepart,
         ]);
 
-        return redirect('/service')->with('success', 'Data service berhasil diperbarui');
+        return redirect('/service')->with('success', 'Data detailing berhasil diperbarui');
     }
 
     public function destroy($id)
@@ -93,7 +88,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $service->delete();
 
-        return redirect('/service')->with('success', 'Data service berhasil dihapus');
+        return redirect('/service')->with('success', 'Data detailing berhasil dihapus');
     }
 
     public function search(Request $request)
@@ -106,11 +101,6 @@ class ServiceController extends Controller
             $service = Service::all();
         }
 
-        return view('service.index', compact('service'));
-    }
-
-    public function export()
-    {
-        return Excel::download(new ServiceExport, 'servis.xlsx');
+        return view('service.index', compact(['service']));
     }
 }

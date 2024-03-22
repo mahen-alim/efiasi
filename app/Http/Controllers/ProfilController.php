@@ -20,7 +20,6 @@ class ProfilController extends Controller
         return view('profil.edit', ['profil' => $profil]);
     }
 
-
     // Method untuk memperbarui profil pengguna
     public function update(Request $request, $id)
     {

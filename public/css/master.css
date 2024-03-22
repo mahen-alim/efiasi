@@ -51,6 +51,7 @@ body {
     background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
 }
 #trans-card {
+    border-top-left-radius: 0px;
     background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
 }
 #title-trans {
@@ -118,7 +119,15 @@ body {
     fill: #217346;
 }
 
-#btn-excel:hover svg{
+#btn-excel:hover svg {
     fill: white;
 }
 
+.close-button {
+    font-size: 20px;
+    border: none;
+    background: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

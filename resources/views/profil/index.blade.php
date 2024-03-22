@@ -12,18 +12,18 @@
                 <div class="avatar avatar-xl position-relative mt-1">
                     <img src="{{ auth()->user()->profile_picture }}" alt="Profile Picture" id="profile_picture">
                 </div>
-            </div>
+              </div>
             
-                <div class="col-auto my-auto">
-                    <div class="h-100">
-                    <h5 class="mb-1">
-                        {{ auth()->user()->name }}
-                    </h5>
-                    <p class="mb-0 font-weight-bold text-sm">
-                        {{ auth()->user()->level }}
-                    </p>
-                    </div>
+              <div class="col-auto my-auto">
+                <div class="h-100">
+                  <h5 class="mb-1">
+                      {{ auth()->user()->name }}
+                  </h5>
+                  <p class="mb-0 font-weight-bold text-sm">
+                      {{ auth()->user()->level }}
+                  </p>
                 </div>
+              </div>
             </div>
         </div>
     </div>

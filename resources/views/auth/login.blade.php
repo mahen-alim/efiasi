@@ -150,21 +150,37 @@
 
                         <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} onchange="enableLoginButton()">
+                        
                                 <label class="form-check-label" for="remember">
                                     {{ __('Remember Me') }}
                                 </label>
                             </div>
                         </div>
-
+                        
                         <div class="text-center">
-                                <button type="submit" class="btn w-100 mt-4 mb-0" id="login-btn">
-                                    {{ __('Login') }}
-                                </button>
+                            <button type="submit" class="btn w-100 mt-4 mb-0" id="login-btn" disabled>
+                                {{ __('Login') }}
+                            </button>
+                        </div>
+                        
+                        <script>
+                            function enableLoginButton() {
+                                var rememberCheckbox = document.getElementById('remember');
+                                var loginButton = document.getElementById('login-btn');
+                        
+                                // Memeriksa apakah kotak centang dicentang
+                                if (rememberCheckbox.checked) {
+                                    // Mengaktifkan tombol login jika kotak centang dicentang
+                                    loginButton.disabled = false;
+                                } else {
+                                    // Menonaktifkan tombol login jika kotak centang tidak dicentang
+                                    loginButton.disabled = true;
+                                }
+                            }
+                        </script>                      
 
-                            </div>
-                        </form>
+                    </form>
                     </div>
                     <div class="card-footer text-center pt-0 px-lg-2 px-1 mt-5">
                         <p class="mb-4 text-sm mx-auto" id="link-reset">

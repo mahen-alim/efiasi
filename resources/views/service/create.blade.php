@@ -17,15 +17,31 @@
                     </ul>
                 </div>
             @endif
-            <form action="/service" method="POST" >
+            <form action="/service" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tipe Layanan</label>
-                  <input name="type" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan tipe layanan">
+                  <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan tipe layanan">
+                    <option value="" disabled selected>Pilih Tipe Layanan</option>
+                    <option value="Detailing Interior">Detailing Interior</option>
+                    <option value="Detailing Eksterior">Detailing Eksterior</option>
+                    <option value="Detailing Kaca Mobil">Detailing Kaca Mobil</option>
+                    <option value="Detailing Engine Bay">Detailing Engine Bay</option>
+                    <option value="Detailing Velg & Ban">Detailing Velg & Ban</option>
+                  </select>              
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Suku Cadang</label>
-                  <input name="sparepart" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Suku Cadang">
+                  <select name="sparepart" class="form-control" id="exampleInputPrice" placeholder="Masukkan suku cadang">
+                    <option value="" disabled selected>Pilih Suku Cadang</option>
+                    <option value="Microfiber">Kain Mikrofiber</option>
+                    <option value="Car Shampoo">Sampo Mobil</option>
+                    <option value="Wax or Sealant">Pengilap atau Sealant</option>
+                    <option value="Detailing Brushes">Sikat Detailing</option>
+                    <option value="Clay Bar">Bar Clay</option>
+                    <option value="Interior Cleaners">Pembersih Interior</option>
+                    <option value="Glass Cleaners">Pembersih Kaca</option>
+                  </select>    
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Jumlah Suku Cadang</label>

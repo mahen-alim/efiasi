@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('qty')->default(0);
             $table->integer('price_total')->default(0);
             $table->integer('income')->default(0);
-            $table->date('trans_time')->default(now()); 
-            $table->enum('money_type', ['Transaksi Penjualan', 'Investasi']);
+            $table->date('trans_time')->default(now());
+            $table->enum('money_type', ['Pendapatan', 'Pengeluaran', 'Laba Rugi']);
             $table->timestamps();
 
             // Definisikan kunci asing untuk menghubungkan dengan tabel services

@@ -130,7 +130,10 @@
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm">
               @switch(true)
-                  @case(Request::is('report/money/table'))
+                  @case(Request::is('report/income/table'))
+                      <a class="opacity-5 text-dark" href="/report">Laporan</a>
+                      @break
+                  @case(Request::is('report/outcome/table'))
                       <a class="opacity-5 text-dark" href="/report">Laporan</a>
                       @break
                   
@@ -147,13 +150,19 @@
                   @case(Request::is('operational/create') || Request::is('operational/*/edit'))
                       <a class="opacity-5 text-dark" href="/operational">Operasional</a>
                       @break
-                  @case(Request::is('report/money/table'))
-                      <a class="opacity-5 text-dark" href="/report/money">Formulir Rekap Keuangan</a>
+                  @case(Request::is('report/income/table'))
+                      <a class="opacity-5 text-dark" href="/report/income">Formulir Rekap Keuangan</a>
                       @break
-                  @case(Request::is('report/money'))
+                  @case(Request::is('report/income'))
                       <a class="opacity-5 text-dark" href="/report">Laporan</a>
                       @break
-                      @case(Request::is('profil/edit/*'))
+                  @case(Request::is('report/outcome/table'))
+                      <a class="opacity-5 text-dark" href="/report/income">Formulir Rekap Keuangan</a>
+                      @break
+                  @case(Request::is('report/outcome'))
+                      <a class="opacity-5 text-dark" href="/report">Laporan</a>
+                      @break
+                  @case(Request::is('profil/edit/*'))
                       <a class="opacity-5 text-dark" href="/profil">Profil</a>
                       @break
               @endswitch          
@@ -179,10 +188,14 @@
                   Edit Operasional
               @elseif(Request::is('operational'))
                   Operasional
-              @elseif(Request::is('report/money'))
-                  Formulir Rekap Keuangan
-              @elseif(Request::is('report/money/table'))
-                  Tabel Rekap Keuangan
+              @elseif(Request::is('report/income'))
+                  Formulir Rekap Pendapatan
+              @elseif(Request::is('report/income/table'))
+                  Tabel Rekap Pendapatan
+              @elseif(Request::is('report/outcome'))
+                  Formulir Rekap Pengeluaran
+              @elseif(Request::is('report/outcome/table'))
+                  Tabel Rekap Pengeluaran
               @elseif(Request::is('report'))
                   Laporan
               @elseif(Request::is('dashboard'))
@@ -207,15 +220,17 @@
           </h6>
         </nav>
         <ul class="navbar-nav  justify-content-end">
+          @if (Auth::check())
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
+              @csrf
             </form>
             <a href="{{ route('logout') }}" class="nav-link text-body font-weight-bold px-0" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
-                <i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180"></i>
+              <i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180"></i>
               <span class="d-sm-inline d-none">Log Out</span>
             </a>
-          </li>
+          @endif
+          
           <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
               <div class="sidenav-toggler-inner">
@@ -232,12 +247,24 @@
     <div class="container-fluid py-4">
 
       @if (session()->has('success'))       
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-success">{{ session('success') }}</div>
-            </div>
-        </div>
+          <div class="row">
+              <div class="col-12">
+                  <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
+                      {{ session('success') }}
+                      <button type="button" class="close close-button" aria-label="Close" onclick="closeAlert()">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              </div>
+          </div>
       @endif
+
+      <script>
+          function closeAlert() {
+              var alert = document.getElementById('successAlert');
+              alert.style.display = 'none';
+          }
+      </script>
 
       @yield('content')
 

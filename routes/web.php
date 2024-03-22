@@ -1,69 +1,91 @@
 <?php
 
+use App\Http\Controllers\CobaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\IncomeRecapController;
 use App\Http\Controllers\InfoBengkelController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\OperationalController;
-use App\Http\Controllers\PaginationController;
+use App\Http\Controllers\OutcomeRecap;
+use App\Http\Controllers\OutcomeRecapController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RekapUangController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SparepartController;
-use App\Http\Controllers\TemplateController;
-use App\Models\Pagination;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('/service', [ServiceController::class, 'index']);
-    Route::post('/service', [ServiceController::class, 'store']);
-    Route::get('/service/search', [ServiceController::class, 'search']);
-    Route::get('/service/create', [ServiceController::class, 'create']);
-    Route::get('/service/{id}/edit', [ServiceController::class, 'edit']);
-    Route::put('/service/{id}', [ServiceController::class, 'update']);
-    Route::delete('/service/{id}', [ServiceController::class, 'destroy']);
-    Route::get('/servis/export', [ServiceController::class, 'export'])->name('servis.export');
-    Route::get('/sparepart', [SparepartController::class, 'index']);
-    Route::post('/sparepart', [SparepartController::class, 'store']);
-    Route::get('/sparepart/search', [SparepartController::class, 'search']);
-    Route::get('/sparepart/create', [SparepartController::class, 'create']);
-    Route::get('/sparepart/{id}/edit', [SparepartController::class, 'edit']);
-    Route::put('/sparepart/{id}', [SparepartController::class, 'update']);
-    Route::delete('/sparepart/{id}', [SparepartController::class, 'destroy']);
-    Route::get('/operational', [OperationalController::class, 'index']);
-    Route::post('/operational', [OperationalController::class, 'store']);
-    Route::get('/operational/search', [OperationalController::class, 'search']);
-    Route::get('/operational/create', [OperationalController::class, 'create']);
-    Route::get('/operational/{id}/edit', [OperationalController::class, 'edit']);
-    Route::put('/operational/{id}', [OperationalController::class, 'update']);
-    Route::delete('/operational/{id}', [OperationalController::class, 'destroy']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    Route::controller(ServiceController::class)->group(function () {
+        Route::get('/service', 'index');
+        Route::post('/service', 'store');
+        Route::get('/service/search', 'search');
+        Route::get('/service/create', 'create');
+        Route::get('/service/{id}/edit', 'edit');
+        Route::put('/service/{id}', 'update');
+        Route::delete('/service/{id}', 'destroy');
+    });
+
+    Route::controller(SparepartController::class)->group(function () {
+        Route::get('/sparepart', 'index');
+        Route::post('/sparepart', 'store');
+        Route::get('/sparepart/search', 'search');
+        Route::get('/sparepart/create', 'create');
+        Route::get('/sparepart/{id}/edit', 'edit');
+        Route::put('/sparepart/{id}', 'update');
+        Route::delete('/sparepart/{id}', 'destroy');
+    });
+
+    Route::controller(OperationalController::class)->group(function () {
+        Route::get('/operational', 'index');
+        Route::post('/operational', 'store');
+        Route::get('/operational/search', 'search');
+        Route::get('/operational/create', 'create');
+        Route::get('/operational/{id}/edit', 'edit');
+        Route::put('/operational/{id}', 'update');
+        Route::delete('/operational/{id}', 'destroy');
+    });
+
     Route::get('/report', [ReportController::class, 'index']);
-    Route::get('/report/money', [RekapUangController::class, 'index']);
-    Route::get('/report/money/table', [RekapUangController::class, 'table']);
+
+    Route::controller(IncomeRecapController::class)->group(function () {
+        Route::get('/report/income', 'index');
+        Route::get('/report/income/table', 'table');
+        Route::get('/report/export', 'export')->name('report.export');
+    });
+
+    Route::controller(OutcomeRecapController::class)->group(function () {
+        Route::get('/report/outcome', 'index');
+        Route::get('/report/outcome/table', 'table');
+        Route::get('/report/export', 'export')->name('report.export');
+    });
+
     Route::get('/notif', [NotifController::class, 'index']);
-    Route::get('/profil', [ProfilController::class, 'index']);
-    Route::get('/profil/edit/{id}', [ProfilController::class, 'edit'])->name('profil.edit');
-    Route::put('/profil/update/{id}', [ProfilController::class, 'update'])->name('profil.update');
+
+    Route::controller(ProfilController::class)->group(function () {
+        Route::get('/profil', 'index')->name('profile.index');
+        Route::get('/profil/edit/{id}', 'edit')->name('profil.edit');
+        Route::put('/profil/update/{id}', 'update')->name('profil.update');
+    });
+
     Route::get('/info-bengkel', [InfoBengkelController::class, 'index'])->name('info.bengkel');
+
+    // Route::controller(UploadController::class)->group(function () {
+    //     Route::get('/dropzone', 'dropzone')->name('dropzone');
+    //     Route::get('/dropzone/store', 'dropzone_store')->name('dropzone.store');
+    // });
 });
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
@@ -71,4 +93,14 @@ Route::get('auth/google/call-back', [GoogleAuthController::class, 'callback']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/session/create', [SessionController::class, 'create']);
+// Route::get('/session/show', [SessionController::class, 'show']);
+// Route::get('/session/delete', [SessionController::class, 'delete']);
+
+// Route::controller(PegawaiController::class)->group(function () {
+//     Route::get('/pegawai/{nama}', 'index');
+//     Route::get('/formulir', 'formulir');
+//     Route::post('/formulir/proses', 'proses');
+// });
+
+// Route::get('/cobaerror', [CobaController::class, 'index']);

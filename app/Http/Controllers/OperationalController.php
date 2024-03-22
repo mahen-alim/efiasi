@@ -7,16 +7,19 @@ use Illuminate\Http\Request;
 
 class OperationalController extends Controller
 {
+    //Method untuk menangani fungsi pengembalian file view operatioanl.index
     public function index()
     {
         $operational = Operational::paginate(5)->withQueryString();
         return view('operational.index', compact(['operational']));
     }
+
     //Method untuk menampilkan formulir penambahan data operasional
     public function create()
     {
         return view('operational.create');
     }
+    
     //Method untuk menyimpan data operasional setelah dilakukan validasi dan penambahan datanya
     public function store(Request $request)
     {
@@ -39,6 +42,7 @@ class OperationalController extends Controller
         //Pengembalian nilai untuk beralih ke halaman operational.index jika data berhasil ditambahkan
         return redirect('/operational')->with('success', 'Data operasional berhasil ditambahkan');
     }
+
     public function edit($id)
     {
         $operational = Operational::where('id', $id)->first();

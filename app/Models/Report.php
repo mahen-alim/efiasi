@@ -12,12 +12,12 @@ class Report extends Model
 
     public function spareparts()
     {
-        return $this->belongsToMany(Sparepart::class);
+        return $this->belongsToMany(sparepart::class);
     }
 
     public function service()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsToMany(Service::class);
     }
 
     public function operationals()
