@@ -14,8 +14,9 @@
                     <option value="" disabled selected>Pilih Jenis Layanan</option>
                     <option value="Detailing Interior">Detailing Interior</option>
                     <option value="Detailing Eksterior">Detailing Eksterior</option>
-                    <option value="Detailing Kaca">Detailing Kaca</option>
-                    <!-- Tambahkan opsi lain sesuai kebutuhan -->
+                    <option value="Detailing Kaca Mobil">Detailing Kaca Mobil</option>
+                    <option value="Detailing Engine Bay">Detailing Engine Bay</option>
+                    <option value="Detailing Velg & Ban">Detailing Velg & Ban</option>
                 </select>              
                 <label for="exampleInputEmail1">Tanggal</label>
                 <input name="date" type="datetime-local" class="form-control" id="date" aria-describedby="emailHelp" placeholder="Masukkan Tanggal">

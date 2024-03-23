@@ -131,3 +131,24 @@ body {
     right: 10px;
     top: 10px;
 }
+
+.pagination {
+    margin-top: 20px;
+    padding-bottom: -50px;
+}
+.pagination a {
+    border: 1px solid #ff8577;
+    color: #ff8577 !important;
+}
+
+.pagination a:hover {
+    background-color: #ff8577 !important;
+    color: white !important;
+    border: none;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ff8577 !important;
+    color: white;
+    border: none;
+}

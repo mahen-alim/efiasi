@@ -41,6 +41,10 @@
                     <option value="Clay Bar">Bar Clay</option>
                     <option value="Interior Cleaners">Pembersih Interior</option>
                     <option value="Glass Cleaners">Pembersih Kaca</option>
+                    <option value="Tar Remover">Tar Remover</option>
+                    <option value="Metal Polish">Metal Polish</option>
+                    <option value="Wheel Cleaner">Wheel Cleaner</option>
+                    <option value="Tire Brush">Tire Brush</option>
                   </select>    
                 </div>
                 <div class="form-group">
