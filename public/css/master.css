@@ -167,4 +167,5 @@ body {
 .dropzone {
     box-shadow: 0px 2px 20px 0px white;
     border-radius: 10px;
+    border: none;
 }

@@ -17,9 +17,15 @@
                     <option value="Detailing Kaca Mobil">Detailing Kaca Mobil</option>
                     <option value="Detailing Engine Bay">Detailing Engine Bay</option>
                     <option value="Detailing Velg & Ban">Detailing Velg & Ban</option>
-                </select>              
+                </select>   
+                @error('tipe_service')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror           
                 <label for="exampleInputEmail1">Tanggal</label>
                 <input name="date" type="datetime-local" class="form-control" id="date" aria-describedby="emailHelp" placeholder="Masukkan Tanggal">
+                @error('date')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror  
             </div>
             <button type="submit" class="btn form-control" id="search-btn">Cari</button>
           </form> 

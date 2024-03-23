@@ -19,6 +19,11 @@ class IncomeRecapController extends Controller
         $keyword = $request->input('tipe_service');
         $date = $request->input('date');
 
+        $request->validate([
+            'tipe_service' => 'required|min:5',
+            'date' => 'required',
+        ]);
+
         $query = Report::query();
 
         if ($keyword) {
@@ -31,11 +36,8 @@ class IncomeRecapController extends Controller
 
         $data = $query->get();
 
-        // Return view dengan data yang sesuai
         return view('report.money_table_income', compact('data'));
     }
-
-
 
     public function export()
     {

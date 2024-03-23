@@ -8,19 +8,10 @@
           <h6>Tambah Detailing</h6>
         </div>
         <div class="card-body px-4 pt-0 pb-2">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <form action="/service" method="POST" enctype="multipart/form-data" class="dropzone">
               @csrf
               <div class="form-group">
-                  <label for="exampleInputPrice">Tipe Layanan</label>
+                  <label for="exampleInputPrice">Tipe Layanan <span style="color: red;">*</span></label>
                   <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan tipe layanan">
                       <option value="" disabled selected>Pilih Tipe Layanan</option>
                       <option value="Detailing Interior">Detailing Interior</option>
@@ -28,10 +19,13 @@
                       <option value="Detailing Kaca Mobil">Detailing Kaca Mobil</option>
                       <option value="Detailing Engine Bay">Detailing Engine Bay</option>
                       <option value="Detailing Velg & Ban">Detailing Velg & Ban</option>
-                  </select>              
+                  </select>  
+                  @error('type')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror              
               </div>
               <div class="form-group">
-                  <label for="exampleInputSparepart">Suku Cadang</label>
+                  <label for="exampleInputSparepart">Suku Cadang <span style="color: red;">*</span></label>
                   <select name="sparepart" class="form-control" id="exampleInputSparepart" placeholder="Masukkan suku cadang">
                       <option value="" disabled selected>Pilih Suku Cadang</option>
                       <option value="Microfiber">Kain Mikrofiber</option>
@@ -46,20 +40,29 @@
                       <option value="Wheel Cleaner">Wheel Cleaner</option>
                       <option value="Tire Brush">Tire Brush</option>
                   </select>    
+                  @error('sparepart')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror  
               </div>
           
               <div class="form-group">
-                  <label for="exampleInputQty">Jumlah Suku Cadang</label>
+                  <label for="exampleInputQty">Jumlah Suku Cadang <span style="color: red;">*</span></label>
                   <input name="qty" type="number" class="form-control" id="exampleInputQty" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Suku Cadang">
+                  @error('qty')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror  
               </div>
           
               <div class="form-group">
-                  <label for="exampleInputPrice">Harga</label>
+                  <label for="exampleInputPrice">Harga <span style="color: red;">*</span></label>
                   <input name="price" type="number" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp" placeholder="Masukkan Harga">
+                  @error('price')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror  
               </div>
               
               <div class="form-group">
-                  <label for="exampleInputFile">Foto Sparepart</label>
+                  <label for="exampleInputFile">Foto Sparepart <span style="color: red;">*</span></label>
                   <!-- Tambahkan class dropzone dan ganti name dengan id -->
                   <div id="image-upload" class="dz-default dz-message dropzoneDragArea">
                       <span>Unggah Foto</span>
