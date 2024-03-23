@@ -15,10 +15,14 @@ class UploadController extends Controller
     {
         $image = $request->file('file');
 
-        $imageName = time().'.'.$image->extension();
+        $imageName = time() . '.' . $image->extension();
         $image->move(
-            public_path('img/dropzone'), $imageName
+            public_path('img/dropzone'),
+            $imageName
         );
-        return response()->json(['succes' => $imageName]);
+        return response()->json([
+            'succes' => $imageName,
+            'message' => 'File Berhasil Diupload',
+        ]);
     }
 }

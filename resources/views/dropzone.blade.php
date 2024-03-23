@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center">Dropzone Image Upload in Laravel</h1><br>
-                <form action="{{ route('dropzone.store') }}" method="POST" name="file" files="true" enctype="multipart/form-data" class="dropzone" id="image-upload">
+                <form action="{{ route('dropzone.file') }}" method="POST" name="file" files="true" enctype="multipart/form-data" class="dropzone" id="image-upload">
                 @csrf
                 <div>
                     <h3 class="text-center">Upload Multiple Images</h3>

@@ -152,3 +152,19 @@ body {
     color: white;
     border: none;
 }
+
+.dropzoneDragArea {
+    width: 200px; /* Atur lebar dropzone */
+    height: 150px; /* Atur tinggi dropzone */
+    border: 2px dashed #ccc; /* Tambahkan garis putus-putus */
+    border-radius: 5px; /* Tambahkan sudut bulat */
+    text-align: center; /* Pusatkan teks */
+    padding: 20px; /* Tambahkan padding */
+    margin-bottom: 15px; /* Atur margin bawah */
+    cursor: pointer; /* Ubah kursor menjadi pointer saat mengarah ke area dropzone */
+}
+
+.dropzone {
+    box-shadow: 0px 2px 20px 0px white;
+    border-radius: 10px;
+}
