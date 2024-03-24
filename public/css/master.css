@@ -154,18 +154,16 @@ body {
 }
 
 .dropzoneDragArea {
-    width: 200px; /* Atur lebar dropzone */
-    height: 150px; /* Atur tinggi dropzone */
-    border: 2px dashed #ccc; /* Tambahkan garis putus-putus */
-    border-radius: 5px; /* Tambahkan sudut bulat */
-    text-align: center; /* Pusatkan teks */
-    padding: 20px; /* Tambahkan padding */
-    margin-bottom: 15px; /* Atur margin bawah */
-    cursor: pointer; /* Ubah kursor menjadi pointer saat mengarah ke area dropzone */
+    background-color: #fbfdff;
+    border: 1px dashed #c0ccda;
+    border-radius: 6px;
+    padding: 60px;
+    text-align: center;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
 
-.dropzone {
-    box-shadow: 0px 2px 20px 0px white;
+.dropzone{
+    box-shadow: 0px 2px 20px 0px #f2f2f2;
     border-radius: 10px;
-    border: none;
 }

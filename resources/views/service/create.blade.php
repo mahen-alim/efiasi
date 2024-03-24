@@ -8,7 +8,7 @@
           <h6>Tambah Detailing</h6>
         </div>
         <div class="card-body px-4 pt-0 pb-2">
-            <form action="/service" method="POST" enctype="multipart/form-data" class="dropzone">
+            <form action="/service" method="POST" name="demoform" id="demoform" class="dropzone" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
                   <label for="exampleInputPrice">Tipe Layanan <span style="color: red;">*</span></label>
@@ -59,52 +59,80 @@
                   @error('price')
                   <div class="text-danger">{{ $message }}</div>
                   @enderror  
+              </div>  
+
+              <div class="form-group">
+                <label for="">Foto Sparepart <span style="color: red;">*</span></label>
+                <div id="dropzoneDragArea" class="dz-default dz-message dropzoneDragArea" style="margin-top: 10px;">
+                  <span>Upload file</span>
+                </div>
+                @error('file')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror 
+                <div class="dropzone-previews"></div>
               </div>
               
-              <div class="form-group">
-                  <label for="exampleInputFile">Foto Sparepart <span style="color: red;">*</span></label>
-                  <!-- Tambahkan class dropzone dan ganti name dengan id -->
-                  <div id="image-upload" class="dz-default dz-message dropzoneDragArea">
-                      <span>Unggah Foto</span>
-                  </div>
-                  <div class="dropzone-previews"></div>
-              </div> 
+            
+              <button type="submit" class="btn form-control" id="search-btn" >Simpan</button>        
+            </form>
+            
           
-              <div class="form-group">
-                  <button type="submit" class="btn form-control" id="search-btn">Simpan</button>
-              </div>
-          </form>
+            <script>
+              Dropzone.autoDiscover = false;
+              $(function() {
+                  var myDropzone = new Dropzone("div#dropzoneDragArea", {
+                      paramName: "file",
+                      url: "{{ route('service.file') }}",
+                      previewsContainer: 'div.dropzone-previews',
+                      addRemoveLinks: true,
+                      autoProcessQueue: false,
+                      uploadMultiple: false,
+                      parallelUploads: 1,
+                      maxFiles: 1,
+                      acceptedFiles: ".jpeg, .jpg, .png, .gif",
+                      // The setting up of the dropzone
+                      init: function() {
+                          var myDropzone = this;
+                          // Form submission
+                          $("form[name='demoform']").submit(function(event) {
+                              // Make sure the form isn't actually being sent.
+                              event.preventDefault();
+                              // Collect other form data
+                              var formData = new FormData($(this)[0]);
+                              // Submit form data
+                              $.ajax({
+                                  type: 'POST',
+                                  url: $(this).attr('action'),
+                                  data: formData,
+                                  processData: false,  // Important!
+                                  contentType: false,  // Important!
+                                  success: function(response) {
+                                      // If form data successfully submitted, process Dropzone queue
+                                      myDropzone.processQueue();
+                                  },
+                                  error: function(xhr, status, error) {
+                                      console.error(xhr.responseText);
+                                  }
+                              });
+                          });
           
+                          // Gets triggered when file is successfully uploaded
+                          this.on("success", function(file, response) {
+                              console.log(response); // Log server response (if any)
+                              // Reset the form
+                              $('#demoform')[0].reset();
+                              // Reset Dropzone
+                              $('.dropzone-previews').empty();
+                              // Provide feedback to the user if needed
+                              alert('File successfully uploaded!');
+                          });
           
-          <script type="text/javascript">
-            Dropzone.option.imageUpload = {
-                maxFilesize: 10,
-                acceptedFiles: ".jpeg, .jpg, .png, .gif",
-                addRemoveLinks: true,
-                createImageThumbnails: true,
-                autoProcessQueue: false,
-                previewsContainer: 'div.dropzone-previews',
-                uploadMultiple: false,
-                parallelUploads: 1,
-                maxFiles: 1,
-                init: function() {
-                    var myDropzone = this;
-        
-                    $("#search-btn").click(function (e) {
-                        e.preventDefault();
-                        myDropzone.processQueue();
-                    });
-        
-                    this.on('sending', function(file, xhr, formData) {
-        
-                        var data = $('#image-upload').serializeArray();
-                        $.each(data, function(key, el) {
-                            formData.append(el.name, el.value);
-                        });
-                    });
-                }
-            };
-            </script>
+                      }
+                  });
+              });
+          </script>
+          
+              
                      
     
         </div>

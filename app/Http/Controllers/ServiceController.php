@@ -27,18 +27,37 @@ class ServiceController extends Controller
             'price' => 'required|min:5',
             'sparepart' => 'required|min:5',
             'qty' => 'required',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        // Proses menyimpan file
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            // Pastikan file telah diunggah dengan benar
+            if ($file->isValid()) {
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('img/dropzone'), $fileName);
+            } else {
+                // Jika file tidak valid, kembalikan dengan pesan kesalahan
+                return redirect()->back()->withErrors(['file' => 'The file is not valid.'])->withInput();
+            }
+        } else {
+            // Jika file tidak ada, kembalikan dengan pesan kesalahan
+            return redirect()->back()->withErrors(['file' => 'No file uploaded.'])->withInput();
+        }
 
         // Simpan data pada tabel services
         $service = Service::create([
             'tipe_service' => $request->type,
             'price' => $request->price,
             'sparepart' => $request->sparepart,
-            'qty' => $request->qty
+            'qty' => $request->qty,
+            'file' => $fileName // Simpan nama file ke dalam database
         ]);
 
+        // Simpan data pada tabel reports
         Report::create([
-            'service_id' => $service->id, 
+            'service_id' => $service->id,
             'tipe_service' => $request->type,
             'sparepart' => $request->sparepart,
             'stock' => $request->qty
@@ -47,6 +66,7 @@ class ServiceController extends Controller
         // Redirect ke halaman tertentu setelah data berhasil ditambahkan
         return redirect('/service')->with('success', 'Data service berhasil ditambahkan');
     }
+
 
     public function edit($id)
     {

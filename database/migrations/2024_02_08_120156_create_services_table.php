@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('sparepart');
             $table->integer('qty');
+            $table->text('file');
             $table->timestamps();
         });
     }

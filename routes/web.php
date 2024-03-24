@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(ServiceController::class)->group(function () {
         Route::get('/service', 'index');
-        Route::post('/service', 'store');
+        Route::post('/service', 'store')->name('service.file');
         Route::get('/service/search', 'search');
         Route::get('/service/create', 'create');
         Route::get('/service/{id}/edit', 'edit');
@@ -81,6 +81,11 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/info-bengkel', [InfoBengkelController::class, 'index'])->name('info.bengkel');
+
+    // Route::controller(UploadController::class)->group(function () {
+    //     Route::get('/dropzone', 'dropzone')->name('dropzone');
+    //     Route::post('/dropzone/store', 'dropzone_file')->name('dropzone.file');
+    // });
 });
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
@@ -88,10 +93,6 @@ Route::get('auth/google/call-back', [GoogleAuthController::class, 'callback']);
 
 Auth::routes();
 
-Route::controller(UploadController::class)->group(function () {
-    Route::get('/dropzone', 'dropzone')->name('dropzone');
-    Route::post('/dropzone/store', 'dropzone_file')->name('dropzone.file');
-});
 
 // Route::get('/session/create', [SessionController::class, 'create']);
 // Route::get('/session/show', [SessionController::class, 'show']);
