@@ -12,16 +12,16 @@ class Report extends Model
 
     public function spareparts()
     {
-        return $this->belongsToMany(sparepart::class);
+        return $this->belongsToMany(sparepart::class)->withTimestamps();
     }
 
-    public function service()
+    public function services()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->belongsToMany(Service::class, 'report_service')->withTimestamps();
     }
 
     public function operationals()
     {
-        return $this->belongsToMany(Operational::class, 'operational_report');
+        return $this->belongsToMany(Operational::class, 'operational_report')->withTimestamps();
     }
 }

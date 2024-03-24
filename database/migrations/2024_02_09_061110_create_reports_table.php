@@ -23,7 +23,6 @@ return new class extends Migration
             $table->enum('money_type', ['Pendapatan', 'Pengeluaran', 'Laba Rugi']);
             $table->timestamps();
 
-            // Definisikan kunci asing untuk menghubungkan dengan tabel services
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }

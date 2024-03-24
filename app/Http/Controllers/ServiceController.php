@@ -27,24 +27,8 @@ class ServiceController extends Controller
             'price' => 'required|min:5',
             'sparepart' => 'required|min:5',
             'qty' => 'required',
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'file' => 'mimes:png,jpg,jpeg,gif|max:5000'
         ]);
-
-        // Proses menyimpan file
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            // Pastikan file telah diunggah dengan benar
-            if ($file->isValid()) {
-                $fileName = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('img/dropzone'), $fileName);
-            } else {
-                // Jika file tidak valid, kembalikan dengan pesan kesalahan
-                return redirect()->back()->withErrors(['file' => 'The file is not valid.'])->withInput();
-            }
-        } else {
-            // Jika file tidak ada, kembalikan dengan pesan kesalahan
-            return redirect()->back()->withErrors(['file' => 'No file uploaded.'])->withInput();
-        }
 
         // Simpan data pada tabel services
         $service = Service::create([
@@ -52,8 +36,18 @@ class ServiceController extends Controller
             'price' => $request->price,
             'sparepart' => $request->sparepart,
             'qty' => $request->qty,
-            'file' => $fileName // Simpan nama file ke dalam database
+            'file' => ''
         ]);
+
+        // get dropzone image
+        if ($request->file('file')) {
+            $file = $request->file('file');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('img/dropzone', $filename, 'public'); // Simpan file pada direktori img/dropzone
+            $service->update([
+                'file' => '/storage/img/dropzone/' . $filename // Simpan path file dalam database
+            ]);
+        }
 
         // Simpan data pada tabel reports
         Report::create([
@@ -64,7 +58,7 @@ class ServiceController extends Controller
         ]);
 
         // Redirect ke halaman tertentu setelah data berhasil ditambahkan
-        return redirect('/service')->with('success', 'Data service berhasil ditambahkan');
+        return redirect('/service-index')->with('success', 'Data service berhasil ditambahkan');
     }
 
 

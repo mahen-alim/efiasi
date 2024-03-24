@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Report;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+         // Ambil contoh laporan
+         $report = Report::find(1);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+         // ID layanan yang ingin Anda hubungkan dengan laporan
+         $serviceIds = [1, 2];
+ 
+         // Menambahkan hubungan antara laporan dan layanan
+         $report->services()->attach($serviceIds);
+
     }
 }

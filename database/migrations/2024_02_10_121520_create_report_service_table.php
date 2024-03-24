@@ -27,6 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('report_service');
+        Schema::table('report_service', function (Blueprint $table) {
+            $table->dropTimestamps();
+        });
     }
 };

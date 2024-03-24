@@ -29,8 +29,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::controller(ServiceController::class)->group(function () {
-        Route::get('/service', 'index');
-        Route::post('/service', 'store')->name('service.file');
+        Route::get('/service-index', 'index');
+        Route::post('/service-submit', 'store');
         Route::get('/service/search', 'search');
         Route::get('/service/create', 'create');
         Route::get('/service/{id}/edit', 'edit');
