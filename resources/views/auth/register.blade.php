@@ -1,17 +1,3 @@
-<!--
-=========================================================
-* Soft UI Dashboard - v1.0.7
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +73,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-5 text-center mx-auto" id="title">
               <h3 class="text-white mb-2">Selamat Datang!</h3>
-              <p class="text-lead text-white">Masukkan email dan password untuk masuk ke menu dashboard.</p>
+              <p class="text-lead text-white">Daftarkan Akunmu Segera!.</p>
             </div>
           </div>
         </div>
@@ -97,7 +83,7 @@
           <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
             <div class="card z-index-0" style="margin-top: -50px;">
               <div class="card-header text-center pt-4">
-                <h5>Login with</h5>
+                <h5>Register with</h5>
               </div>
             <div class="row px-xl-5 px-sm-4 px-3">
                 <div class="col-3 me-auto px-1 mx-auto">
@@ -121,80 +107,70 @@
                 </div>
             </div>
               <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
 
-                        <div class="mb-3">
-                            <label for="email">{{ __('Email Address') }}</label>                         
-                                <!-- HTML -->
-                                <input id="email" type="email" class="form-control input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <div class="mb-3">
+                        <label for="name">{{ __('Name') }}</label>
 
+                      
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('email')
-                                    <h5 class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </h5>
-                                @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password">{{ __('Password') }}</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <h5 class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </h5>
-                                @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} onchange="enableLoginButton()">
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center">
-                            <button type="submit" class="btn w-100 mt-4 mb-0" id="login-btn" disabled>
-                                {{ __('Login') }}
-                            </button>
-                        </div>
-                        
-                        <script>
-                            function enableLoginButton() {
-                                var rememberCheckbox = document.getElementById('remember');
-                                var loginButton = document.getElementById('login-btn');
-                        
-                                // Memeriksa apakah kotak centang dicentang
-                                if (rememberCheckbox.checked) {
-                                    // Mengaktifkan tombol login jika kotak centang dicentang
-                                    loginButton.disabled = false;
-                                } else {
-                                    // Menonaktifkan tombol login jika kotak centang tidak dicentang
-                                    loginButton.disabled = true;
-                                }
-                            }
-                        </script>                      
+                    </div>
 
-                    </form>
+                    <div class="mb-3">
+                        <label for="email">{{ __('Email Address') }}</label>
+                       
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                       
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password">{{ __('Password') }}</label>
+
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                    </div>
+        
+                    <div class="mb-3">
+                        <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                       
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn w-100 mt-4 mb-0" id="login-btn">
+                            {{ __('Register') }}
+                        </button>
+                    </div>
+                    
+                </form>
                     </div>
                     <div class="card-footer text-center pt-0 px-lg-2 px-1 mt-5">
                         <p class="mb-4 text-sm mx-auto" id="link-reset">
-                          Don't Have an Account?
-                          <a href="{{ route('register') }}" class="font-weight-bold" id="regis-btn">
-                              {{ __('Register Now?') }}
-                          </a>
-                        </p>
-                       
-                        <p class="mb-4 text-sm mx-auto" id="link-reset">
                             Forgot Your Password?
-                            @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}" class="font-weight-bold" id="regis-btn">
-                                    {{ __('Reset Now!') }}
+                            @if (Route::has('login'))
+                                <a href="{{ route('login') }}" class="font-weight-bold" id="regis-btn">
+                                    {{ __('Login Now!') }}
                                 </a>
                             @endif
                         </p>                    

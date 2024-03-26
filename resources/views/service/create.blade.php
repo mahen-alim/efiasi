@@ -134,7 +134,6 @@
                             $('.dropzone-drag-area').addClass('is-invalid').next('.invalid-feedback').show();
                         }
                     } else {
-    
                         // if everything is ok, submit the form
                         myDropzone.processQueue();
                     }

@@ -82,10 +82,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/info-bengkel', [InfoBengkelController::class, 'index'])->name('info.bengkel');
 
-    // Route::controller(UploadController::class)->group(function () {
-    //     Route::get('/dropzone', 'dropzone')->name('dropzone');
-    //     Route::post('/dropzone/store', 'dropzone_file')->name('dropzone.file');
-    // });
+    Route::controller(UploadController::class)->group(function () {
+        Route::get('/upload', 'upload')->name('upload');
+        Route::post('/upload/store', 'upload_file')->name('upload.file');
+    });
 });
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');

@@ -6,23 +6,26 @@ use Illuminate\Http\Request;
 
 class UploadController extends Controller
 {
-    public function dropzone()
+    public function upload()
     {
-        return view('dropzone');
+        return view('upload');
     }
 
-    public function dropzone_file(Request $request)
+    public function upload_file(Request $request)
     {
-        $image = $request->file('file');
-
-        $imageName = time() . '.' . $image->extension();
-        $image->move(
-            public_path('img/dropzone'),
-            $imageName
-        );
-        return response()->json([
-            'succes' => $imageName,
-            'message' => 'File Berhasil Diupload',
+        $this->validate($request, [
+            'file' => 'required',
+            'keterangan' => 'required'
         ]);
+
+        $file = $request->file('file');
+        echo 'File Name: ' . $file->getClientOriginalName() . '<br>';
+        echo 'File Extension: ' . $file->getClientOriginalExtension() . '<br>';
+        echo 'File Path: ' . $file->getRealPath() . '<br>';
+        echo 'File Size: ' . $file->getSize() . '<br>';
+        echo 'File Type: ' . $file->getMimeType() . '<br>';
+
+        $tujuan_upload = 'data_file';
+        $file->move($tujuan_upload, $file->getClientOriginalName());
     }
 }
