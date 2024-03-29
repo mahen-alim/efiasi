@@ -11,6 +11,7 @@ class ServiceController extends Controller
     public function index()
     {
         $service = Service::paginate(5)->withQueryString();
+
         return view('service.index', compact(['service']));
     }
 
@@ -27,7 +28,7 @@ class ServiceController extends Controller
             'price' => 'required|min:5',
             'sparepart' => 'required|min:5',
             'qty' => 'required',
-            'file' => 'mimes:png,jpg,jpeg,gif|max:5000'
+            'file' => 'mimes:png,jpg,jpeg,gif|max:5000',
         ]);
 
         // Simpan data pada tabel services
@@ -36,16 +37,16 @@ class ServiceController extends Controller
             'price' => $request->price,
             'sparepart' => $request->sparepart,
             'qty' => $request->qty,
-            'file' => ''
+            'file' => '',
         ]);
 
         // get dropzone image
         if ($request->file('file')) {
             $file = $request->file('file');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = time().'_'.$file->getClientOriginalName();
             $file->storeAs('img/dropzone', $filename, 'public'); // Simpan file pada direktori img/dropzone
             $service->update([
-                'file' => '/storage/img/dropzone/' . $filename // Simpan path file dalam database
+                'file' => '/storage/img/dropzone/'.$filename, // Simpan path file dalam database
             ]);
         }
 
@@ -54,17 +55,17 @@ class ServiceController extends Controller
             'service_id' => $service->id,
             'tipe_service' => $request->type,
             'sparepart' => $request->sparepart,
-            'stock' => $request->qty
+            'stock' => $request->qty,
         ]);
 
         // Redirect ke halaman tertentu setelah data berhasil ditambahkan
         return redirect('/service-index')->with('success', 'Data service berhasil ditambahkan');
     }
 
-
     public function edit($id)
     {
         $service = Service::where('id', $id)->first();
+
         return view('service.edit', compact(['service']));
     }
 
@@ -81,7 +82,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (!$service) {
+        if (! $service) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data detailing tidak ditemukan.');
         }

@@ -15,5 +15,4 @@ class CobaController extends Controller
             abort(404);
         }
     }
-
 }

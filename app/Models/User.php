@@ -17,5 +17,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     use HasFactory;
+
     protected $guarded = ['id'];
 }

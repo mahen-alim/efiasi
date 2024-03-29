@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class sparepart extends Model
 {
     use HasFactory;
+
     protected $guarded = ['id'];
 
     public function reports()

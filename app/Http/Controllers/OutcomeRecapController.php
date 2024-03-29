@@ -35,8 +35,6 @@ class OutcomeRecapController extends Controller
         return view('report.money_table_outcome', compact('data'));
     }
 
-
-
     public function export()
     {
         return Excel::download(new ReportMoneyExport, 'report_money.xlsx');

@@ -9,7 +9,7 @@ class SessionController extends Controller
     public function create(Request $request)
     {
         $request->session()->put('nama', 'Politeknik Negeri Jember');
-        echo "Data telah ditambahkan ke session";
+        echo 'Data telah ditambahkan ke session';
     }
 
     public function show(Request $request)

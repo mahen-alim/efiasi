@@ -7,11 +7,9 @@ use App\Http\Controllers\IncomeRecapController;
 use App\Http\Controllers\InfoBengkelController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\OperationalController;
-use App\Http\Controllers\OutcomeRecap;
 use App\Http\Controllers\OutcomeRecapController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\RekapUangController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SessionController;
@@ -19,7 +17,6 @@ use App\Http\Controllers\SparepartController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -92,7 +89,6 @@ Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('goog
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callback']);
 
 Auth::routes();
-
 
 // Route::get('/session/create', [SessionController::class, 'create']);
 // Route::get('/session/show', [SessionController::class, 'show']);

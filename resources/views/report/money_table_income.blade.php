@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card mb-4" style="border-top-left-radius: 0px;">
-          <div class="card-header pb-0" id="trans-card">
+          <div class="card-header pb-0" id="recap-card">
             <h6 class="text-white mb-2" style="margin-top: -10px;">Tabel Rekap Pendapatan</h6>
           </div>
           <div class="card-body px-0 pt-0 pb-2">

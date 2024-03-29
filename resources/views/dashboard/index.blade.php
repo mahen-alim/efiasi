@@ -118,28 +118,17 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach($users as $index => $user)
                   <tr>
-                    <td>
-                      <div class="d-flex px-3 py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">1.</h6>
-                        </div>
-                      </div>
+                    <td class="px-4">{{ $index + 1 }}</td>
+                    <td class="px-4 text-sm">{{ $user->name }}</td>
+                    <td class="px-4 text-sm" style="position: relative;">
+                      <span class="dot-success"></span>
+                      {{ $user->email }}
                     </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="text-xs font-weight-bold">Mahen</span>
-                    </td>
-                    <td class="align-middle">
-                      <div class="progress-wrapper w-75 mx-auto">
-                        <div class="progress-info">
-                          <div class="progress-percentage">
-                            <span class="text-xs font-weight-bold">mahennekkers27@gmail.com</span>
-                          </div>
-                        </div>
-                        <div class="progress">
-                          <div class="progress-bar bg-gradient-info w-100" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
+                    <td class="px-4 text-sm">{{ $user->mobile_phone }}</td>
+                    <td class="px-4 text-sm">{{ $user->level }}</td>
+                    @endforeach
                     </td>
                   </tr>
                 </tbody>

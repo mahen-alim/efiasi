@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -23,6 +22,7 @@ class GoogleAuthController extends Controller
 
             if ($user) {
                 Auth::login($user);
+
                 return redirect()->intended('dashboard');
             } else {
                 $new_user = User::create([
@@ -34,14 +34,14 @@ class GoogleAuthController extends Controller
                     'quote' => '"Kode yang baik adalah seperti puisi; mereka memberikan makna dalam pengurangan yang paling kecil." - Dominic Licciardi',
                     'password' => bcrypt('12345'),
                     'profile_picture' => $google_user->getAvatar() ?? 'https://example.com/default-profile-picture.jpg',
-                ]);                              
+                ]);
 
                 Auth::login($new_user);
 
                 return redirect()->intended('dashboard');
             }
         } catch (\Throwable $th) {
-            dd('Something went wrong'. $th->getMessage());
+            dd('Something went wrong'.$th->getMessage());
         }
     }
 }

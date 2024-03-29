@@ -9,11 +9,10 @@ class Pagination extends Model
 {
     use HasFactory;
 
-    protected $table = 'services'; 
+    protected $table = 'services';
 
     protected $fillable = [
-        'tipe_service', 'price', 'sparepart', 
-      
+        'tipe_service', 'price', 'sparepart',
+
     ];
-   
 }

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('google_id')->nullable(); // Kolom google_id diberi nullable
             $table->rememberToken();
             $table->timestamps();
-        });        
+        });
     }
 
     /**

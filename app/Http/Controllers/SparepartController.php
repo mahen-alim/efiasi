@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Report;
 use App\Models\sparepart;
 use Illuminate\Http\Request;
 
@@ -11,6 +10,7 @@ class SparepartController extends Controller
     public function index()
     {
         $sparepart = sparepart::paginate(5)->withQueryString();
+
         return view('sparepart.index', compact(['sparepart']));
     }
 
@@ -44,6 +44,7 @@ class SparepartController extends Controller
     public function edit($id)
     {
         $sparepart = sparepart::where('id', $id)->first();
+
         return view('sparepart.edit', compact(['sparepart']));
     }
 
@@ -61,7 +62,7 @@ class SparepartController extends Controller
         $sparepart = sparepart::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (!$sparepart) {
+        if (! $sparepart) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data sparepart tidak ditemukan.');
         }

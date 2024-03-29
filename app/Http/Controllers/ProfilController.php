@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-
 class ProfilController extends Controller
 {
     public function index()
@@ -17,6 +16,7 @@ class ProfilController extends Controller
     public function edit($id)
     {
         $profil = User::findOrFail($id);
+
         return view('profil.edit', ['profil' => $profil]);
     }
 
@@ -35,7 +35,7 @@ class ProfilController extends Controller
         $profil = User::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (!$profil) {
+        if (! $profil) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data pengguna tidak ditemukan.');
         }

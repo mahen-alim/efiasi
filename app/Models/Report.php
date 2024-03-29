@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     use HasFactory;
+
     protected $fillable = ['service_id', 'tipe_service', 'sparepart', 'qty', 'price_total', 'income', 'trans_time', 'money_type'];
 
     public function spareparts()
@@ -24,5 +25,4 @@ class Report extends Model
     {
         return $this->belongsToMany(Operational::class, 'operational_report');
     }
-    
 }

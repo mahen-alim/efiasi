@@ -11,6 +11,7 @@ class OperationalController extends Controller
     public function index()
     {
         $operational = Operational::paginate(5)->withQueryString();
+
         return view('operational.index', compact(['operational']));
     }
 
@@ -19,7 +20,7 @@ class OperationalController extends Controller
     {
         return view('operational.create');
     }
-    
+
     //Method untuk menyimpan data operasional setelah dilakukan validasi dan penambahan datanya
     public function store(Request $request)
     {
@@ -31,7 +32,7 @@ class OperationalController extends Controller
             'description' => 'required|min:5',
         ]);
 
-        //Proses penambahan data permintaan dari request 
+        //Proses penambahan data permintaan dari request
         Operational::create([
             'type_cost' => $request->type_cost,
             'nominal' => $request->nominal,
@@ -46,6 +47,7 @@ class OperationalController extends Controller
     public function edit($id)
     {
         $operational = Operational::where('id', $id)->first();
+
         return view('operational.edit', compact(['operational']));
     }
 
@@ -62,7 +64,7 @@ class OperationalController extends Controller
         $operational = Operational::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (!$operational) {
+        if (! $operational) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data operasional tidak ditemukan.');
         }

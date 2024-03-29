@@ -7,7 +7,6 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -24,13 +23,13 @@ class LoginController extends Controller
     {
         // Validate if the user exists in the 'users' table based on email
         $credentials = $this->credentials($request);
-        if (!Auth::attempt($credentials)) {
+        if (! Auth::attempt($credentials)) {
             return false;
         }
 
         return true;
     }
-    
+
     public function showLoginForm()
     {
         // Periksa apakah pengguna sudah login

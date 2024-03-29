@@ -20,8 +20,6 @@ class ReportMoneyExport implements FromCollection, WithHeadings
 
     /**
      * Menentukan judul kolom untuk file Excel.
-     *
-     * @return array
      */
     public function headings(): array
     {
@@ -30,7 +28,7 @@ class ReportMoneyExport implements FromCollection, WithHeadings
             'Sparepart',
             'Jumlah Barang',
             'Jenis Layanan',
-            'Tanggal'
+            'Tanggal',
         ];
     }
 }
