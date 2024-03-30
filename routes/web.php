@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::controller(ServiceController::class)->group(function () {
@@ -88,7 +88,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callback']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Route::get('/session/create', [SessionController::class, 'create']);
 // Route::get('/session/show', [SessionController::class, 'show']);
