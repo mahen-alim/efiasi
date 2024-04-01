@@ -26,7 +26,7 @@ class OperationalController extends Controller
     {
         //Properti untuk melakukan permintaan dari Request untuk memvalidasi data
         $request->validate([
-            'type_cost' => 'required|min:5',
+            'type_cost' => 'required|min:5|unique:operationals',
             'nominal' => 'required|min:5',
             'category' => 'required',
             'description' => 'required|min:5',
@@ -64,7 +64,7 @@ class OperationalController extends Controller
         $operational = Operational::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (! $operational) {
+        if (!$operational) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data operasional tidak ditemukan.');
         }

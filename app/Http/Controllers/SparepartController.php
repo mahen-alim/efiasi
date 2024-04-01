@@ -23,7 +23,7 @@ class SparepartController extends Controller
     {
         // Validasi data dari request
         $request->validate([
-            'name' => 'required|min:5',
+            'name' => 'required|min:5|unique:spareparts',
             'jumlah' => 'required',
             'merk' => 'required|min:5',
             'price' => 'required|min:5',

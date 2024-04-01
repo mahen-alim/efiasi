@@ -48,7 +48,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(OperationalController::class)->group(function () {
         Route::get('/operational', 'index');
         Route::post('/operational', 'store');
-        Route::get('/operational/search', 'search');
+        Route::get('/operational/search', 'search'); 
         Route::get('/operational/create', 'create');
         Route::get('/operational/{id}/edit', 'edit');
         Route::put('/operational/{id}', 'update');
