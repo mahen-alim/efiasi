@@ -72,13 +72,13 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-5 text-center mx-auto" id="title">
-              <h3 class="text-white mb-2">Selamat Datang!</h3>
-              <p class="text-lead text-white">Daftarkan Akunmu Segera!.</p>
+              {{-- <h3 class="text-white mb-2">Selamat Datang!</h3>
+              <p class="text-lead text-white">Daftarkan Akunmu Segera!.</p> --}}
             </div>
           </div>
         </div>
       </div>
-      <div class="container">
+      <div class="container" style="margin-top: -320px;">
         <div class="row mt-lg-n10 mt-md-n11 mt-n10">
           <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
             <div class="card z-index-0" style="margin-top: -50px;">
@@ -174,8 +174,15 @@
                                 </a>
                             @endif
                         </p>                    
+                      </div>
                     </div>
-              </div>
+                    <div class="image-container">
+                      <img src="{{ asset('img/aa.png') }}" alt=""  style="width: 300px; height: 300px; margin-left: 600px; margin-top: -300px; border-bottom-right-radius: 20px;">
+                    </div>
+                    
+                    <div class="image-container2">
+                        <img src="{{ asset('img/aa.png') }}" alt="" style="width: 300px; height: 300px; transform: scaleX(-1); margin-left: -490px;  margin-top: -330px; border-bottom-right-radius: 20px;">
+                    </div>
           </div>
         </div>
       </div>

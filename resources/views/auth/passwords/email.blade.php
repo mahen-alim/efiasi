@@ -139,6 +139,13 @@
                         </p>                    
                     </div>
               </div>
+              <div class="image-container">
+                <img src="{{ asset('img/aa.png') }}" alt=""  style="width: 300px; height: 300px; margin-left: 600px; margin-top: -40px; border-bottom-right-radius: 20px;">
+              </div>
+              
+              <div class="image-container2">
+                  <img src="{{ asset('img/aa.png') }}" alt="" style="width: 300px; height: 300px; transform: scaleX(-1); margin-left: -490px;  margin-top: -330px; border-bottom-right-radius: 20px;">
+              </div>
           </div>
         </div>
       </div>

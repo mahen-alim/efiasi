@@ -42,6 +42,7 @@
   <style>
     body{
         font-family: "DM Sans", sans-serif;
+        overflow-y: hidden; 
     }
     span {
         background-image: linear-gradient(to right top, #FF8577, #FFD8C2);
@@ -86,13 +87,13 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-5 text-center mx-auto" id="title">
-              <h3 class="text-white mb-2">Selamat Datang!</h3>
-              <p class="text-lead text-white">Masukkan email dan password untuk masuk ke menu dashboard.</p>
+              {{-- <h3 class="text-white mb-2">Selamat Datang!</h3>
+              <p class="text-lead text-white">Masukkan email dan password untuk masuk ke menu dashboard.</p> --}}
             </div>
           </div>
         </div>
       </div>
-      <div class="container">
+      <div class="container" style="margin-top: -320px;">
         <div class="row mt-lg-n10 mt-md-n11 mt-n10">
           <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
             <div class="card z-index-0" style="margin-top: -50px;">
@@ -128,8 +129,6 @@
                             <label for="email">{{ __('Email Address') }}</label>                         
                                 <!-- HTML -->
                                 <input id="email" type="email" class="form-control input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-
                                 @error('email')
                                     <h5 class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -199,7 +198,16 @@
                             @endif
                         </p>                    
                     </div>
-              </div>
+                    
+                  </div>
+                  <div class="image-container">
+                      <img src="{{ asset('img/aa.png') }}" alt=""  style="width: 300px; height: 300px; margin-left: 600px; margin-top: -180px; border-bottom-right-radius: 20px;">
+                  </div>
+                  
+                  <div class="image-container2">
+                      <img src="{{ asset('img/aa.png') }}" alt="" style="width: 300px; height: 300px; transform: scaleX(-1); margin-left: -500px;  margin-top: -330px; border-bottom-right-radius: 20px;">
+                  </div>
+                
           </div>
         </div>
       </div>
