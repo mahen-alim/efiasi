@@ -27,7 +27,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Kanit&display=swap" rel="stylesheet">
   <style>
     body{
-        font-family: "DM Sans", sans-serif;
+          font-family: "DM Sans", sans-serif;
+          overflow-y: hidden;
     }
     span {
         background-image: linear-gradient(to right top, #FF8577, #FFD8C2);
@@ -75,7 +76,7 @@
 <body class="">
   <main class="main-content  mt-0">
     <section class="min-vh-100 mb-8">
-      <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
+      <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" >
         <span class="mask"></span>
         <div class="container">
           <div class="row justify-content-center">
@@ -140,11 +141,11 @@
                     </div>
               </div>
               <div class="image-container">
-                <img src="{{ asset('img/aa.png') }}" alt=""  style="width: 300px; height: 300px; margin-left: 600px; margin-top: -40px; border-bottom-right-radius: 20px;">
+                <img src="{{ asset('img/aa.png') }}" alt=""  style="width: 300px; height: 300px; margin-left: 600px; margin-top: -19px; border-bottom-right-radius: 20px;">
               </div>
               
               <div class="image-container2">
-                  <img src="{{ asset('img/aa.png') }}" alt="" style="width: 300px; height: 300px; transform: scaleX(-1); margin-left: -490px;  margin-top: -330px; border-bottom-right-radius: 20px;">
+                  <img src="{{ asset('img/aa.png') }}" alt="" style="width: 300px; height: 300px; transform: scaleX(-1); margin-left: -500px;  margin-top: -330px; border-bottom-right-radius: 20px;">
               </div>
           </div>
         </div>
