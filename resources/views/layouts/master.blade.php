@@ -133,8 +133,8 @@
           </li>
             <li class="breadcrumb-item text-sm">
               @switch(true)
-                  @case(Request::is('dashboard/service/create') || Request::is('dashboard/service/*/edit'))
-                      <a class="opacity-5 text-dark" href="/service-index">Servis</a>
+                  @case(Request::is('service/create') || Request::is('service/edit/*'))
+                      <a class="opacity-5 text-dark" href="/service-index">Detailing</a>
                       @break
                   @case(Request::is('dashboard/sparepart/create') || Request::is('dashboard/sparepart/*/edit'))
                       <a class="opacity-5 text-dark" href="{{ route('dashboard.sparepart.index') }}">Sparepart</a>
@@ -162,12 +162,12 @@
                
           <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
             <a class="opacity-5 text-dark">
-              @if(Request::is('dashboard/service/create'))
-                  Tambah Servis
-              @elseif(Request::is('dashboard/service/*/edit'))
-                  Edit Servis
-              @elseif(Request::is('/service-index'))
-                  Servis
+              @if(Request::is('service/create'))
+                  Tambah Detailing
+              @elseif(Request::is('service/edit/*'))
+                  Edit Detailing
+              @elseif(Request::is('service-index'))
+                  Detailing
               @elseif(Request::is('dashboard/sparepart/create'))
                   Tambah Sparepart
               @elseif(Request::is('dashboard/sparepart/*/edit'))
