@@ -35,7 +35,7 @@
                 <h6 class="mb-0">Informasi Profil</h6>
               </div>
               <div class="col-md-4 text-end">
-                <a href="{{ route('profil.edit', ['id' => auth()->user()->id]) }}">
+                <a href="{{ route('dashboard.profile.edit', ['id' => auth()->user()->id]) }}">
                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Edit Profile" data-bs-original-title="Edit Profile"></i>
                     <span class="sr-only">Edit Profile</span>
                 </a>                

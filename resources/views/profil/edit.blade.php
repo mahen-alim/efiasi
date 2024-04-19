@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card-body p-3">
-        <form method="POST" action="{{ route('profil.update', ['id' => $profil->id]) }}">
+        <form method="POST" action="{{ route('dashboard.profile.update', ['id' => $profil->id]) }}">
             @csrf
             @method('PUT')
             <div class="mb-3">
