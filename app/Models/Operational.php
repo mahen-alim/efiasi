@@ -13,6 +13,11 @@ class Operational extends Model
 
     public function reports()
     {
-        return $this->belongsToMany(Report::class, 'operational_report');
+        return $this->hasOne(Report::class, 'operational_report');
+    }
+
+    public function outcomes()
+    {
+        return $this->belongsToMany(Outcome::class, 'operational_id', 'id');
     }
 }

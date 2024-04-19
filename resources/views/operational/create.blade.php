@@ -8,7 +8,7 @@
           <h6>Tambah Operasional</h6>
         </div>
         <div class="card-body px-4 pt-0 pb-2">
-            <form action="/operational" method="POST" >
+            <form action="{{ route('dashboard.operational.store') }}" method="POST" >
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Jenis Biaya <span style="color: red;">*</span></label>

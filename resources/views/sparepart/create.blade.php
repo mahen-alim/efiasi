@@ -8,7 +8,7 @@
           <h6>Tambah Variasi</h6>
         </div>
         <div class="card-body px-4 pt-0 pb-2">
-            <form action="/sparepart" method="POST" >
+            <form action="{{ route('dashboard.sparepart.store') }}" method="POST" >
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Barang <span style="color: red;">*</span></label>

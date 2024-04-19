@@ -13,6 +13,12 @@ class sparepart extends Model
 
     public function reports()
     {
-        return $this->belongsToMany(Report::class);
+        return $this->belongsToMany(Report::class, 'report_sparepart');
     }
+
+    public function outcomes()
+    {
+        return $this->belongsToMany(Outcome::class, 'sparepart_id', 'id');
+    }
+
 }

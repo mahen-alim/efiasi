@@ -15,6 +15,11 @@ class Service extends Model
 
     public function reports()
     {
-        return $this->belongsToMany(Report::class, 'report_service')->withTimeStamps();
+        return $this->hasOne(Report::class, 'report_service')->withTimeStamps();
+    }
+
+    public function incomes()
+    {
+        return $this->belongsToMany(Income::class, 'service_id', 'id');
     }
 }

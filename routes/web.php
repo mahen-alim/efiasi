@@ -25,35 +25,22 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-    Route::controller(ServiceController::class)->group(function () {
-        Route::get('/service-index', 'index');
-        Route::post('/service-submit', 'store');
-        Route::get('/service/search', 'search');
-        Route::get('/service/create', 'create');
-        Route::get('/service/{id}/edit', 'edit');
-        Route::put('/service/{id}', 'update');
-        Route::delete('/service/{id}', 'destroy');
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::resource('sparepart', SparepartController::class);
+        Route::resource('operational', OperationalController::class);
     });
 
-    Route::controller(SparepartController::class)->group(function () {
-        Route::get('/sparepart', 'index');
-        Route::post('/sparepart', 'store');
-        Route::get('/sparepart/search', 'search');
-        Route::get('/sparepart/create', 'create');
-        Route::get('/sparepart/{id}/edit', 'edit');
-        Route::put('/sparepart/{id}', 'update');
-        Route::delete('/sparepart/{id}', 'destroy');
-    });
+    Route::get('/service-index', [ServiceController::class, 'index']);
+    Route::get('service/create', [ServiceController::class, 'create'])->name('dashboard.service.create');
+    Route::post('service/store', [ServiceController::class, 'store'])->name('dashboard.service.store');
+    Route::get('service/search', [ServiceController::class, 'search'])->name('dashboard.service.search');
+    Route::get('service/edit/{id}', [ServiceController::class, 'edit'])->name('dashboard.service.edit');
+    Route::put('service/update/{id}', [ServiceController::class, 'update'])->name('dashboard.service.update');
+    Route::delete('service/destroy/{id}', [ServiceController::class, 'destroy'])->name('dashboard.service.destroy');
+    Route::get('service/search', [ServiceController::class, 'search']);
 
-    Route::controller(OperationalController::class)->group(function () {
-        Route::get('/operational', 'index');
-        Route::post('/operational', 'store');
-        Route::get('/operational/search', 'search'); 
-        Route::get('/operational/create', 'create');
-        Route::get('/operational/{id}/edit', 'edit');
-        Route::put('/operational/{id}', 'update');
-        Route::delete('/operational/{id}', 'destroy');
-    });
+    Route::get('sparepart/search', [SparepartController::class, 'search']);
+    Route::get('operational/search', [OperationalController::class, 'search']);
 
     Route::get('/report', [ReportController::class, 'index']);
 
@@ -62,6 +49,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/report/income/table', 'table');
         Route::get('/report/export', 'export')->name('report.export');
     });
+
 
     Route::controller(OutcomeRecapController::class)->group(function () {
         Route::get('/report/outcome', 'index');

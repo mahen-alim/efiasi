@@ -17,8 +17,8 @@
                     </ul>
                 </div>
             @endif
-            <form action="/service/{{ $service->id }}" method="POST" >
-              @method('put')
+            <form action="{{route('dashboard.service.update', $service->id) }}" method="POST" >
+              @method('PUT')
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tipe Layanan</label>

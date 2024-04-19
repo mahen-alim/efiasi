@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="/sparepart/{{ $sparepart->id }}" method="POST" >
+            <form action="{{ route('dashboard.sparepart.update', $sparepart->id) }}" method="POST" >
               @method('put')
                 @csrf
                 <div class="form-group">

@@ -13,7 +13,7 @@ class Report extends Model
 
     public function spareparts()
     {
-        return $this->belongsToMany(sparepart::class);
+        return $this->belongsToMany(sparepart::class, 'report_sparepart');
     }
 
     public function services()

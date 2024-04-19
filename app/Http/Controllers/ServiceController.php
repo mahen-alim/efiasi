@@ -59,7 +59,7 @@ class ServiceController extends Controller
         ]);
 
         // Redirect ke halaman tertentu setelah data berhasil ditambahkan
-        return redirect('/service-index')->with('success', 'Data service berhasil ditambahkan');
+        return redirect('/service-index')->with('success', 'Data detailing berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -94,7 +94,7 @@ class ServiceController extends Controller
             'sparepart' => $request->sparepart,
         ]);
 
-        return redirect('/service')->with('success', 'Data detailing berhasil diperbarui');
+        return redirect('/service-index')->with('success', 'Data detailing berhasil diperbarui');
     }
 
     public function destroy($id)

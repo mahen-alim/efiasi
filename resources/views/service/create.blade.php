@@ -8,7 +8,7 @@
           <h6>Tambah Detailing</h6>
         </div>
         <div class="card-body px-4 pt-0 pb-2">
-            <form action="/service-submit" method="POST" id="formDropzone" class="dropzone" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('dashboard.service.store') }}"  id="formDropzone" class="dropzone" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputPrice">Tipe Layanan <span style="color: red;">*</span></label>

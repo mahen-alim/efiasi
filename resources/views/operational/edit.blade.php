@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="/operational/{{ $operational->id }}" method="POST" >
+            <form action="{{ route('dashboard.operational.update', $operational->id) }}" method="POST" >
               @method('put')
                 @csrf
                 <div class="form-group">

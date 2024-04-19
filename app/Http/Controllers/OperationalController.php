@@ -41,7 +41,7 @@ class OperationalController extends Controller
         ]);
 
         //Pengembalian nilai untuk beralih ke halaman operational.index jika data berhasil ditambahkan
-        return redirect('/operational')->with('success', 'Data operasional berhasil ditambahkan');
+        return redirect()->route('dashboard.operational.index')->with('success', 'Data operasional berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -77,7 +77,7 @@ class OperationalController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect('/operational')->with('success', 'Data operasional berhasil diperbarui');
+        return  redirect()->route('dashboard.operational.index')->with('success', 'Data operasional berhasil diperbarui');
     }
 
     public function destroy($id)
@@ -86,7 +86,7 @@ class OperationalController extends Controller
         $operational = Operational::find($id);
         $operational->delete();
 
-        return redirect('/operational')->with('success', 'Data operasional berhasil dihapus');
+        return redirect()->route('dashboard.operational.index')->with('success', 'Data operasional berhasil dihapus');
     }
 
     public function search(Request $request)
