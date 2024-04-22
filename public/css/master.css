@@ -15,15 +15,17 @@ body {
 #add-btn {
     background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
 }
+
 #search-btn {
-    border: 1px solid #ff8577;
-    color: #ff8577;
-}
-#search-btn:hover {
+    padding: 7px;
     background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
-    color: white;
-    border: none;
 }
+
+#search-btn img {
+    width: 24px;
+    height: 24px;
+}
+
 .btn.btn-outline-warning:hover {
     color: #fff; /* Warna teks menjadi putih */
     background-color: #ffc107; /* Warna latar belakang menjadi warna dari btn-warning */

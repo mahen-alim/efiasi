@@ -9,8 +9,8 @@
         <div class="d-flex">
           <form action="{{ url('service/search') }}" method="GET" class="flex-grow-1 me-10">
             <div class="d-flex">
-                <input type="text" class="form-control me-2" name="name" placeholder="Search by service type" style="height: 40px; width: 50%;">
-                <button type="submit" class="btn" id="search-btn">Cari</button>
+                <input type="text" class="form-control me-2" name="name" placeholder="Search by service type" style="height: 40px; width: 30%;">
+                <button type="submit" class="btn" id="search-btn"><img src="{{ asset('img/search_new.png') }}" alt=""></button>
             </div>
           </form> 
           <a href="{{ route('dashboard.service.create') }}" class="btn btn-primary align-self-end" id="add-btn">Tambah Data</a>

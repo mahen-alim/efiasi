@@ -239,23 +239,23 @@
     <div class="container-fluid py-4">
 
       @if (session()->has('success'))       
-          <div class="row">
-              <div class="col-12">
-                  <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
-                      {{ session('success') }}
-                      <button type="button" class="close close-button" aria-label="Close" onclick="closeAlert()">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-              </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
+              {{ session('success') }}
+              <button type="button" class="close close-button" aria-label="Close" onclick="closeAlert()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
           </div>
+        </div>
       @endif
 
       <script>
-          function closeAlert() {
-              var alert = document.getElementById('successAlert');
-              alert.style.display = 'none';
-          }
+        function closeAlert() {
+          var alert = document.getElementById('successAlert');
+          alert.style.display = 'none';
+        }
       </script>
 
       @yield('content')
