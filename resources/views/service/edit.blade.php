@@ -27,11 +27,15 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Suku Cadang</label>
                     <input name="sparepart" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Suku Cadang" value="{{ $service->sparepart}}">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Harga</label>
-                    <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $service->price}}">
-                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Jumlah Suku Cadang</label>
+                  <input name="qty" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Suku Cadang" value="{{ $service->qty}}">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Harga</label>
+                  <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $service->price}}">
+                </div>
                 <button type="submit" class="btn form-control" id="search-btn">Simpan Perubahan</button>
               </form>
         </div>
