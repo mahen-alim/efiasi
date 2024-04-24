@@ -1,12 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
+@include('report.fail_message')
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">Pendapatan</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/report/outcome/table">Pengeluaran</a>
+    <a class="nav-link" href="{{ route('dashboard.report.outcome.table') }}">Pengeluaran</a>
   </li>
 </ul>
 <div class="row">

@@ -10,7 +10,7 @@
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Jenis Pendapatan</label>
-                <select name="tipe_service" class="form-control" id="exampleInputService" placeholder="Pilih Jenis Pendapatan">
+                <select name="income_type" class="form-control" id="exampleInputService" placeholder="Pilih Jenis Pendapatan">
                   <option value="" disabled selected>Pilih Jenis Pendapatan</option>
                   <option value="Detailing Interior">Detailing Interior</option>
                   <option value="Detailing Eksterior">Detailing Eksterior</option>

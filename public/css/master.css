@@ -19,6 +19,7 @@ body {
 #search-btn {
     padding: 7px;
     background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
+    color: #ffff;
 }
 
 #search-btn img {

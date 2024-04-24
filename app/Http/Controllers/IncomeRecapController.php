@@ -16,13 +16,8 @@ class IncomeRecapController extends Controller
 
     public function table(Request $request)
     {
-        $keyword = $request->input('tipe_service');
+        $keyword = $request->input('income_type');
         $date = $request->input('date');
-
-        $request->validate([
-            'tipe_service' => 'required|min:5',
-            'date' => 'required',
-        ]);
 
         $query = Report::query();
 
@@ -36,8 +31,16 @@ class IncomeRecapController extends Controller
 
         $data = $query->get();
 
-        return view('report.money_table_income', compact('data'));
+        if ($data->isEmpty()) {
+            $failMessage = 'Data tidak ditemukan.';
+        } else {
+            $failMessage = '';
+        }
+
+        // Return view dengan data yang sesuai
+        return view('report.money_table_income', compact('data', 'failMessage'));
     }
+
 
     public function export()
     {

@@ -16,7 +16,7 @@ class OutcomeRecapController extends Controller
 
     public function table(Request $request)
     {
-        $keyword = $request->input('tipe_service');
+        $keyword = $request->input('outcome_type');
         $date = $request->input('date');
 
         $query = Report::query();
@@ -31,8 +31,13 @@ class OutcomeRecapController extends Controller
 
         $data = $query->get();
 
+        if ($data->isEmpty()) {
+            $failMessage = 'Data tidak ditemukan.';
+        } else {
+            $failMessage = '';
+        }
         // Return view dengan data yang sesuai
-        return view('report.money_table_outcome', compact('data'));
+        return view('report.money_table_outcome', compact('data', 'failMessage'));
     }
 
     public function export()
