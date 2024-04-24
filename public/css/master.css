@@ -183,7 +183,11 @@ body {
     transform: translateY(-50%);
 }
 
-#recap-card {
-    border-top-left-radius: 0px;
-    background-image: linear-gradient(to right top, #ff8577, #ffd8c2);
+.custom-orange {
+    color: #ff8577;
+}
+
+.custom-orange:hover {
+    color: white;
+    background-color: #ff8577 !important;
 }

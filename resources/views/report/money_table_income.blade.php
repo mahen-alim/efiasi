@@ -4,16 +4,17 @@
 @include('report.fail_message')
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Pendapatan</a>
+    <a class="nav-link active custom-orange" aria-current="page" href="#">Pendapatan</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('dashboard.report.outcome.table') }}">Pengeluaran</a>
+    <a class="nav-link custom-orange" href="{{ route('dashboard.report.outcome.table') }}">Pengeluaran</a>
   </li>
 </ul>
+
 <div class="row">
     <div class="col-12">
         <div class="card mb-4" style="border-top-left-radius: 0px;">
-          <div class="card-header pb-0" id="recap-card">
+          <div class="card-header pb-0" id="trans-card">
             <h6 class="text-white mb-2" style="margin-top: -10px;">Tabel Rekap Pendapatan</h6>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
