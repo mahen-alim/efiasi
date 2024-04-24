@@ -75,6 +75,7 @@ class ServiceController extends Controller
         $request->validate([
             'type' => 'required|min:5',
             'price' => 'required|min:5',
+            'qty' => 'required',
             'sparepart' => 'required|min:5',
         ]);
 
@@ -91,6 +92,7 @@ class ServiceController extends Controller
         $service->update([
             'tipe_service' => $request->type,
             'price' => $request->price,
+            'qty' => $request->qty,
             'sparepart' => $request->sparepart,
         ]);
 
