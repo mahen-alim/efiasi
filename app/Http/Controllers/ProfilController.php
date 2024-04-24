@@ -25,10 +25,10 @@ class ProfilController extends Controller
     {
         // Validasi data yang dikirim dari form
         $request->validate([
-            'name' => 'required|string|max:255|unique:users',
-            'mobile_phone' => 'required|string|max:13|unique:users', // Ubah validasi untuk memastikan nilai tetap dalam batas maksimum tipe data integer
-            'location' => 'required|string|max:255|unique:users',
-            'quote' => 'required|string|max:255|unique:users', // Tambahkan validasi untuk quote
+            'name' => 'required|string|max:255',
+            'mobile_phone' => 'required|string|max:13', // Ubah validasi untuk memastikan nilai tetap dalam batas maksimum tipe data integer
+            'location' => 'required|string|max:255',
+            'quote' => 'required|string|max:255', // Tambahkan validasi untuk quote
         ]);
 
         // Mencari data pengguna
@@ -49,6 +49,6 @@ class ProfilController extends Controller
         ]);
 
         // Redirect kembali ke halaman profil dengan pesan sukses
-        return redirect('/profil')->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->route('dashboard.profile.index')->with('success', 'Profil berhasil diperbarui.');
     }
 }
