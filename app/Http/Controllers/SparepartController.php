@@ -23,7 +23,7 @@ class SparepartController extends Controller
     {
         // Validasi data dari request
         $request->validate([
-            'name' => 'required|min:5|unique:spareparts',
+            'name' => 'required|min:5',
             'jumlah' => 'required',
             'merk' => 'required|min:5',
             'price' => 'required|min:5',
@@ -62,7 +62,7 @@ class SparepartController extends Controller
         $sparepart = sparepart::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (! $sparepart) {
+        if (!$sparepart) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data sparepart tidak ditemukan.');
         }
