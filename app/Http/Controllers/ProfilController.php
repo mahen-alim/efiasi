@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ProfilController extends Controller
 {
+    // Method untuk menampilkan halaman awal profil
     public function index()
     {
         return view('profil.index');

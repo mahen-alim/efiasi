@@ -257,7 +257,7 @@
           alert.style.display = 'none';
         }
       </script>
-
+      
       @yield('content')
 
       <footer class="footer pt-3  ">
@@ -474,7 +474,6 @@
     document.addEventListener('DOMContentLoaded', function () {
         flatpickr("#date", {
             enableTime: false, // Enable time selection
-            minDate: "today", // Set the minimum date to today
             dateFormat: "Y-m-d", // Specify the date format
         });
     });
