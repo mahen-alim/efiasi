@@ -6,7 +6,7 @@
       <div class="card mb-4">
         <div class="card-header pb-0">
           <h6>Formulir Rekap Pendapatan</h6>
-          <form action="/report/income/table" method="GET">
+          <form action="{{ route('dashboard.report.income.table') }}" method="GET">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Jenis Pendapatan</label>

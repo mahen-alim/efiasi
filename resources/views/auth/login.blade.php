@@ -149,7 +149,7 @@
 
                         <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} onchange="enableLoginButton()">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                         
                                 <label class="form-check-label" for="remember">
                                     {{ __('Remember Me') }}
@@ -158,26 +158,11 @@
                         </div>
                         
                         <div class="text-center">
-                            <button type="submit" class="btn w-100 mt-4 mb-0" id="login-btn" disabled>
+                            <button type="submit" class="btn w-100 mt-4 mb-0" id="login-btn">
                                 {{ __('Login') }}
                             </button>
                         </div>
-                        
-                        <script>
-                            function enableLoginButton() {
-                                var rememberCheckbox = document.getElementById('remember');
-                                var loginButton = document.getElementById('login-btn');
-                        
-                                // Memeriksa apakah kotak centang dicentang
-                                if (rememberCheckbox.checked) {
-                                    // Mengaktifkan tombol login jika kotak centang dicentang
-                                    loginButton.disabled = false;
-                                } else {
-                                    // Menonaktifkan tombol login jika kotak centang tidak dicentang
-                                    loginButton.disabled = true;
-                                }
-                            }
-                        </script>                      
+                                      
 
                     </form>
                     </div>
