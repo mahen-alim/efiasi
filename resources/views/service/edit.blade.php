@@ -31,12 +31,16 @@
                     </select>  
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Suku Cadang</label>
-                    <input name="sparepart" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Suku Cadang" value="{{ $service->sparepart}}">
+                    <label for="exampleInputEmail1">Deskripsi Layanan</label>
+                    <textarea name="description" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Deskripsi Layanan">{{ $service->description}}</textarea>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Jumlah Suku Cadang</label>
-                  <input name="qty" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Suku Cadang" value="{{ $service->qty}}">
+                  <label for="exampleInputEmail1">Manfaat Layanan</label>
+                  <textarea name="benefit" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Manfaat Layanan">{{ $service->benefit}}</textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Durasi Pengerjaan</label>
+                  <input name="duration" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Durasi Pengerjaan" value="{{ $service->duration}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Harga</label>

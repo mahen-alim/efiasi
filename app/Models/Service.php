@@ -11,7 +11,7 @@ class Service extends Model
 
     protected $guarded = ['id'];
 
-    protected $fillable = ['tipe_service', 'price', 'sparepart', 'qty', 'file'];
+    protected $fillable = ['tipe_service', 'price', 'description', 'benefit', 'duration', 'file'];
 
     public function reports()
     {

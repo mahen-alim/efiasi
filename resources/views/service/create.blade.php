@@ -25,30 +25,23 @@
                     @enderror              
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputSparepart">Suku Cadang <span style="color: red;">*</span></label>
-                    <select name="sparepart" class="form-control" id="exampleInputSparepart" placeholder="Masukkan suku cadang">
-                        <option value="" disabled selected>Pilih Suku Cadang</option>
-                        <option value="Microfiber">Kain Mikrofiber</option>
-                        <option value="Car Shampoo">Sampo Mobil</option>
-                        <option value="Wax or Sealant">Pengilap atau Sealant</option>
-                        <option value="Detailing Brushes">Sikat Detailing</option>
-                        <option value="Clay Bar">Bar Clay</option>
-                        <option value="Interior Cleaners">Pembersih Interior</option>
-                        <option value="Glass Cleaners">Pembersih Kaca</option>
-                        <option value="Tar Remover">Tar Remover</option>
-                        <option value="Metal Polish">Metal Polish</option>
-                        <option value="Wheel Cleaner">Wheel Cleaner</option>
-                        <option value="Tire Brush">Tire Brush</option>
-                    </select>    
-                    @error('sparepart')
+                    <label for="exampleInputSparepart">Deskripsi Layanan<span style="color: red;">*</span></label>
+                    <textarea name="description" class="form-control" id="exampleInputSparepart" placeholder="Masukkan Deskripsi Layanan"></textarea>    
+                    @error('description')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror  
                 </div>
-            
                 <div class="form-group">
-                    <label for="exampleInputQty">Jumlah Suku Cadang <span style="color: red;">*</span></label>
-                    <input name="qty" type="number" class="form-control" id="exampleInputQty" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Suku Cadang">
-                    @error('qty')
+                    <label for="exampleInputSparepart">Manfaat Layanan<span style="color: red;">*</span></label>
+                    <textarea name="benefit" class="form-control" id="exampleInputSparepart" placeholder="Masukkan Manfaat Layanan"></textarea>    
+                    @error('benefit')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror  
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputQty">Durasi Pengerjaan<span style="color: red;">*</span></label>
+                    <input name="duration" type="number" class="form-control" id="exampleInputQty" aria-describedby="emailHelp" placeholder="Masukkan Durasi Pengerjaan">
+                    @error('duration')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror  
                 </div>
@@ -62,7 +55,7 @@
                 </div>  
             
                 <div class="form-group mb-4">
-                    <label class="form-label text-muted opacity-75 fw-medium" for="formImage">Foto Sparepart <span style="color: red;">*</span></label>
+                    <label class="form-label text-muted opacity-75 fw-medium" for="formImage">Foto Detailing <span style="color: red;">*</span></label>
                     <div class="dropzone-drag-area form-control" id="previews">
                         <div class="dz-message text-muted opacity-50" data-dz-message>
                             <span>Drag file here to upload</span>

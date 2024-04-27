@@ -26,8 +26,9 @@ class ServiceController extends Controller
         $request->validate([
             'type' => 'required|min:5',
             'price' => 'required|min:5',
-            'sparepart' => 'required|min:5|unique:services',
-            'qty' => 'required',
+            'description' => 'required|min:5',
+            'benefit' => 'required|min:5',
+            'duration' => 'required',
             'file' => 'mimes:png,jpg,jpeg,gif|max:5000',
         ]);
 
@@ -35,8 +36,9 @@ class ServiceController extends Controller
         $service = Service::create([
             'tipe_service' => $request->type,
             'price' => $request->price,
-            'sparepart' => $request->sparepart,
-            'qty' => $request->qty,
+            'description' => $request->description,
+            'benefit' => $request->benefit,
+            'duration' => $request->duration,
             'file' => '',
         ]);
 
@@ -54,8 +56,7 @@ class ServiceController extends Controller
         Report::create([
             'service_id' => $service->id,
             'tipe_service' => $request->type,
-            'sparepart' => $request->sparepart,
-            'stock' => $request->qty,
+            'duration' => $request->duration,
         ]);
 
         // Redirect ke halaman tertentu setelah data berhasil ditambahkan
@@ -75,8 +76,9 @@ class ServiceController extends Controller
         $request->validate([
             'type' => 'required|min:5',
             'price' => 'required|min:5',
-            'qty' => 'required',
-            'sparepart' => 'required|min:5',
+            'description' => 'required|min:5',
+            'benefit' => 'required|min:5',
+            'duration' => 'required',
         ]);
 
         // Mencari data service
@@ -92,8 +94,9 @@ class ServiceController extends Controller
         $service->update([
             'tipe_service' => $request->type,
             'price' => $request->price,
-            'qty' => $request->qty,
-            'sparepart' => $request->sparepart,
+            'description' => $request->description,
+            'benefit' => $request->benefit,
+            'duration' => $request->duration,
         ]);
 
         return redirect('/service-index')->with('success', 'Data detailing berhasil diperbarui');

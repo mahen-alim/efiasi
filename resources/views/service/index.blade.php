@@ -23,8 +23,9 @@
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Servis</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sparepart</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Durasi Pengerjaan</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                 </tr>
             </thead>
@@ -33,8 +34,11 @@
                 <tr>
                   <td class="px-4">{{ $index + 1 }}</td>
                   <td class="px-4">{{ $serve->tipe_service }}</td>
-                  <td class="px-4">{{ $serve->sparepart }}</td>
+                  <td class="px-4">{{ $serve->duration }} Jam</td>
                   <td class="px-4">{{ $serve->price }}</td>
+                  <td class="px-4">
+                    <img src="{{ $serve->file }}" alt="Image" style="width: 150px; height: 60px;">
+                  </td>
                   <td class="px-4 d-flex">
                     <a href="{{ route('dashboard.service.edit', $serve->id) }}" class="btn btn-outline-warning" style="margin-right: 20px;">Edit</a>
                     <form action="{{ route('dashboard.service.destroy', $serve->id) }}" method="POST">
