@@ -18,7 +18,7 @@
                   <option value="Detailing Engine Bay">Detailing Engine Bay</option>
                   <option value="Detailing Velg & Ban">Detailing Velg & Ban</option>
                 </select>   
-                @error('tipe_service')
+                @error('income_type')
                   <div class="text-danger">{{ $message }}</div>
                 @enderror           
                   <label for="exampleInputEmail1">Tanggal</label>

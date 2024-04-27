@@ -7,7 +7,7 @@
     <a class="nav-link custom-orange" href="{{ route('dashboard.report.income.table') }}">Pendapatan</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active custom-orange" aria-current="page">Pengeluaran</a>
+    <a class="nav-link active custom-orange" aria-current="page"  href="#">Pengeluaran</a>
   </li>
 </ul>
 

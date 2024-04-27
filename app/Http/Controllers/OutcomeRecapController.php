@@ -16,6 +16,11 @@ class OutcomeRecapController extends Controller
 
     public function table(Request $request)
     {
+        $request->validate([
+            'outcome_type' => 'required',
+            'date' => 'required',
+        ]);
+        
         $keyword = $request->input('outcome_type');
         $date = $request->input('date');
 

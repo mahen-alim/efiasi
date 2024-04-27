@@ -16,6 +16,11 @@ class IncomeRecapController extends Controller
 
     public function table(Request $request)
     {
+        $request->validate([
+            'income_type' => 'required',
+            'date' => 'required',
+        ]);
+        
         $keyword = $request->input('income_type');
         $date = $request->input('date');
 

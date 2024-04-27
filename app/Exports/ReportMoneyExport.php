@@ -15,7 +15,7 @@ class ReportMoneyExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return Report::select('id', 'sparepart', 'qty', 'tipe_service', 'trans_time')->get();
+        return Report::select('id', 'tipe_service', 'duration', 'price_total', 'trans_time')->get();
     }
 
     /**
@@ -25,9 +25,9 @@ class ReportMoneyExport implements FromCollection, WithHeadings
     {
         return [
             'No',
-            'Sparepart',
-            'Jumlah Barang',
             'Jenis Layanan',
+            'Durasi Pengerjaan',
+            'Total Harga',
             'Tanggal',
         ];
     }

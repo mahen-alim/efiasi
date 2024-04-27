@@ -15,9 +15,15 @@
                     <option value="Biaya Transportasi">Biaya Transportasi</option>
                     <option value="Biaya Asuransi">Biaya Asuransi</option>
                     <option value="Biaya Keamanan">Biaya Keamanan</option>
-                </select>              
+                </select>           
+                @error('outcome_type')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror          
                 <label for="exampleInputEmail1">Tanggal</label>
                 <input name="date" type="datetime-local" class="form-control" id="date" aria-describedby="emailHelp" placeholder="Masukkan Tanggal">
+                @error('date')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror       
             </div>
             <button type="submit" class="btn form-control" id="search-btn">Cari</button>
           </form> 

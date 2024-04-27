@@ -57,6 +57,7 @@ class ServiceController extends Controller
             'service_id' => $service->id,
             'tipe_service' => $request->type,
             'duration' => $request->duration,
+            'price_total' => $request->price,
         ]);
 
         // Redirect ke halaman tertentu setelah data berhasil ditambahkan
