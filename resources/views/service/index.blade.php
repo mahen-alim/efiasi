@@ -40,11 +40,11 @@
                     <img src="{{ $serve->file }}" alt="Image" style="width: 60px; height: 60px;">
                   </td>
                   <td class="px-4 d-flex">
-                    <a href="{{ route('dashboard.service.edit', $serve->id) }}" class="btn btn-outline-warning" style="margin-right: 20px;">Edit</a>
+                    <a href="{{ route('dashboard.service.edit', $serve->id) }}" class="btn" id="btn-edit">Edit</a>
                     <form action="{{ route('dashboard.service.destroy', $serve->id) }}" method="POST">
                         @method('delete')
                         @csrf
-                        <input type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"
+                        <input type="submit" class="btn" id="btn-cancel" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"
                             value="Delete">
                     </form>
                   </td>                

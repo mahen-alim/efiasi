@@ -38,11 +38,11 @@
                   <td class="px-4">{{ $spare->merk }}</td>
                   <td class="px-4">{{ $spare->price }}</td>
                   <td class="px-4 d-flex">
-                    <a href="{{ route('dashboard.sparepart.edit', $spare->id) }}" class="btn btn-outline-warning" style="margin-right: 20px;">Edit</a>
+                    <a href="{{ route('dashboard.sparepart.edit', $spare->id) }}" class="btn" id="btn-edit">Edit</a>
                     <form action="{{ route('dashboard.sparepart.destroy', $spare->id) }}" method="POST">
                         @method('delete')
                         @csrf
-                        <input type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"
+                        <input type="submit" class="btn" id="btn-cancel" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"
                             value="Delete">
                     </form>
                   </td>                

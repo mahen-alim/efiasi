@@ -87,6 +87,17 @@ body {
     background-color: #28a745;
     color: white;
 }
+
+#btn-edit {
+    margin-right: 20px;
+    border: 1px solid #ffc107; /* Warna border */
+    color: #ffc107; /* Warna teks */
+}
+#btn-edit:hover {
+    background-color: #ffc107;
+    color: white;
+}
+
 #btn-cancel {
     border: 1px solid #dc3545;
     color: #dc3545;
