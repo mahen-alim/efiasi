@@ -30,11 +30,11 @@
                 <thead>
                     <tr>
                       <th class="text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                      {{-- Statis --}}
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Sparepart</th> 
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Stok Barang</th>
                       {{-- Dinamis --}}
                       <th class="text-secondary text-xxs font-weight-bolder opacity-7">Jenis Layanan</th>
+                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Durasi Pengerjaan</th>
+                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
+                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Total Bayar</th>
                       <th class="text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                     </tr>
                 </thead>
@@ -42,9 +42,9 @@
                   @foreach ($data as $index => $d)
                     <tr>
                       <td class="px-4">{{ $index + 1 }}</td>
-                      <td class="px-4">{{ $d->sparepart}}</td>
-                      <td class="px-4">{{ $d->stock}}</td>
                       <td class="px-4">{{ $d->tipe_service}}</td>
+                      <td class="px-4">{{ $d->duration}}</td>
+                      <td class="px-4">{{ $d->price}}</td>
                       <td class="px-4">{{ $d->trans_time}}</td>
                       <td class="px-4 d-flex">          
                       </td>                

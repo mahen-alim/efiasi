@@ -9,7 +9,7 @@ class Report extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['service_id', 'tipe_service', 'sparepart', 'qty', 'price_total', 'income', 'trans_time', 'money_type'];
+    protected $fillable = ['service_id', 'tipe_service', 'duration', 'price_total', 'income', 'trans_time', 'money_type'];
 
     public function spareparts()
     {
