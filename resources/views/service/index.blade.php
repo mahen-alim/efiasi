@@ -37,7 +37,7 @@
                   <td class="px-4">{{ $serve->duration }} Jam</td>
                   <td class="px-4">{{ $serve->price }}</td>
                   <td class="px-4">
-                    <img src="{{ $serve->file }}" alt="Image" style="width: 150px; height: 60px;">
+                    <img src="{{ $serve->file }}" alt="Image" style="width: 60px; height: 60px;">
                   </td>
                   <td class="px-4 d-flex">
                     <a href="{{ route('dashboard.service.edit', $serve->id) }}" class="btn btn-outline-warning" style="margin-right: 20px;">Edit</a>
