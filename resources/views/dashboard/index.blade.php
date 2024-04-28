@@ -214,7 +214,7 @@
             <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
             <h5 class="text-white font-weight-bolder mb-4 pt-2">Informasi Bengkel</h5>
             <p class="text-white">Informasi singkat tentang bengkel detailing mobil .... .</p>
-            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="/info-bengkel">
+            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="{{ route('dashboard.info.bengkel') }}">
                 Lihat Informasi
                 <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
             </a>

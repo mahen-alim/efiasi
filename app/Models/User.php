@@ -20,4 +20,9 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function incomes()
+    {
+        return $this->belongsToMany(Income::class, 'user_id');
+    }
 }

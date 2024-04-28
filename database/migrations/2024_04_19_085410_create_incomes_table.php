@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('report_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('car_type');
             $table->integer('total_price');
+            $table->enum('status', ['CONFIRMED', 'CANCELED']);
             $table->integer('discount');
             $table->timestamps();
         });
