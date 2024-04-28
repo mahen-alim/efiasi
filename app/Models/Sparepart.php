@@ -18,7 +18,6 @@ class sparepart extends Model
 
     public function outcomes()
     {
-        return $this->belongsToMany(Outcome::class, 'sparepart_id', 'id');
+        return $this->belongsTo(Outcome::class, 'sparepart_id', 'id');
     }
-
 }

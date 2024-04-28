@@ -20,7 +20,7 @@ class IncomeRecapController extends Controller
             'income_type' => 'required',
             'date' => 'required',
         ]);
-        
+
         $keyword = $request->input('income_type');
         $date = $request->input('date');
 
@@ -45,7 +45,6 @@ class IncomeRecapController extends Controller
         // Return view dengan data yang sesuai
         return view('report.money_table_income', compact('data', 'failMessage'));
     }
-
 
     public function export()
     {

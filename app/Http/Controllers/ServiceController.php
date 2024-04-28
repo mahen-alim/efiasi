@@ -45,10 +45,10 @@ class ServiceController extends Controller
         // get dropzone image
         if ($request->file('file')) {
             $file = $request->file('file');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = time().'_'.$file->getClientOriginalName();
             $file->storeAs('img/dropzone', $filename, 'public'); // Simpan file pada direktori img/dropzone
             $service->update([
-                'file' => '/storage/img/dropzone/' . $filename, // Simpan path file dalam database
+                'file' => '/storage/img/dropzone/'.$filename, // Simpan path file dalam database
             ]);
         }
 
@@ -86,7 +86,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (!$service) {
+        if (! $service) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data detailing tidak ditemukan.');
         }

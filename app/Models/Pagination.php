@@ -13,6 +13,5 @@ class Pagination extends Model
 
     protected $fillable = [
         'tipe_service', 'price', 'sparepart',
-
     ];
 }

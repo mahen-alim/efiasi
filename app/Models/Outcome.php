@@ -13,11 +13,11 @@ class Outcome extends Model
 
     public function spareparts()
     {
-        return $this->belongsToMany(sparepart::class, 'sparepart_id');
+        return $this->hasMany(sparepart::class, 'sparepart_id');
     }
 
-    public function operationals()
+    public function operational()
     {
-        return $this->belongsToMany(Operational::class, 'operational_id');
+        return $this->hasMany(Operational::class, 'operational_id');
     }
 }

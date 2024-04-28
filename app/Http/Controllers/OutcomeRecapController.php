@@ -20,7 +20,7 @@ class OutcomeRecapController extends Controller
             'outcome_type' => 'required',
             'date' => 'required',
         ]);
-        
+
         $keyword = $request->input('outcome_type');
         $date = $request->input('date');
 
@@ -41,6 +41,7 @@ class OutcomeRecapController extends Controller
         } else {
             $failMessage = '';
         }
+
         // Return view dengan data yang sesuai
         return view('report.money_table_outcome', compact('data', 'failMessage'));
     }

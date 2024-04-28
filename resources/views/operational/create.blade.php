@@ -30,9 +30,8 @@
                         <option value="" disabled selected>Pilih Kategori</option>
                         <option value="Administrasi">Administrasi</option>
                         <option value="Bahan Baku & Persediaan">Bahan Baku & Persediaan</option>
-                        <option value="Penjualan">Keamanan</option>
+                        <option value="Keamanan">Keamanan</option>
                         <option value="Asuransi">Asuransi</option>
-                        <option value="Pembiayaan">Pembiayaan</option>
                         <option value="Penyusutan">Penyusutan</option>
                         <option value="Pemeliharaan & Perbaikan">Pemeliharaan & Perbaikan</option>
                         <option value="Transportasi">Transportasi</option>

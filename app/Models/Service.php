@@ -20,6 +20,6 @@ class Service extends Model
 
     public function incomes()
     {
-        return $this->belongsToMany(Income::class, 'service_id', 'id');
+        return $this->hasOne(Income::class, 'service_id');
     }
 }

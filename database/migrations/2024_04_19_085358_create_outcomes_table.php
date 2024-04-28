@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('outcomes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('report_id')->constrained()->onDelete('cascade');
             $table->string('cost_type');
             $table->foreignId('operational_id')->constrained()->onDelete('cascade');
             $table->foreignId('sparepart_id')->constrained()->onDelete('cascade');

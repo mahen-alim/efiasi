@@ -18,6 +18,6 @@ class Operational extends Model
 
     public function outcomes()
     {
-        return $this->belongsToMany(Outcome::class, 'operational_id', 'id');
+        return $this->belongsTo(Outcome::class, 'operational_id', 'id');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Operational;
+use App\Models\Outcome;
 use Illuminate\Http\Request;
 
 class OperationalController extends Controller
@@ -32,12 +33,17 @@ class OperationalController extends Controller
             'description' => 'required|min:5',
         ]);
 
-        //Proses penambahan data permintaan dari request
-        Operational::create([
+        // Buat data operasional baru
+        $operational = Operational::create([
             'type_cost' => $request->type_cost,
             'nominal' => $request->nominal,
             'category' => $request->category,
             'description' => $request->description,
+        ]);
+
+        Outcome::create([
+            'operational_id' => $operational->id,
+            'cost_type' => $request->category,
         ]);
 
         //Pengembalian nilai untuk beralih ke halaman operational.index jika data berhasil ditambahkan
@@ -64,7 +70,7 @@ class OperationalController extends Controller
         $operational = Operational::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (!$operational) {
+        if (! $operational) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data operasional tidak ditemukan.');
         }
@@ -77,7 +83,7 @@ class OperationalController extends Controller
             'description' => $request->description,
         ]);
 
-        return  redirect()->route('dashboard.operational.index')->with('success', 'Data operasional berhasil diperbarui');
+        return redirect()->route('dashboard.operational.index')->with('success', 'Data operasional berhasil diperbarui');
     }
 
     public function destroy($id)

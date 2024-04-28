@@ -62,7 +62,7 @@ class SparepartController extends Controller
         $sparepart = sparepart::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (!$sparepart) {
+        if (! $sparepart) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data sparepart tidak ditemukan.');
         }
@@ -75,7 +75,7 @@ class SparepartController extends Controller
             'price' => $request->price,
         ]);
 
-        return  redirect()->route('dashboard.sparepart.index')->with('success', 'Data sparepart berhasil diperbarui');
+        return redirect()->route('dashboard.sparepart.index')->with('success', 'Data sparepart berhasil diperbarui');
     }
 
     public function destroy($id)
@@ -84,7 +84,7 @@ class SparepartController extends Controller
         $sparepart = sparepart::find($id);
         $sparepart->delete();
 
-        return  redirect()->route('dashboard.sparepart.index')->with('success', 'Data sparepart berhasil dihapus');
+        return redirect()->route('dashboard.sparepart.index')->with('success', 'Data sparepart berhasil dihapus');
     }
 
     public function search(Request $request)
