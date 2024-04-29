@@ -143,7 +143,7 @@
                 <h6  style="margin-top: -10px; color: white;">Ikhtisar Pesanan</h6>
                 <p class="text-sm text-white"  style="margin-top: -10px; margin-bottom: 10px;">
                 <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold">50%</span> bulan ini
+                <span class="font-weight-bold">6 Pelanggan</span> bulan ini
                 </p>
             </div>
             <div class="card-body p-3" id="ikhtisar-pesanan">
@@ -153,53 +153,53 @@
                         <i class="fa-solid fa-user text-success"></i>
                     </span>
                     <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">User memilih layanan yang akan dipesan</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Langkah 1</p>
+                        <h6 class="text-dark text-sm font-weight-bold mb-0">Ucok</h6>
+                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Detailing Interior</p>
                     </div>
                 </div>
                 <div class="timeline-block mb-3">
                     <span class="timeline-step">
-                        <i class="fa-solid fa-mobile-button text-danger text-gradient"></i>
+                      <i class="fa-solid fa-user text-success"></i>
                     </span>
                     <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">User menekan tombol pesan</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Langkah 2</p>
+                        <h6 class="text-dark text-sm font-weight-bold mb-0">Budi</h6>
+                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Detailing Eksterior</p>
                     </div>
                 </div>
                 <div class="timeline-block mb-3">
                     <span class="timeline-step">
-                    <i class="ni ni-cart text-info text-gradient"></i>
+                      <i class="fa-solid fa-user text-success"></i>
                     </span>
                     <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">Pesanan akan diterima admin di dashboard web</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Langkah 3</p>
+                        <h6 class="text-dark text-sm font-weight-bold mb-0">Gerung</h6>
+                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Variasi Lampu Mobil</p>
                     </div>
                 </div>
                 <div class="timeline-block mb-3">
                     <span class="timeline-step">
-                    <i class="fa-solid fa-user-gear text-warning text-gradient"></i>
+                      <i class="fa-solid fa-user text-success"></i>
                     </span>
                     <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">Admin mengkonfirmasi pesanan</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Langkah 4</p>
+                        <h6 class="text-dark text-sm font-weight-bold mb-0">Rendy</h6>
+                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Variasi Audio Mobil</p>
                     </div>
                 </div>
                 <div class="timeline-block mb-3">
                     <span class="timeline-step">
-                        <i class="fa-solid fa-bell text-primary text-gradient"></i>
+                      <i class="fa-solid fa-user text-success"></i>
                     </span>
                     <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">User mendapat notifikasi pesanan pada aplikasi mobile</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Langkah 5</p>
+                        <h6 class="text-dark text-sm font-weight-bold mb-0">Feri</h6>
+                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Detailing Velg & Ban</p>
                     </div>
                 </div>
                 <div class="timeline-block">
                     <span class="timeline-step">
-                        <i class="fas fa-money-check-alt text-dark text-gradient"></i>
+                      <i class="fa-solid fa-user text-success"></i>
                     </span>
                     <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">User melakukan pembayaran offline/ bayar ditempat</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Langkah 6</p>
+                        <h6 class="text-dark text-sm font-weight-bold mb-0">Sulaiman</h6>
+                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Detailing Kaca Mobil</p>
                     </div>
                 </div>
                 </div>
@@ -209,17 +209,40 @@
     </div>
     <div class="col-lg-12 col-md-6 mt-5">
       
-        <div class="card h-100 p-3">
-        <div class="overflow-hidden position-relative border-radius-lg h-100" id="info-bengkel">
-            <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-            <h5 class="text-white font-weight-bolder mb-4 pt-2">Informasi Bengkel</h5>
-            <p class="text-white">Informasi singkat tentang bengkel detailing mobil .... .</p>
-            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="{{ route('dashboard.info.bengkel') }}">
-                Lihat Informasi
-                <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-            </a>
+      <div class="card h-100">
+        <div class="card-header pb-0 p-3" id="trans-card">
+          <div class="row">
+            <div class="col-md-8 d-flex align-items-center">
+              <h6 class="mb-0 text-white" style="margin-top: -10px;">Informasi Bengkel</h6>
             </div>
+            <div class="col-md-4 text-end">
+              {{-- <a href="{{ route('dashboard.profil.edit', ['id' => auth()->user()->id]) }}">
+                  <i class="fas fa-user-edit text-secondary text-sm text-white" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Edit Profile" data-bs-original-title="Edit Profile" style="margin-top: -20px;"></i>
+                  <span class="sr-only">Edit Info Bengkel</span>
+              </a>                 --}}
+            </div>
+          </div>
         </div>
+        <div class="card-body p-3">
+          <ul class="list-group" >
+            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nama Bengkel:</strong> Prestasi Salon Mobil & Variasi Mobil</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Nomor Telepon:</strong> 085259873180</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Jam Buka:</strong> Senin - Minggu (08:00 - 17:00)</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Alamat:</strong> 9WC3+W6 Sukorejo, Kabupaten Nganjuk, Jawa Timur</li>
+            <li class="list-group-item border-0 ps-0 pb-0">
+              <strong class="text-dark text-sm">Sosial Media:</strong> &nbsp;
+              <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+              </a>
+              <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+              </a>
+              <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
 @endsection
