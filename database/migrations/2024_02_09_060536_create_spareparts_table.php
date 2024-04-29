@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('spareparts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('type');
             $table->integer('jumlah');
             $table->integer('price');
             $table->string('merk');

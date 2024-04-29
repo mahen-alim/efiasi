@@ -24,6 +24,7 @@ class SparepartController extends Controller
         // Validasi data dari request
         $request->validate([
             'name' => 'required|min:5',
+            'type' => 'required',
             'jumlah' => 'required',
             'merk' => 'required|min:5',
             'price' => 'required|min:5',
@@ -32,6 +33,7 @@ class SparepartController extends Controller
         // Simpan data ke dalam tabel spareparts
         $sparepart = sparepart::create([
             'name' => $request->name,
+            'type' => $request->type,
             'jumlah' => $request->jumlah,
             'merk' => $request->merk,
             'price' => $request->price,
@@ -53,9 +55,10 @@ class SparepartController extends Controller
         // Validasi input
         $request->validate([
             'name' => 'required|min:5',
+            'type' => 'required',
             'jumlah' => 'required',
             'merk' => 'required|min:5',
-            'price' => 'required|min:5',
+            'price' => 'required|min:4',
         ]);
 
         // Mencari data service
@@ -70,6 +73,7 @@ class SparepartController extends Controller
         // Update data service
         $sparepart->update([
             'name' => $request->name,
+            'type' => $request->type,
             'jumlah' => $request->jumlah,
             'merk' => $request->merk,
             'price' => $request->price,

@@ -12,7 +12,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputPrice">Tipe Layanan <span style="color: red;">*</span></label>
-                    <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan tipe layanan">
+                    <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan Tipe Layanan">
                         <option value="" disabled selected>Pilih Tipe Layanan</option>
                         <option value="Detailing Interior">Detailing Interior</option>
                         <option value="Detailing Eksterior">Detailing Eksterior</option>
