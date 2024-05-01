@@ -133,6 +133,11 @@
                   </tr>
                 </tbody>
               </table>
+              <div class="pagination justify-content-center">     
+                @if ($user instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                    {{ $user->links() }}
+                @endif
+              </div>
             </div>
           </div>
         </div>

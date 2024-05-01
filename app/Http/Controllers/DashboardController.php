@@ -8,8 +8,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Misalnya, Anda memiliki model 'User'
-        $users = User::all();
+        $users = User::paginate(5)->withQueryString();
 
         return view('dashboard.index', compact(['users']));
     }
