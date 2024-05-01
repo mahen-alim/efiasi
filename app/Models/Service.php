@@ -9,9 +9,14 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-
-    protected $fillable = ['tipe_service', 'price', 'description', 'benefit', 'duration', 'file'];
+    protected $fillable = [
+        'tipe_service', // Assuming 'tipe_service' instead of 'type'
+        'price',
+        'description',
+        'benefit',
+        'duration',
+        'file',
+    ];
 
     public function reports()
     {
@@ -22,4 +27,5 @@ class Service extends Model
     {
         return $this->hasOne(Income::class, 'service_id');
     }
+
 }

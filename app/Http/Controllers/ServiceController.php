@@ -4,43 +4,54 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
     public function index()
     {
+        // Eager load users with their related services including the 'tipe_service' column
         $service = Service::paginate(5)->withQueryString();
 
-        return view('service.index', compact(['service']));
+        return view('service.index', compact('service'));
     }
+
 
     public function create()
     {
         return view('service.create');
     }
-    
+
     public function store(Request $request)
     {
         // Validasi data input
         $request->validate([
             'type' => 'required|min:5',
             'price' => 'required|min:5',
-            'description' => 'required|min:50|max:1000',
-            'benefit' => 'required|min:50|max:1000',
+            'description' => 'required|min:5|max:1000',
+            'benefit' => 'required|min:5|max:1000',
             'duration' => 'required',
             'file' => 'mimes:png,jpg,jpeg,gif|max:5000',
         ]);
 
-        // Simpan data pada tabel services
-        $service = Service::create([
-            'tipe_service' => $request->type,
-            'price' => $request->price,
-            'description' => $request->description,
-            'benefit' => $request->benefit,
-            'duration' => $request->duration,
-            'file' => '',
-        ]);
+        // Ambil ID pengguna dari sesi email
+        $userId = Auth::user()->id;
+
+        // Buat entri baru di tabel services dengan mengisi user_id dari session
+        $service = new Service();
+        $service->user_id = $userId;
+        $service->tipe_service = $request->type;
+        $service->price = $request->price;
+        $service->description = $request->description;
+        $service->benefit = $request->benefit;
+        $service->duration = $request->duration;
+        $service->file = ''; // Isi dengan nilai file yang sesuai jika ada
+
+        // Simpan entri ke dalam tabel
+        $service->save();
+
 
         // get dropzone image
         if ($request->file('file')) {

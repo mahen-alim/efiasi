@@ -100,7 +100,7 @@
                 <h6 class="text-white">Akun Pengguna</h6>
                 <p class="text-sm mb-0" style="margin-top: -10px; padding-bottom: 10px;">
                   <i class="fa fa-check text-success" aria-hidden="true"></i>
-                  <span class="font-weight-bold ms-1">6 Pengguna Terdaftar</span>
+                  <span class="font-weight-bold ms-1">{{ $totalPelanggan }} Pengguna Terdaftar</span>
                 </p>
               </div>
             </div>
@@ -119,18 +119,19 @@
                 </thead>
                 <tbody>
                   @foreach($users as $index => $user)
-                  <tr>
-                    <td class="px-4">{{ $index + 1 }}</td>
-                    <td class="px-4 text-sm">{{ $user->name }}</td>
-                    <td class="px-4 text-sm" style="position: relative;">
-                      <span class="dot-success"></span>
-                      {{ $user->email }}
-                    </td>
-                    <td class="px-4 text-sm">{{ $user->mobile_phone }}</td>
-                    <td class="px-4 text-sm">{{ $user->level }}</td>
-                    @endforeach
-                    </td>
-                  </tr>
+                    @if ($user->level == 'END USER')
+                        <tr>
+                            <td class="px-4">{{ $index + 1 }}</td>
+                            <td class="px-4 text-sm">{{ $user->name }}</td>
+                            <td class="px-4 text-sm" style="position: relative;">
+                                <span class="dot-success"></span>
+                                {{ $user->email }}
+                            </td>
+                            <td class="px-4 text-sm">{{ $user->mobile_phone }}</td>
+                            <td class="px-4 text-sm">{{ $user->level }}</td>
+                        </tr>
+                    @endif
+                  @endforeach              
                 </tbody>
               </table>
               <div class="pagination justify-content-center">     
@@ -148,64 +149,26 @@
                 <h6  style="margin-top: -10px; color: white;">Ikhtisar Pesanan</h6>
                 <p class="text-sm text-white"  style="margin-top: -10px; margin-bottom: 10px;">
                 <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold">6 Pelanggan</span> bulan ini
+                <span class="font-weight-bold">{{ $totalPelanggan }} Pemesan</span>
                 </p>
             </div>
-            <div class="card-body p-3" id="ikhtisar-pesanan">
+            <div class="card-body p-2" id="ikhtisar-pesanan">
                 <div class="timeline timeline-one-side">
                 <div class="timeline-block mb-3">
+                  @foreach ($users as $user)
+                  @if ($user->level == 'END USER')
                     <span class="timeline-step">
                         <i class="fa-solid fa-user text-success"></i>
                     </span>
-                    <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">Ucok</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Detailing Interior</p>
-                    </div>
-                </div>
-                <div class="timeline-block mb-3">
-                    <span class="timeline-step">
-                      <i class="fa-solid fa-user text-success"></i>
-                    </span>
-                    <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">Budi</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Detailing Eksterior</p>
-                    </div>
-                </div>
-                <div class="timeline-block mb-3">
-                    <span class="timeline-step">
-                      <i class="fa-solid fa-user text-success"></i>
-                    </span>
-                    <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">Gerung</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Variasi Lampu Mobil</p>
-                    </div>
-                </div>
-                <div class="timeline-block mb-3">
-                    <span class="timeline-step">
-                      <i class="fa-solid fa-user text-success"></i>
-                    </span>
-                    <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">Rendy</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Variasi Audio Mobil</p>
-                    </div>
-                </div>
-                <div class="timeline-block mb-3">
-                    <span class="timeline-step">
-                      <i class="fa-solid fa-user text-success"></i>
-                    </span>
-                    <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">Feri</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Detailing Velg & Ban</p>
-                    </div>
-                </div>
-                <div class="timeline-block">
-                    <span class="timeline-step">
-                      <i class="fa-solid fa-user text-success"></i>
-                    </span>
-                    <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">Sulaiman</h6>
-                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan Detailing Kaca Mobil</p>
-                    </div>
+                      <div class="timeline-content">                       
+                          <h6 class="text-dark text-sm font-weight-bold mb-0">{{$user->name}}</h6>
+                          @foreach ($user->services as $service)
+                            <span class="text-sm">{{ $service->created_at }}</span>                     
+                            <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan {{ $service->tipe_service}}</p>
+                          @endforeach
+                      </div>
+                  @endif
+                  @endforeach
                 </div>
                 </div>
             </div>
