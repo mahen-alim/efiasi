@@ -21,6 +21,19 @@
               @method('put')
                 @csrf
                 <div class="form-group">
+                  <label for="exampleInputEmail1">Tipe Variasi</label>
+                  <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan Tipe Variasi">
+                    <option value="" disabled selected>Pilih Tipe Variasi</option>
+                    <option value="Variasi Lampu Mobil" {{ $sparepart->type == 'Variasi Lampu Mobil' ? 'selected' : '' }}>Variasi Lampu Mobil</option>
+                    <option value="Variasi Stiker Mobil" {{ $sparepart->type == 'Variasi Stiker Mobil' ? 'selected' : '' }}>Variasi Stiker Mobil</option>
+                    <option value="Variasi Velg Mobil" {{ $sparepart->type == 'Variasi Velg Mobil' ? 'selected' : '' }}>Variasi Velg Mobil</option>
+                    <option value="Variasi Kaca Mobil" {{ $sparepart->type == 'Variasi Kaca Mobil' ? 'selected' : '' }}>Variasi Kaca Mobil</option>
+                  </select>  
+                    @error('type')
+                      <div class="text-danger">{{ $message }}</div>
+                    @enderror 
+                </div>  
+                <div class="form-group">
                   <label for="exampleInputEmail1">Nama Barang</label>
                   <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan tipe layanan" value="{{ $sparepart->name}}">
                 </div>

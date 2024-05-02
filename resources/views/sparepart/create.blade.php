@@ -10,18 +10,20 @@
         <div class="card-body px-4 pt-0 pb-2">
             <form action="{{ route('dashboard.sparepart.store') }}" method="POST" >
                 @csrf
-                <label for="exampleInputEmail1">Tipe Variasi <span style="color: red;">*</span></label>
-                <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan Tipe Variasi">
-                  <option value="" disabled selected>Pilih Tipe Variasi</option>
-                  <option value="Variasi Lampu Mobil">Variasi Lampu Mobil</option>
-                  <option value="Variasi Audio Mobil">Variasi Audio Mobil</option>
-                  <option value="Variasi Stiker Mobil">Variasi Stiker Mobil</option>
-                  <option value="Variasi Velg Mobil">Variasi Velg Mobil</option>
-                  <option value="Variasi Kaca Mobil">Variasi Kaca Mobil</option>
-                </select>  
-                  @error('type')
-                    <div class="text-danger">{{ $message }}</div>
-                  @enderror   
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Tipe Variasi <span style="color: red;">*</span></label>
+                  <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan Tipe Variasi">
+                    <option value="" disabled selected>Pilih Tipe Variasi</option>
+                    <option value="Variasi Lampu Mobil">Variasi Lampu Mobil</option>
+                    <option value="Variasi Audio Mobil">Variasi Audio Mobil</option>
+                    <option value="Variasi Stiker Mobil">Variasi Stiker Mobil</option>
+                    <option value="Variasi Velg Mobil">Variasi Velg Mobil</option>
+                    <option value="Variasi Kaca Mobil">Variasi Kaca Mobil</option>
+                  </select>  
+                    @error('type')
+                      <div class="text-danger">{{ $message }}</div>
+                    @enderror   
+                </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Variasi <span style="color: red;">*</span></label>
                   <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Nama Barang">

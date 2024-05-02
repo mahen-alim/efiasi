@@ -9,7 +9,7 @@
         <div class="d-flex">
           <form action="{{ url('sparepart/search') }}" method="GET" class="flex-grow-1 me-10">
             <div class="d-flex">
-                <input type="text" class="form-control me-2" name="name" placeholder="Search by sparepart name" style="height: 40px; width: 30%;">
+                <input type="text" class="form-control me-2" name="name" placeholder="Search by variation name" style="height: 40px; width: 30%;">
                 <button type="submit" class="btn" id="search-btn"><img src="{{ asset('img/search_new.png') }}" alt=""></button>
             </div>
           </form>         
@@ -22,7 +22,7 @@
             <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Sparepart</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Variasi</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Merek</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
