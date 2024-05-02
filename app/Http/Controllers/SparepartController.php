@@ -40,7 +40,7 @@ class SparepartController extends Controller
         ]);
 
         // Redirect dengan pesan sukses
-        return redirect()->route('dashboard.sparepart.index')->with('success', 'Data sparepart berhasil ditambahkan');
+        return redirect()->route('dashboard.sparepart.index')->with('success', 'Data variasi berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -67,7 +67,7 @@ class SparepartController extends Controller
         // Menangani kasus ketika data tidak ditemukan
         if (! $sparepart) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
-            return redirect()->back()->with('error', 'Data sparepart tidak ditemukan.');
+            return redirect()->back()->with('error', 'Data variasi tidak ditemukan.');
         }
 
         // Update data service
@@ -79,7 +79,7 @@ class SparepartController extends Controller
             'price' => $request->price,
         ]);
 
-        return redirect()->route('dashboard.sparepart.index')->with('success', 'Data sparepart berhasil diperbarui');
+        return redirect()->route('dashboard.sparepart.index')->with('success', 'Data variasi berhasil diperbarui');
     }
 
     public function destroy($id)
@@ -88,7 +88,7 @@ class SparepartController extends Controller
         $sparepart = sparepart::find($id);
         $sparepart->delete();
 
-        return redirect()->route('dashboard.sparepart.index')->with('success', 'Data sparepart berhasil dihapus');
+        return redirect()->route('dashboard.sparepart.index')->with('success', 'Data variasi berhasil dihapus');
     }
 
     public function search(Request $request)
