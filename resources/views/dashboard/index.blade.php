@@ -105,8 +105,8 @@
               </div>
             </div>
           </div>
-          <div class="card-body px-0 pb-2">
-            <div class="table-responsive">
+          <div class="card-body p-2">
+            <div class="table-responsive"  id="table-show-account">
               <table class="table mb-0">
                 <thead>
                   <tr>
@@ -134,17 +134,12 @@
                   @endforeach              
                 </tbody>
               </table>
-              <div class="pagination justify-content-center">     
-                @if ($user instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                    {{ $user->links() }}
-                @endif
-              </div>
             </div>
           </div>
         </div>
       </div>
         <div class="col-lg-4 col-md-6">
-            <div class="card h-100">
+          <div class="card" id="card-list-order">
             <div class="card-header pb-0" id="trans-card">
                 <h6  style="margin-top: -10px; color: white;">Ikhtisar Pesanan</h6>
                 <p class="text-sm text-white"  style="margin-top: -10px; margin-bottom: 10px;">
@@ -152,31 +147,36 @@
                 <span class="font-weight-bold">{{ $totalPelanggan }} Pemesan</span>
                 </p>
             </div>
-            <div class="card-body p-2" id="ikhtisar-pesanan">
-                <div class="timeline timeline-one-side">
+            <div class="card-body" id="ikhtisar-pesanan" >
+              <div class="timeline timeline-one-side">
+                @foreach ($users as $user)
                 <div class="timeline-block mb-3">
-                  @foreach ($users as $user)
-                  @if ($user->level == 'END USER')
                     <span class="timeline-step">
                         <i class="fa-solid fa-user text-success"></i>
                     </span>
-                      <div class="timeline-content">                       
-                          <h6 class="text-dark text-sm font-weight-bold mb-0">{{$user->name}}</h6>
-                          @foreach ($user->services as $service)
-                            <span class="text-sm">{{ $service->created_at }}</span>                     
-                            <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Pesan {{ $service->tipe_service}}</p>
-                          @endforeach
-                      </div>
-                  @endif
-                  @endforeach
+                    <div class="timeline-content">
+                        <div class="d-flex" style="gap: 10px;">
+                            <h6 class="text-dark text-sm font-weight-bold mb-0">{{$user->name}}</h6>
+                          @if (count($user->services) > 0)
+                            <i class="ph ph-whatsapp-logo"></i>
+                        </div>
+                            <ul class="list-group mb-0">  @foreach ($user->services as $service)
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <p class="mb-0">{{ $service->tipe_service }}</p>
+                                        <span class="badge bg-secondary rounded-pill">{{ $service->created_at->format('Y-m-d') }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                          @endif
+                    </div>
                 </div>
-                </div>
+            @endforeach
+              </div>
             </div>
-            </div>
+          </div>
         </div>
     </div>
-    <div class="col-lg-12 col-md-6 mt-5">
-      
+    <div class="col-lg-12 col-md-6 mt-4">
       <div class="card h-100">
         <div class="card-header pb-0 p-3" id="trans-card">
           <div class="row">

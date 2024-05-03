@@ -12,7 +12,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputPrice">Tipe Layanan <span style="color: red;">*</span></label>
-                    <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan Tipe Layanan">
+                    <select name="type" class="form-control" id="exampleInputPrzzice" placeholder="Masukkan Tipe Layanan">
                         <option value="" disabled selected>Pilih Tipe Layanan</option>
                         <option value="Detailing Interior">Detailing Interior</option>
                         <option value="Detailing Eksterior">Detailing Eksterior</option>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputQty">Durasi Pengerjaan<span style="color: red;">*</span></label>
-                    <input name="duration" type="number" class="form-control" id="exampleInputQty" aria-describedby="emailHelp" placeholder="Masukkan Durasi Pengerjaan">
+                    <input name="duration" type="number" class="form-control" id="exampleInputQty" aria-describedby="emailHelp" placeholder="Masukkan Durasi Pengerjaan" pattern="[0-9]*" title="Hanya angka yang diperbolehkan">
                     @error('duration')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror  

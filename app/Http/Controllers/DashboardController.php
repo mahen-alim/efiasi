@@ -12,18 +12,17 @@ class DashboardController extends Controller
     public function index()
     {
         // Eager load users with their related services including the 'tipe_service' column
-        $users = User::with('services')
-            ->where('level', '!=', 'ADMIN') // Filter pengguna yang bukan 'ADMIN'
-            ->paginate(5);
+        $users = User::with('services')->where('level', '!=', 'ADMIN')->get(); // Tambahkan ->get() untuk mengambil hasil
 
         // Hitung total pelanggan (pengguna dengan level bukan 'ADMIN')
-        $totalPelanggan = User::where('level', '!=', 'ADMIN')->count();
+        $totalPelanggan = $users->count(); // Menggunakan $users yang sudah dimuat
 
         return view('dashboard.index', [
             'users' => $users,
             'totalPelanggan' => $totalPelanggan,
         ]);
     }
+
 
     public function __construct()
     {

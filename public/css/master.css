@@ -36,7 +36,11 @@ body {
     background-color: #dc3545;
 }
 #ikhtisar-pesanan {
+    height: 230px;
+    width: 100%;
+    overflow-y: auto;
     margin-top: 5px;
+    padding: 10px;
 }
 /* Aturan untuk menyesuaikan warna ikon saat menu aktif */
 .nav-link.active .icon-shape svg path {
@@ -201,4 +205,10 @@ body {
 .custom-orange:hover {
     color: white;
     background-color: #ff8577 !important;
+}
+
+#table-show-account {
+    height: 220px;
+    width: 100%;
+    overflow: auto;
 }

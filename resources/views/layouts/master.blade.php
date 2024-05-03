@@ -34,6 +34,7 @@
   <script src="{{ asset('js/dropzone.js') }}"></script>
   {{-- JQuery --}}
   <script src="{{ asset('js/jquery.js') }}"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
