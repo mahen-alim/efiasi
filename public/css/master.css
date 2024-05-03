@@ -212,3 +212,21 @@ body {
     width: 100%;
     overflow: auto;
 }
+
+#order-con-list {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#order-con-list:hover {
+    color:  #6C757D;
+}
+
+#wa-logo{
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#wa-logo:hover{
+    color: #28A745;
+}

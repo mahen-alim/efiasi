@@ -17,9 +17,15 @@ class DashboardController extends Controller
         // Hitung total pelanggan (pengguna dengan level bukan 'ADMIN')
         $totalPelanggan = $users->count(); // Menggunakan $users yang sudah dimuat
 
+        // Menghitung jumlah pengguna yang memiliki setidaknya satu layanan dalam tabel services
+        $totalPemesan = $users->filter(function ($user) {
+            return $user->services->isNotEmpty(); // Memeriksa apakah pengguna memiliki setidaknya satu layanan dalam tabel services
+        })->count();
+        
         return view('dashboard.index', [
             'users' => $users,
             'totalPelanggan' => $totalPelanggan,
+            'totalPemesan' => $totalPemesan
         ]);
     }
 

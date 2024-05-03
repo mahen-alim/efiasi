@@ -143,13 +143,14 @@
             <div class="card-header pb-0" id="trans-card">
                 <h6  style="margin-top: -10px; color: white;">Ikhtisar Pesanan</h6>
                 <p class="text-sm text-white"  style="margin-top: -10px; margin-bottom: 10px;">
-                <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold">{{ $totalPelanggan }} Pemesan</span>
+                <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>            
+                  <span class="font-weight-bold">{{ $totalPemesan }} Pemesan</span>                  
                 </p>
             </div>
             <div class="card-body" id="ikhtisar-pesanan" >
               <div class="timeline timeline-one-side">
                 @foreach ($users as $user)
+                @if ($user->level == 'END USER' && $user->services->isNotEmpty())
                 <div class="timeline-block mb-3">
                     <span class="timeline-step">
                         <i class="fa-solid fa-user text-success"></i>
@@ -158,18 +159,22 @@
                         <div class="d-flex" style="gap: 10px;">
                             <h6 class="text-dark text-sm font-weight-bold mb-0">{{$user->name}}</h6>
                           @if (count($user->services) > 0)
-                            <i class="ph ph-whatsapp-logo"></i>
+                          <i class="ph ph-whatsapp-logo" id="wa-logo" data-phone="{{ $user->mobile_phone }}"></i>
                         </div>
-                            <ul class="list-group mb-0">  @foreach ($user->services as $service)
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <p class="mb-0">{{ $service->tipe_service }}</p>
-                                        <span class="badge bg-secondary rounded-pill">{{ $service->created_at->format('Y-m-d') }}</span>
-                                    </li>
+                            <ul class="list-group mb-0">  
+                                @foreach ($user->services as $service)
+                                <a href="/notif" id="order-con-list">
+                                  <li class="list-group-item d-flex justify-content-between align-items-center w-98 mt-2">
+                                      <p class="mb-0" style="font-weight: normal;">{{ $service->tipe_service }}</p>
+                                      <span class="badge bg-secondary rounded-pill">{{ $service->created_at->format('Y-m-d') }}</span>
+                                  </li>
+                                </a>
                                 @endforeach
                             </ul>
                           @endif
                     </div>
                 </div>
+                @endif
             @endforeach
               </div>
             </div>
