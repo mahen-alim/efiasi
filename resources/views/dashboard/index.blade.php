@@ -98,9 +98,9 @@
             <div class="row">
               <div class="col-lg-6 col-7 text-white" style="margin-top: -10px;">
                 <h6 class="text-white">Akun Pengguna</h6>
-                <p class="text-sm mb-0" style="margin-top: -10px; padding-bottom: 10px;">
+                <p class="text-sm mb-0" style="width: 300px; margin-top: -10px; padding-bottom: 10px;">
                   <i class="fa fa-users text-white" aria-hidden="true"></i>
-                  <span class="font-weight-bold ms-1">{{ $totalPelanggan }} Pengguna Terdaftar</span>
+                  <span class="font-weight-bold" style="width: 300px;">{{ $totalPelanggan }} Pengguna Terdaftar</span>
                 </p>
               </div>
             </div>
