@@ -10,9 +10,9 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pendapatan Hari Ini</p>
                 <h5 class="font-weight-bolder mb-0">
-                  $53,000
-                  <span class="text-success text-sm font-weight-bolder">+55%</span>
-                </h5>
+                  Rp. {{ $totalHargaLayanan->sum() }}
+                  <span class="text-success text-sm font-weight-bolder">+{{ $persentaseKenaikan}}%</span>
+                </h5>           
               </div>
             </div>
             <div class="col-4 text-end">
@@ -158,7 +158,7 @@
                     <div class="timeline-block mb-3 mt-5">
                         <span class="timeline-step w-100" style="display: flex; flex-direction: column; width: 100%; margin-top: 40px; margin-left: 150px;">
                             <i class="ph ph-empty" style="font-size: 40px; color: red;"></i>
-                            <p>Data tidak tersedia</p>
+                            <p class="text-black">Data tidak tersedia</p>
                         </span>
                     </div>
                   @else
