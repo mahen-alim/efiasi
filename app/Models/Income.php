@@ -20,4 +20,9 @@ class Income extends Model
     {
         return $this->belongsTo(User::class, 'income_id', 'id');
     }
+
+    public function spareparts()
+    {
+        return $this->belongsTo(Sparepart::class);
+    }
 }

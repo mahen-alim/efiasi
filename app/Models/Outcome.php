@@ -11,11 +11,6 @@ class Outcome extends Model
 
     protected $guarded = ['id'];
 
-    public function spareparts()
-    {
-        return $this->hasMany(sparepart::class, 'sparepart_id');
-    }
-
     public function operational()
     {
         return $this->hasMany(Operational::class, 'operational_id');

@@ -11,7 +11,11 @@
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pendapatan Hari Ini</p>
                 <h5 class="font-weight-bolder mb-0">
                   Rp. {{ $totalHargaLayanan->sum() }}
-                  <span class="text-success text-sm font-weight-bolder">+{{ $persentaseKenaikan}}%</span>
+                  @if ($persentaseKenaikanPendapatan > 0)
+                      <span class="text-success text-sm font-weight-bolder">+{{ $persentaseKenaikanPendapatan }}%</span>
+                  @elseif ($persentaseKenaikanPendapatan == 0)
+                      <span class="text-secondary text-sm font-weight-bolder">{{ $persentaseKenaikanPendapatan }}%</span>
+                  @endif
                 </h5>           
               </div>
             </div>
@@ -32,8 +36,12 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pelanggan Hari Ini</p>
                 <h5 class="font-weight-bolder mb-0">
-                  2,300
-                  <span class="text-success text-sm font-weight-bolder">+3%</span>
+                  {{ $totalPemesan }} <span class="font-ms mb-0">Pelanggan</span>
+                  @if ($persentaseKenaikanPelanggan > 0)
+                      <span class="text-success text-sm font-weight-bolder">+{{ $persentaseKenaikanPelanggan }}%</span>
+                  @elseif ($persentaseKenaikanPelanggan == 0)
+                      <span class="text-secondary text-sm font-weight-bolder">{{ $persentaseKenaikanPelanggan }}%</span>
+                  @endif
                 </h5>
               </div>
             </div>
@@ -54,9 +62,13 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Barang Masuk</p>
                 <h5 class="font-weight-bolder mb-0">
-                  +3,462
-                  <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                </h5>
+                  {{ $totalSparepart }}
+                  @if ($persentaseKenaikanSparepart > 0)
+                      <span class="text-success text-sm font-weight-bolder">+{{ $persentaseKenaikanSparepart }}%</span>
+                  @elseif ($persentaseKenaikanSparepart == 0)
+                      <span class="text-secondary text-sm font-weight-bolder">{{ $persentaseKenaikanSparepart }}%</span>
+                  @endif
+                </h5>             
               </div>
             </div>
             <div class="col-4 text-end">
@@ -76,7 +88,7 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Barang Keluar</p>
                 <h5 class="font-weight-bolder mb-0">
-                  $103,430
+                  {{-- {{ $totalBarangKeluarConfirmed }} --}}
                   <span class="text-success text-sm font-weight-bolder">+5%</span>
                 </h5>
               </div>

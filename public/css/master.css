@@ -222,14 +222,19 @@ body {
 }
 
 #order-con-list:hover {
-    color:  #6C757D;
+    color: #6c757d;
 }
 
-#wa-logo{
+#wa-logo {
     font-size: 18px;
     cursor: pointer;
 }
 
-#wa-logo:hover{
-    color: #28A745;
+#wa-logo:hover {
+    color: #28a745;
+}
+
+.font-ms {
+    font-size: 15px;
+    font-weight: bold;
 }
