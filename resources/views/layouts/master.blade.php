@@ -482,26 +482,19 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script>
-  document.getElementById("wa-logo").addEventListener("click", function() {
-      // Mendapatkan nomor telepon dari atribut data-phone
-      var phoneNumber = this.getAttribute("data-phone");
-
-      // Menghilangkan karakter non-digit dari nomor telepon
-      phoneNumber = phoneNumber.replace(/\D/g, '');
-
-      // Menambahkan kode negara jika tidak dimulai dengan "+62"
-      if (!phoneNumber.startsWith("+62")) {
-          phoneNumber = "+62" + phoneNumber;
-      }
-
-      // Membuat URL untuk mengarahkan ke WhatsApp dengan nomor telepon yang sesuai
-      var whatsappUrl = "https://wa.me/" + phoneNumber;
-
-      // Mengarahkan pengguna ke URL WhatsApp
-      window.location.href = whatsappUrl;
+  // Menggunakan kelas sebagai selektor
+  document.querySelectorAll(".wa-logo").forEach(function(el) {
+      el.addEventListener("click", function() {
+          var phoneNumber = this.getAttribute("data-phone");
+          phoneNumber = phoneNumber.replace(/\D/g, '');
+          if (!phoneNumber.startsWith("+62")) {
+              phoneNumber = "+62" + phoneNumber;
+          }
+          var whatsappUrl = "https://wa.me/" + phoneNumber;
+          window.location.href = whatsappUrl;
+      });
   });
 </script>
-
 
 </body>
 

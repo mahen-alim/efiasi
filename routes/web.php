@@ -59,6 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Route notification
     Route::get('/notif', [NotifController::class, 'index'])->name('dashboard.notif.index');
+    Route::delete('/notif/destroy/{id}', [NotifController::class, 'destroy'])->name('dashboard.notif.destroy');
 
     // Route profile
     Route::get('/profile', [ProfilController::class, 'index'])->name('dashboard.profile.index');

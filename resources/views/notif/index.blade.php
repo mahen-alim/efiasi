@@ -26,9 +26,14 @@
                                   </h6>
                               @endforeach
                           </div>
-                          <div class="d-flex justify-content-end">
-                              <button type="submit" class="btn" id="btn-confirm">Konfirmasi</button>
-                              <button type="submit" class="btn" id="btn-cancel">Batalkan</button>
+                          <div class="d-flex justify-content-end" style="gap: 20px;">
+                              <button type="submit" class="btn wa-logo" data-phone="{{ $user->mobile_phone }}" id="btn-confirm" style="width: 50%;">Konfirmasi</button>
+                              <form action="{{ route('dashboard.notif.destroy', $service->id) }}" method="POST" style="width: 50%;">
+                                @method('delete')
+                                @csrf
+                                <input type="submit" class="btn" id="btn-cancel" onclick="return confirm('Apakah anda yakin akan membatalkan pesanan ini?')"
+                                    value="Batalkan" style="width: 100%;">
+                            </form>
                           </div>
                       </div>
                   </div>

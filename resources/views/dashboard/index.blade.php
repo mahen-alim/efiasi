@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xxl-3 col-sm-6 mb-xxl-0 mb-4">
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -99,7 +99,7 @@
               <div class="col-lg-6 col-7 text-white" style="margin-top: -10px;">
                 <h6 class="text-white">Akun Pengguna</h6>
                 <p class="text-sm mb-0" style="margin-top: -10px; padding-bottom: 10px;">
-                  <i class="fa fa-check text-success" aria-hidden="true"></i>
+                  <i class="fa fa-users text-white" aria-hidden="true"></i>
                   <span class="font-weight-bold ms-1">{{ $totalPelanggan }} Pengguna Terdaftar</span>
                 </p>
               </div>
@@ -142,10 +142,17 @@
           <div class="card" id="card-list-order">
             <div class="card-header pb-0" id="trans-card">
                 <h6  style="margin-top: -10px; color: white;">Ikhtisar Pesanan</h6>
-                <p class="text-sm text-white"  style="margin-top: -10px; margin-bottom: 10px;">
-                <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>            
-                  <span class="font-weight-bold">{{ $totalPemesan }} Pemesan</span>                  
+                <p class="text-sm text-white"  style="margin-top: -10px; margin-bottom: 10px;">            
+                    @if($totalPemesan > 0)
+                        <i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>        
+                        <span class="font-weight-bold">{{ $totalPemesan }} Pemesan</span>
+                    @else
+                        <i class="fa fa-times text-danger" aria-hidden="true"></i>          
+                        <span class="font-weight-bold text-danger">Tidak Ada Pesanan Masuk</span>
+                    @endif
                 </p>
+                
+                
             </div>
             <div class="card-body" id="ikhtisar-pesanan" >
               <div class="timeline timeline-one-side">
@@ -159,7 +166,7 @@
                         <div class="d-flex" style="gap: 10px;">
                             <h6 class="text-dark text-sm font-weight-bold mb-0">{{$user->name}}</h6>
                           @if (count($user->services) > 0)
-                          <i class="ph ph-whatsapp-logo" id="wa-logo" data-phone="{{ $user->mobile_phone }}"></i>
+                          <i class="ph ph-whatsapp-logo wa-logo" id="wa-logo" data-phone="{{ $user->mobile_phone }}"></i>
                         </div>
                             <ul class="list-group mb-0">  
                                 @foreach ($user->services as $service)
@@ -175,7 +182,7 @@
                     </div>
                 </div>
                 @endif
-            @endforeach
+                @endforeach
               </div>
             </div>
           </div>
@@ -200,7 +207,7 @@
           <ul class="list-group" >
             <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nama Bengkel:</strong> Prestasi Salon Mobil & Variasi Mobil</li>
             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Nomor Telepon:</strong> 085259873180</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Jam Buka:</strong> Senin - Minggu (08:00 - 17:00)</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Waktu Operasional:</strong> Senin - Minggu (08:00 - 17:00)</li>
             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Alamat:</strong> 9WC3+W6 Sukorejo, Kabupaten Nganjuk, Jawa Timur</li>
             <li class="list-group-item border-0 ps-0 pb-0">
               <strong class="text-dark text-sm">Sosial Media:</strong> &nbsp;
