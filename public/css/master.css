@@ -41,6 +41,9 @@ body {
     overflow-y: auto;
     margin-top: 5px;
     padding: 10px;
+    /* display: flex;
+    align-item: center;
+    text-align: center; */
 }
 /* Aturan untuk menyesuaikan warna ikon saat menu aktif */
 .nav-link.active .icon-shape svg path {

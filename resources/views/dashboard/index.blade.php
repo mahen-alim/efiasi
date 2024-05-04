@@ -150,45 +150,52 @@
                         <i class="fa fa-times text-danger" aria-hidden="true"></i>          
                         <span class="font-weight-bold text-danger">Tidak Ada Pesanan Masuk</span>
                     @endif
-                </p>
-                
-                
+                </p>    
             </div>
-            <div class="card-body" id="ikhtisar-pesanan" >
+            <div class="card-body" id="ikhtisar-pesanan">
               <div class="timeline timeline-one-side">
-                @foreach ($users as $user)
-                @if ($user->level == 'END USER' && $user->services->isNotEmpty())
-                <div class="timeline-block mb-3">
-                    <span class="timeline-step">
-                        <i class="fa-solid fa-user text-success"></i>
-                    </span>
-                    <div class="timeline-content">
-                        <div class="d-flex" style="gap: 10px;">
-                            <h6 class="text-dark text-sm font-weight-bold mb-0">{{$user->name}}</h6>
-                          @if (count($user->services) > 0)
-                          <i class="ph ph-whatsapp-logo wa-logo" id="wa-logo" data-phone="{{ $user->mobile_phone }}"></i>
-                        </div>
-                            <ul class="list-group mb-0">  
-                                @foreach ($user->services as $service)
-                                <a href="/notif" id="order-con-list">
-                                  <li class="list-group-item d-flex justify-content-between align-items-center w-98 mt-2">
-                                      <p class="mb-0" style="font-weight: normal;">{{ $service->tipe_service }}</p>
-                                      <span class="badge bg-secondary rounded-pill">{{ $service->created_at->format('Y-m-d') }}</span>
-                                  </li>
-                                </a>
-                                @endforeach
-                            </ul>
-                          @endif
+                  @if($totalPemesan == 0)
+                    <div class="timeline-block mb-3 mt-5">
+                        <span class="timeline-step w-100" style="display: flex; flex-direction: column; width: 100%; margin-top: 40px; margin-left: 150px;">
+                            <i class="ph ph-empty" style="font-size: 40px; color: red;"></i>
+                            <p>Data tidak tersedia</p>
+                        </span>
                     </div>
-                </div>
-                @endif
-                @endforeach
+                  @else
+                      @foreach ($users as $user)
+                          @if ($user->level == 'END USER' && $user->services->isNotEmpty())
+                              <div class="timeline-block mb-3">
+                                  <span class="timeline-step">
+                                      <i class="fa-solid fa-user text-success"></i>
+                                  </span>
+                                  <div class="timeline-content">
+                                      <div class="d-flex" style="gap: 10px;">
+                                          <h6 class="text-dark text-sm font-weight-bold mb-0">{{$user->name}}</h6>
+                                          @if (count($user->services) > 0)
+                                              <i class="ph ph-whatsapp-logo wa-logo" id="wa-logo" data-phone="{{ $user->mobile_phone }}"></i>
+                                          @endif
+                                      </div>
+                                      <ul class="list-group mb-0">  
+                                          @foreach ($user->services as $service)
+                                              <a href="/notif" id="order-con-list" target="_blank">
+                                                  <li class="list-group-item d-flex justify-content-between align-items-center w-98 mt-2">
+                                                      <p class="mb-0" style="font-weight: normal;">{{ $service->tipe_service }}</p>
+                                                      <span class="badge bg-secondary rounded-pill">{{ $service->created_at->format('Y-m-d') }}</span>
+                                                  </li>
+                                              </a>
+                                          @endforeach
+                                      </ul>
+                                  </div>
+                              </div>
+                          @endif
+                      @endforeach
+                  @endif
               </div>
             </div>
-          </div>
+          </div> 
         </div>
     </div>
-    <div class="col-lg-12 col-md-6 mt-4">
+    <div class="col-lg-12 col-md-10">
       <div class="card h-100">
         <div class="card-header pb-0 p-3" id="trans-card">
           <div class="row">
