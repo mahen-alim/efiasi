@@ -20,9 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('user')->group(function () {
-    Route::get('/getData', [apiController::class, 'getData']);
-    Route::post('/postData', [apiController::class, 'postData']);
-    Route::put('/updateData/{id}', [apiController::class, 'updateData']);
-    Route::delete('/deleteData/{id}', [apiController::class, 'deleteData']);
+Route::prefix('services')->group(function () {
+    Route::get('/get', [apiController::class, 'index']);
+    Route::post('/post', [apiController::class, 'store']);
+    Route::put('/update/{id}', [apiController::class, 'update']);
+    Route::delete('/delete/{id}', [apiController::class, 'destroy']);
+    // Route::resource('/', apiController::class);
 });

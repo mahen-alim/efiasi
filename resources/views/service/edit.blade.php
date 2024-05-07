@@ -22,11 +22,11 @@
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tipe Layanan</label>
-                      <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan tipe layanan">
+                      <select name="type" class="form-control" id="exampleInputServiceType" placeholder="Masukkan tipe layanan">
                         <option value="Detailing Interior" {{ $service->tipe_service == 'Detailing Interior' ? 'selected' : '' }}>Detailing Interior</option>
                         <option value="Detailing Eksterior" {{ $service->tipe_service == 'Detailing Eksterior' ? 'selected' : '' }}>Detailing Eksterior</option>
                         <option value="Detailing Kaca Mobil" {{ $service->tipe_service == 'Detailing Kaca Mobil' ? 'selected' : '' }}>Detailing Kaca Mobil</option>
-                        <option value="Detailing Engine Bay" {{ $service->tipe_service == 'Detailing Engine Bay' ? 'selected' : '' }}>Detailing Engine Bay</option>
+                        <option value="Detailing Ruang Mesin" {{ $service->tipe_service == 'Detailing Ruang Mesin' ? 'selected' : '' }}>Detailing Ruang Mesin</option>
                         <option value="Detailing Velg & Ban" {{ $service->tipe_service == 'Detailing Velg & Ban' ? 'selected' : '' }}>Detailing Velg & Ban</option>
                     </select>  
                 </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Harga</label>
-                  <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $service->price}}">
+                  <input name="price" type="number" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $service->price}}" disabled>
                 </div>
                 <button type="submit" class="btn form-control" id="search-btn">Simpan Perubahan</button>
               </form>

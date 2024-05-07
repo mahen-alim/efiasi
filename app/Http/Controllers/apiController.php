@@ -2,89 +2,97 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Service;
+// use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class apiController extends Controller
 {
-    public function getData()
+    public function index()
     {
-        $user = User::all();
+        $services = Service::all();
 
         return response()->json([
-            'success' => $user
+            'success' => $services
         ], 200);
     }
 
-    public function postData(Request $request)
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'email' => 'required|unique:users, email',
-            'password' => 'required',
-            'mobile_phone' => 'required',
+            'tipe_service' => 'required|min:5',
+            'price' => 'required|min:5',
+            'description' => 'required|min:5|max:1000',
+            'benefit' => 'required|min:5|max:1000',
+            'duration' => 'required',
+            'user_id' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
 
-        $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-            'mobile_phone' => $request->input('mobile_phone'),
+        $services = Service::create([
+            'user_id' => $request->input('user_id'),
+            'tipe_service' => $request->input('tipe_service'),
+            'price' => $request->input('price'),
+            'description' => $request->input('description'),
+            'benefit' => $request->input('benefit'),
+            'duration' => $request->input('duration'),
+            'file' => $request->input('file'),
         ]);
 
 
         return response()->json([
-            'success' => $user,
-            'message' => 'Data user berhasil disimpan'
+            'success' => $services,
+            'message' => 'Data detailing berhasil disimpan'
         ], 200);
     }
 
-    public function updateData(Request $request, $id)
+    public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $service = Service::find($id);
 
-        if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
+        if (!$service) {
+            return response()->json(['message' => 'Service not found'], 404);
         }
 
         $validator = Validator::make($request->all(), [
-            'name' => 'string|min:5',
-            'email' => 'email|min:10|unique:users,email,' . $id,
-            'password' => 'string|min:10',
-            'mobile_phone' => 'integer|min:10|max:13',
+            'tipe_service' => 'required|min:5',
+            'price' => 'required|numeric|min:0', // Mengubah validasi harga menjadi numeric
+            'description' => 'required|min:5|max:1000',
+            // Tambahkan validasi untuk benefit, duration, dan user_id jika diperlukan
         ]);
 
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        if ($request->has('password')) {
-            $user->password = bcrypt($request->input('password'));
-        }
-        $user->mobile_phone = $request->input('mobile_phone');
-        $user->save();
+        // Update atribut layanan
+        $service->update([
+            'tipe_service' => $request->input('tipe_service'),
+            'price' => $request->input('price'),
+            'description' => $request->input('description'),
+            // Tambahkan atribut lainnya jika diperlukan
+        ]);
 
-        return response()->json(['data' => $user, 'message' =>'Data user berhasil dirubah'], 200);
+        return response()->json([
+            'data' => $service,
+            'message' => 'Data service berhasil dirubah'
+        ], 200);
     }
 
-
-    public function deleteData($id)
+    public function destroy($id)
     {
-        $user = User::find($id);
+        $services = Service::find($id);
 
-        if (!$user) {
-            return response()->json(['message' => 'Data user tidak ditemukan'], 404);
+        if (!$services) {
+            return response()->json(['message' => 'Data detailing tidak ditemukan'], 404);
         }
 
-        $user->delete();
+        $services->delete();
 
-        return response()->json(['message' => 'Data user berhasil dihapus'], 200);
+        return response()->json(['message' => 'Data detailing berhasil dihapus'], 200);
     }
 }

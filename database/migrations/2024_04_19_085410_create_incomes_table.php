@@ -16,8 +16,10 @@ return new class extends Migration
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
             $table->foreignId('sparepart_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('tipe_service');
             $table->string('car_type');
             $table->integer('total_price');
+            $table->integer('duration')->default(0);
             $table->enum('status', ['CONFIRMED', 'CANCELED']);
             $table->timestamps();
         });

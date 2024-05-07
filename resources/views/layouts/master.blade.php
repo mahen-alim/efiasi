@@ -496,6 +496,30 @@
   });
 </script>
 
+<script>
+  document.getElementById('exampleInputServiceType').addEventListener('change', function() {
+      var priceInput = document.getElementById('exampleInputPrice');
+      var serviceType = this.value;
+    
+        if (serviceType === 'Detailing Interior') {
+            // Harga per jam untuk Detailing Interior adalah 200000
+            priceInput.value = 200000;
+        } else if (serviceType === 'Detailing Eksterior') {
+            // Harga per jam untuk Detailing Eksterior adalah 300000
+            priceInput.value = 300000;
+        } else if (serviceType === 'Detailing Velg & Ban') {
+            // Harga per jam untuk Detailing Velg & Ban adalah 350000
+            priceInput.value = 350000;
+        } else if (serviceType === 'Detailing Kaca Mobil') {
+            // Harga default jika tipe servis tidak sesuai
+            priceInput.value = 150000;
+        } else if (serviceType === 'Detailing Ruang Mesin') {
+          // Harga default jika tipe servis tidak sesuai
+          priceInput.value = 500000;
+        }
+    });
+</script>
+
 </body>
 
 </html>

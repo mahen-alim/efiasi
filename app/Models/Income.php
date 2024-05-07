@@ -13,9 +13,9 @@ class Income extends Model
 
     public function services()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->belongsToMany(Service::class, 'service_id', 'id');
     }
-
+    
     public function users()
     {
         return $this->belongsTo(User::class, 'income_id', 'id');

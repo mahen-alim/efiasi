@@ -12,12 +12,12 @@
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputPrice">Tipe Layanan <span style="color: red;">*</span></label>
-                    <select name="type" class="form-control" id="exampleInputPrzzice" placeholder="Masukkan Tipe Layanan">
+                    <select name="type" class="form-control" id="exampleInputServiceType" placeholder="Masukkan Tipe Layanan">
                         <option value="" disabled selected>Pilih Tipe Layanan</option>
                         <option value="Detailing Interior">Detailing Interior</option>
                         <option value="Detailing Eksterior">Detailing Eksterior</option>
                         <option value="Detailing Kaca Mobil">Detailing Kaca Mobil</option>
-                        <option value="Detailing Engine Bay">Detailing Engine Bay</option>
+                        <option value="Detailing Ruang Mesin">Detailing Ruang Mesin</option>
                         <option value="Detailing Velg & Ban">Detailing Velg & Ban</option>
                     </select>  
                     @error('type')
@@ -38,9 +38,10 @@
                     <div class="text-danger">{{ $message }}</div>
                     @enderror  
                 </div>
+
                 <div class="form-group">
                     <label for="exampleInputQty">Durasi Pengerjaan<span style="color: red;">*</span></label>
-                    <input name="duration" type="number" class="form-control" id="exampleInputQty" aria-describedby="emailHelp" placeholder="Masukkan Durasi Pengerjaan" pattern="[0-9]*" title="Hanya angka yang diperbolehkan">
+                    <input name="duration" type="number" class="form-control" id="exampleInputDuration" aria-describedby="emailHelp" placeholder="Masukkan Durasi Pengerjaan">
                     @error('duration')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror  
@@ -48,7 +49,7 @@
             
                 <div class="form-group">
                     <label for="exampleInputPrice">Harga <span style="color: red;">*</span></label>
-                    <input name="price" type="number" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp" placeholder="Masukkan Harga">
+                    <input name="price" type="number" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp" placeholder="Masukkan Harga" disabled>
                     @error('price')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror  

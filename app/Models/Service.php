@@ -16,6 +16,7 @@ class Service extends Model
         'benefit',
         'duration',
         'file',
+        'user_id'
     ];
 
     public function reports()
