@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\apiController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,4 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::prefix('user')->group(function () {
+    Route::get('/getData', [apiController::class, 'getData']);
+    Route::post('/postData', [apiController::class, 'postData']);
+    Route::put('/updateData/{id}', [apiController::class, 'updateData']);
+    Route::delete('/deleteData/{id}', [apiController::class, 'deleteData']);
+});

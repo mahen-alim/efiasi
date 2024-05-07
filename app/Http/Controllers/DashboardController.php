@@ -8,6 +8,8 @@ use App\Models\Service;
 use App\Models\Sparepart;
 use App\Models\User;
 use Carbon\Carbon;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Auth\Events\Validated;
 
 class DashboardController extends Controller
 {
@@ -52,8 +54,6 @@ class DashboardController extends Controller
             'persentaseKenaikanSparepart'
         ));
     }
-
-
 
     public function __construct()
     {
