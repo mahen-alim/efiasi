@@ -495,6 +495,21 @@
         this.value = this.value.replace(/\D/g, "");
     });
   </script>
+
+  <script>
+    // Menggunakan kelas sebagai selektor
+    document.querySelectorAll(".wa-logo").forEach(function (el) {
+        el.addEventListener("click", function () {
+            var phoneNumber = this.getAttribute("data-phone");
+            phoneNumber = phoneNumber.replace(/\D/g, "");
+            if (!phoneNumber.startsWith("+62")) {
+                phoneNumber = "+62" + phoneNumber;
+            }
+            var whatsappUrl = "https://wa.me/" + phoneNumber;
+            window.location.href = whatsappUrl;
+        });
+    });
+  </script>
 </body>
 
 </html>

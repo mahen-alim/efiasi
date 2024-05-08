@@ -14,14 +14,14 @@
             </div>
             <div class="mb-3">
                 <label for="mobile_phone" class="form-label">Nomor Telepon</label>
-                <input type="text" class="form-control" id="mobile_phone" name="mobile_phone" value="{{ $profil->mobile_phone }}">
+                <input type="text" class="form-control" id="mobile_phone" name="mobile_phone" value="{{ $profil->no_hp }}">
                 @error('mobile_phone')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror   
             </div>
             <div class="mb-3">
                 <label for="location" class="form-label">Alamat</label>
-                <input type="text" class="form-control" id="location" name="location" value="{{ $profil->location }}">
+                <input type="text" class="form-control" id="location" name="location" value="{{ $profil->alamat }}">
                 @error('location')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror

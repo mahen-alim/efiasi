@@ -27,7 +27,7 @@
                               @endforeach
                           </div>
                           <div class="d-flex justify-content-end" style="gap: 20px;">
-                              <button type="submit" class="btn wa-logo" data-phone="{{ $user->mobile_phone }}" id="btn-confirm" style="width: 50%;">Konfirmasi</button>
+                              <button type="submit" class="btn wa-logo" data-phone="{{ $user->no_hp }}" id="btn-confirm" style="width: 50%;">Konfirmasi</button>
                               <form action="{{ route('dashboard.notif.destroy', $service->id) }}" method="POST" style="width: 50%;">
                                 @method('delete')
                                 @csrf

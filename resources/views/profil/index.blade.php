@@ -45,9 +45,9 @@
           <div class="card-body p-3">
             <ul class="list-group" >
               <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nama Lengkap:</strong> {{ auth()->user()->name }}</li>
-              <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Nomor Telepon:</strong> {{ auth()->user()->mobile_phone }}</li>
+              <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Nomor Telepon:</strong> {{ auth()->user()->no_hp }}</li>
               <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> {{ auth()->user()->email }}</li>
-              <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Alamat:</strong> {{ auth()->user()->location }}</li>
+              <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Alamat:</strong> {{ auth()->user()->alamat }}</li>
               <li class="list-group-item border-0 ps-0 pb-0">
                 <strong class="text-dark text-sm">Sosial Media:</strong> &nbsp;
                 <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">

@@ -44,8 +44,8 @@ class ProfilController extends Controller
         // Update data pengguna
         $profil->update([
             'name' => $request->name,
-            'mobile_phone' => $request->mobile_phone,
-            'location' => $request->location,
+            'no_hp' => $request->mobile_phone,
+            'alamat' => $request->location,
             'quote' => $request->quote,
         ]);
 

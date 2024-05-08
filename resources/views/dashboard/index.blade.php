@@ -184,7 +184,7 @@
                                       <div class="d-flex" style="gap: 10px;">
                                           <h6 class="text-dark text-sm font-weight-bold mb-0">{{$user->name}}</h6>
                                           @if (count($user->services) > 0)
-                                              <i class="ph ph-whatsapp-logo wa-logo" id="wa-logo" data-phone="{{ $user->mobile_phone }}"></i>
+                                              <i class="ph ph-whatsapp-logo wa-logo" id="wa-logo" data-phone="{{ $user->no_hp }}"></i>
                                           @endif
                                       </div>
                                       <ul class="list-group mb-0">  

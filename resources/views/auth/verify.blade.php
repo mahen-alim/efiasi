@@ -122,7 +122,9 @@
                 </div>
                 <div class="card-body">
                     @if (session('resent'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert"></div>
+                        <div class="alert alert-success" role="alert">
+                            {{ __('A fresh verification link has been sent to your email address.') }}
+                        </div>
                     @endif
 
                     <script>
