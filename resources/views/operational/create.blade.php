@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Biaya <span style="color: red;">*</span></label>
-                    <input name="nominal" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Biaya">
+                    <input name="nominal" type="number" class="form-control" id="exampleInputNominal" aria-describedby="emailHelp" placeholder="Masukkan Biaya">
                     @error('nominal')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror 

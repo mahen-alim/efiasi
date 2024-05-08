@@ -471,55 +471,30 @@
   <script src="https://kit.fontawesome.com/924b40cfb7.js" crossorigin="anonymous"></script>
   <!-- flatpickr -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="{{ asset('js/master.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+  <script>
+    // Mendapatkan elemen input harga
+    var priceInput = document.getElementById("examplInputPriceVariation");
+
+    // Menambahkan event listener untuk memantau perubahan pada input
+    priceInput.addEventListener("input", function () {
+        // Menghapus karakter non-angka dari nilai input
+        this.value = this.value.replace(/\D/g, "");
+    });
+
+  </script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        flatpickr("#date", {
-            enableTime: false, // Enable time selection
-            dateFormat: "Y-m-d", // Specify the date format
-        });
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script>
-  // Menggunakan kelas sebagai selektor
-  document.querySelectorAll(".wa-logo").forEach(function(el) {
-      el.addEventListener("click", function() {
-          var phoneNumber = this.getAttribute("data-phone");
-          phoneNumber = phoneNumber.replace(/\D/g, '');
-          if (!phoneNumber.startsWith("+62")) {
-              phoneNumber = "+62" + phoneNumber;
-          }
-          var whatsappUrl = "https://wa.me/" + phoneNumber;
-          window.location.href = whatsappUrl;
-      });
-  });
-</script>
+    var priceInput = document.getElementById("exampleInputNominal");
 
-<script>
-  document.getElementById('exampleInputServiceType').addEventListener('change', function() {
-      var priceInput = document.getElementById('exampleInputPrice');
-      var serviceType = this.value;
-    
-        if (serviceType === 'Detailing Interior') {
-            // Harga per jam untuk Detailing Interior adalah 200000
-            priceInput.value = 200000;
-        } else if (serviceType === 'Detailing Eksterior') {
-            // Harga per jam untuk Detailing Eksterior adalah 300000
-            priceInput.value = 300000;
-        } else if (serviceType === 'Detailing Velg & Ban') {
-            // Harga per jam untuk Detailing Velg & Ban adalah 350000
-            priceInput.value = 350000;
-        } else if (serviceType === 'Detailing Kaca Mobil') {
-            // Harga default jika tipe servis tidak sesuai
-            priceInput.value = 150000;
-        } else if (serviceType === 'Detailing Ruang Mesin') {
-          // Harga default jika tipe servis tidak sesuai
-          priceInput.value = 500000;
-        }
+    // Menambahkan event listener untuk memantau perubahan pada input
+    priceInput.addEventListener("input", function () {
+        // Menghapus karakter non-angka dari nilai input
+        this.value = this.value.replace(/\D/g, "");
     });
-</script>
-
+  </script>
 </body>
 
 </html>

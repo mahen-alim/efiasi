@@ -23,10 +23,16 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Jenis Biaya</label>
                   <input name="type_cost" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jenis Biaya" value="{{ $operational->type_cost}}">
+                  @error('type_cost')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror 
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Biaya</label>
                     <input name="nominal" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Biaya" value="{{ $operational->nominal}}">
+                    @error('nominal')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror 
                   </div>
                   <div class="form-group">
                     <label for="exampleInputCategory">Kategori Biaya</label>
@@ -41,10 +47,16 @@
                         <option value="Transportasi" {{ $operational->category == 'Transportasi' ? 'selected' : '' }}>Transportasi</option>
                         <option value="Penggajian" {{ $operational->category == 'Penggajian' ? 'selected' : '' }}>Penggajian</option>
                     </select>
+                    @error('category')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror 
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Catatan</label>
                     <input name="description" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Catatan" value="{{ $operational->description}}">
+                    @error('description')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror 
                   </div>
                 <button type="submit" class="btn form-control" id="search-btn">Simpan Perubahan</button>
               </form>

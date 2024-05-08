@@ -36,18 +36,30 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Barang</label>
                   <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan tipe layanan" value="{{ $sparepart->name}}">
+                  @error('name')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror 
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Jumlah Barang</label>
                     <input name="jumlah" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Suku Cadang" value="{{ $sparepart->jumlah}}">
+                    @error('jumlah')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror 
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Merek Barang</label>
                     <input name="merk" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merek Barang" value="{{ $sparepart->merk}}">
+                    @error('merk')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror 
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Harga Barang</label>
+                    <label for="exampleInputEmail1">Harga Pemasangan</label>
                     <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $sparepart->price}}">
+                    @error('price')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror 
                   </div>
                 <button type="submit" class="btn form-control" id="search-btn">Simpan Perubahan</button>
               </form>

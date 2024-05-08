@@ -12,7 +12,7 @@
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tipe Variasi <span style="color: red;">*</span></label>
-                  <select name="type" class="form-control" id="exampleInputPrice" placeholder="Masukkan Tipe Variasi">
+                  <select name="type" class="form-control" id="exampleInputTypeVariation" placeholder="Masukkan Tipe Variasi">
                     <option value="" disabled selected>Pilih Tipe Variasi</option>
                     <option value="Variasi Lampu Mobil">Variasi Lampu Mobil</option>
                     <option value="Variasi Audio Mobil">Variasi Audio Mobil</option>
@@ -45,9 +45,10 @@
                     <div class="text-danger">{{ $message }}</div>
                     @enderror   
                   </div>
+
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Harga Variasi <span style="color: red;">*</span></label>
-                    <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga Barang">
+                    <label for="examplInputPriceVariation">Harga Pemasangan <span style="color: red;">*</span></label>
+                    <input name="price" type="number" class="form-control" id="examplInputPriceVariation" aria-describedby="emailHelp" placeholder="Masukkan Harga Variasi">
                     @error('price')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror   
@@ -57,4 +58,36 @@
         </div>
     </div>
 </div>
+
+  <script>
+    document
+    .getElementById("exampleInputTypeVariation")
+    .addEventListener("change", function () {
+        var priceInputVariation = document.getElementById(
+            "exampleInputPriceVariation"
+        );
+        var serviceTypeVariation = this.value;
+
+        switch (serviceTypeVariation) {
+            case "Variasi Lampu Mobil":
+                priceInputVariation.value = 200000;
+                break;
+            case "Variasi Audio Mobil":
+                priceInputVariation.value = 300000;
+                break;
+            case "Variasi Stiker Mobil":
+                priceInputVariation.value = 350000;
+                break;
+            case "Variasi Velg Mobil":
+                priceInputVariation.value = 150000;
+                break;
+            case "Variasi Kaca Mobil":
+                priceInputVariation.value = 500000;
+                break;
+            default:
+                priceInputVariation.value = "";
+        }
+    });
+
+  </script>
 @endsection

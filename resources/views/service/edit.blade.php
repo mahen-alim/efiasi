@@ -29,22 +29,37 @@
                         <option value="Detailing Ruang Mesin" {{ $service->tipe_service == 'Detailing Ruang Mesin' ? 'selected' : '' }}>Detailing Ruang Mesin</option>
                         <option value="Detailing Velg & Ban" {{ $service->tipe_service == 'Detailing Velg & Ban' ? 'selected' : '' }}>Detailing Velg & Ban</option>
                     </select>  
+                    @error('type')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror    
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Deskripsi Layanan</label>
                     <textarea name="description" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Deskripsi Layanan">{{ $service->description}}</textarea>
+                    @error('description')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror    
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Manfaat Layanan</label>
                   <textarea name="benefit" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Manfaat Layanan">{{ $service->benefit}}</textarea>
+                  @error('benefit')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror    
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Durasi Pengerjaan</label>
-                  <input name="duration" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Durasi Pengerjaan" value="{{ $service->duration}}">
+                  <input name="duration" type="number" class="form-control" id="exampleInputDuration" aria-describedby="emailHelp" placeholder="Masukkan Durasi Pengerjaan" value="{{ $service->duration}}">
+                  @error('duration')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror 
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Harga</label>
-                  <input name="price" type="number" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $service->price}}" disabled>
+                  <input name="price" type="number" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $service->price}}">
+                  @error('price')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror 
                 </div>
                 <button type="submit" class="btn form-control" id="search-btn">Simpan Perubahan</button>
               </form>
