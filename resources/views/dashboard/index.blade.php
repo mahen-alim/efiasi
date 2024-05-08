@@ -139,7 +139,7 @@
                                 <span class="dot-success"></span>
                                 {{ $user->email }}
                             </td>
-                            <td class="px-4 text-sm">{{ $user->mobile_phone }}</td>
+                            <td class="px-4 text-sm">{{ $user->no_hp }}</td>
                             <td class="px-4 text-sm">{{ $user->level }}</td>
                         </tr>
                     @endif

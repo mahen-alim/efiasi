@@ -49,7 +49,7 @@
             
                 <div class="form-group">
                     <label for="exampleInputPrice">Harga <span style="color: red;">*</span></label>
-                    <input name="price" type="number" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp" disabled>
+                    <input name="price" type="number" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp" placeholder="Masukkan Harga" disabled>
                     @error('price')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror  
@@ -71,6 +71,7 @@
                     <span class="spinner-border spinner-border-sm d-none me-2" aria-hidden="true"></span>
                     Simpan
                 </button>
+            
             </form>
             
             <!-- Scripts -->

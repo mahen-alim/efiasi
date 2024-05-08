@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('outcomes', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->string('cost_type');
-            $table->foreignId('operational_id')->constrained()->onDelete('cascade');
-            $table->foreignId('sparepart_id')->constrained()->onDelete('cascade');
+            $table->string('jenis_mobil');
+            $table->text('keluhan');
+            $table->integer('harga');
+            $table->text('gambar');
+            $table->date('tanggal_pemesanan');
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('outcomes');
+        Schema::dropIfExists('reservations');
     }
 };

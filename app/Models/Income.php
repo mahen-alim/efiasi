@@ -15,7 +15,7 @@ class Income extends Model
     {
         return $this->belongsToMany(Service::class, 'service_id', 'id');
     }
-    
+
     public function users()
     {
         return $this->belongsTo(User::class, 'income_id', 'id');
@@ -24,5 +24,10 @@ class Income extends Model
     public function spareparts()
     {
         return $this->belongsTo(Sparepart::class);
+    }
+
+    public function reservation()
+    {
+        return $this->belongsTo(Reservation::class);
     }
 }

@@ -19,11 +19,6 @@ class Service extends Model
         'user_id'
     ];
 
-    public function reports()
-    {
-        return $this->hasOne(Report::class, 'report_service')->withTimeStamps();
-    }
-
     public function incomes()
     {
         return $this->hasOne(Income::class, 'service_id');

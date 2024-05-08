@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\apiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,11 @@ Route::prefix('services')->group(function () {
     Route::put('/update/{id}', [apiController::class, 'update']);
     Route::delete('/delete/{id}', [apiController::class, 'destroy']);
     // Route::resource('/', apiController::class);
+});
+
+Route::prefix('reservations')->group(function () {
+    Route::get('/get', [ReservationController::class, 'index']);
+    Route::post('/post', [ReservationController::class, 'store']);  
+    Route::put('/update/{id}', [ReservationController::class, 'update']);
+    Route::delete('/delete/{id}', [ReservationController::class, 'destroy']);
 });

@@ -44,8 +44,8 @@
                       <td class="px-4">{{ $index + 1 }}</td>
                       <td class="px-4">{{ $d->tipe_service}}</td>
                       <td class="px-4">{{ $d->duration}}</td>
-                      <td class="px-4">{{ $d->price_total}}</td>
-                      <td class="px-4">{{ $d->price_total}}</td>
+                      <td class="px-4">{{ $d->harga}}</td>
+                      <td class="px-4">{{ $d->total_price}}</td>
                       <td class="px-4">{{ $d->trans_time}}</td>
                       <td class="px-4 d-flex">          
                       </td>                

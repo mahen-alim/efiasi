@@ -41,6 +41,10 @@ class SparepartController extends Controller
 
         // Redirect dengan pesan sukses
         return redirect()->route('dashboard.sparepart.index')->with('success', 'Data variasi berhasil ditambahkan');
+
+        // return response()->json([
+        //     'success' => $sparepart,
+        // ]);
     }
 
     public function edit($id)
@@ -65,7 +69,7 @@ class SparepartController extends Controller
         $sparepart = sparepart::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (! $sparepart) {
+        if (!$sparepart) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data variasi tidak ditemukan.');
         }

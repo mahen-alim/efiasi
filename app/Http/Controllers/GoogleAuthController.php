@@ -29,8 +29,8 @@ class GoogleAuthController extends Controller
                     'name' => $google_user->getName(),
                     'email' => $google_user->getEmail(),
                     'google_id' => $google_user->getId(),
-                    'location' => 'Nganjuk', // Ganti 'Alamat default' dengan alamat yang sesuai dari Google
-                    'mobile_phone' => 1234567890, // Assign the value directly as an integer
+                    'alamat' => 'Nganjuk', // Ganti 'Alamat default' dengan alamat yang sesuai dari Google
+                    'no_hp' => 1234567890, // Assign the value directly as an integer
                     'quote' => '"Kode yang baik adalah seperti puisi; mereka memberikan makna dalam pengurangan yang paling kecil." - Dominic Licciardi',
                     'password' => bcrypt('12345'),
                     'profile_picture' => $google_user->getAvatar() ?? 'https://example.com/default-profile-picture.jpg',

@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('username')->nullable();
+            $table->text('alamat')->nullable();
             $table->string('email')->unique();
-            $table->string('mobile_phone')->nullable(); // Menetapkan nilai default untuk integer
+            $table->string('no_hp')->nullable(); // Menetapkan nilai default untuk integer
             $table->string('location')->nullable(); // Menetapkan nilai default untuk text
-            $table->text('quote'); // Menetapkan nilai default untuk text
+            $table->text('quote')->nullable(); // Menetapkan nilai default untuk text
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('profile_picture')->nullable();

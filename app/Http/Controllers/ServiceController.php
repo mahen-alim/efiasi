@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Income;
 use App\Models\Report;
 use App\Models\Service;
 use App\Models\User;
@@ -52,7 +53,6 @@ class ServiceController extends Controller
         // Simpan entri ke dalam tabel
         $service->save();
 
-
         // get dropzone image
         if ($request->file('file')) {
             $file = $request->file('file');
@@ -62,14 +62,6 @@ class ServiceController extends Controller
                 'file' => '/storage/img/dropzone/' . $filename, // Simpan path file dalam database
             ]);
         }
-
-        // Simpan data pada tabel reports
-        Report::create([
-            'service_id' => $service->id,
-            'tipe_service' => $request->type,
-            'duration' => $request->duration,
-            'price_total' => $request->price,
-        ]);
 
         // Redirect ke halaman tertentu setelah data berhasil ditambahkan
         return redirect('/service-index')->with('success', 'Data detailing berhasil ditambahkan');

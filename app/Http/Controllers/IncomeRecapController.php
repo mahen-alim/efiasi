@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ReportMoneyExport;
+use App\Models\Income;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -13,7 +14,6 @@ class IncomeRecapController extends Controller
     {
         return view('report.income');
     }
-
     public function table(Request $request)
     {
         $request->validate([
@@ -24,14 +24,17 @@ class IncomeRecapController extends Controller
         $keyword = $request->input('income_type');
         $date = $request->input('date');
 
-        $query = Report::query();
+        $query = Income::query();
+
+        $query->join('reservations', 'incomes.reservation_id', '=', 'reservations.id')
+            ->select('incomes.*', 'reservations.tanggal_pemesanan AS trans_time');
 
         if ($keyword) {
-            $query->where('tipe_service', 'LIKE', "%$keyword%");
+            $query->where('incomes.tipe_service', 'LIKE', "%$keyword%");
         }
 
         if ($date) {
-            $query->whereDate('trans_time', $date);
+            $query->whereDate('reservations.tanggal_pemesanan', $date);
         }
 
         $data = $query->get();
@@ -44,6 +47,9 @@ class IncomeRecapController extends Controller
 
         // Return view dengan data yang sesuai
         return view('report.money_table_income', compact('data', 'failMessage'));
+        // return response()->json([
+        //     'succes' => $data
+        // ]);
     }
 
     public function export()
