@@ -59,35 +59,4 @@
     </div>
 </div>
 
-  <script>
-    document
-    .getElementById("exampleInputTypeVariation")
-    .addEventListener("change", function () {
-        var priceInputVariation = document.getElementById(
-            "exampleInputPriceVariation"
-        );
-        var serviceTypeVariation = this.value;
-
-        switch (serviceTypeVariation) {
-            case "Variasi Lampu Mobil":
-                priceInputVariation.value = 200000;
-                break;
-            case "Variasi Audio Mobil":
-                priceInputVariation.value = 300000;
-                break;
-            case "Variasi Stiker Mobil":
-                priceInputVariation.value = 350000;
-                break;
-            case "Variasi Velg Mobil":
-                priceInputVariation.value = 150000;
-                break;
-            case "Variasi Kaca Mobil":
-                priceInputVariation.value = 500000;
-                break;
-            default:
-                priceInputVariation.value = "";
-        }
-    });
-
-  </script>
 @endsection
