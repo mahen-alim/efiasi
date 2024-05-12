@@ -11,13 +11,8 @@ class Operational extends Model
 
     protected $guarded = ['id'];
 
-    public function reports()
-    {
-        return $this->hasOne(Report::class, 'operational_report');
-    }
-
     public function outcomes()
     {
-        return $this->belongsTo(Outcome::class, 'operational_id', 'id');
+        return $this->hasMany(Outcome::class);
     }
 }

@@ -29,8 +29,8 @@ class OutcomeRecapController extends Controller
 
         $query = Outcome::query();
 
-        // Menambahkan kondisi untuk jenis biaya dan tanggal yang dipilih
-        if ($keyword == 'Biaya Pembelian Variasi') {
+        // Menambahkan kondisi untuk jenis biaya yang dipilih
+        if ($keyword) {
             $query->where('cost_type', 'LIKE', "%$keyword%");
         }
 
@@ -38,12 +38,9 @@ class OutcomeRecapController extends Controller
         if ($date) {
             // Mengonversi format tanggal ke format yang sesuai dengan format yang disimpan di kolom created_at
             $formattedDate = date('Y-m-d', strtotime($date));
-            // Mencari data sparepart berdasarkan tanggal yang dipilih
+            // Mencari data berdasarkan tanggal yang dipilih
             $query->whereDate('created_at', $formattedDate);
         }
-
-        // Menambahkan kondisi untuk memastikan operational_id null
-        $query->whereNull('operational_id');
 
         $data = $query->get();
 

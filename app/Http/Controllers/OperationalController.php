@@ -43,7 +43,7 @@ class OperationalController extends Controller
 
         Outcome::create([
             'operational_id' => $operational->id,
-            'cost_type' => $request->category,
+            'cost_type' => $operational->category,
         ]);
 
         //Pengembalian nilai untuk beralih ke halaman operational.index jika data berhasil ditambahkan
@@ -70,7 +70,7 @@ class OperationalController extends Controller
         $operational = Operational::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
-        if (! $operational) {
+        if (!$operational) {
             // Handle ketika data tidak ditemukan, misalnya redirect atau response lainnya
             return redirect()->back()->with('error', 'Data operasional tidak ditemukan.');
         }

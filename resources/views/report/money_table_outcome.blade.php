@@ -30,30 +30,44 @@
                 <thead>
                     <tr>
                       <th class="text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                      {{-- Statis --}}
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Jenis Biaya</th> 
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Nama Variasi</th> 
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Jumlah Variasi</th> 
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Merek Variasi</th> 
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Harga Pemasangan</th> 
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Masuk</th>
+                      {{-- Dinamis --}}
+                      @if($data->isNotEmpty() && isset($data[0]->sparepart_id))
+                        <th class="text-secondary text-xxs font-weight-bolder opacity-7">Nama Variasi</th> 
+                        <th class="text-secondary text-xxs font-weight-bolder opacity-7">Jumlah Variasi</th> 
+                        <th class="text-secondary text-xxs font-weight-bolder opacity-7">Merek Variasi</th> 
+                        <th class="text-secondary text-xxs font-weight-bolder opacity-7">Harga Pemasangan</th> 
+                        <th class="text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Masuk</th>
+                      @else
+                        <th class="text-secondary text-xxs font-weight-bolder opacity-7">Jenis Pengeluaran</th> 
+                        <th class="text-secondary text-xxs font-weight-bolder opacity-7">Kategori Biaya</th> 
+                        <th class="text-secondary text-xxs font-weight-bolder opacity-7">Total Biaya</th> 
+                        <th class="text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Masuk</th>
+                      @endif
+                     
+                  
                     </tr>
                 </thead>
                 <tbody class="hoverable">
                   @foreach ($data as $index => $d)
-                    <tr>
-                      <td class="px-4">{{ $index + 1 }}</td>
-                      <td class="px-4">{{ $d->cost_type}}</td>
-                      <td class="px-4">{{ $d->sparepart->name }}</td>
-                      <td class="px-4">{{ $d->sparepart->jumlah }}</td>
-                      <td class="px-4">{{ $d->sparepart->merk }}</td>
-                      <td class="px-4">{{ $d->sparepart->price }}</td>
-                      <td class="px-4">{{ $d->created_at->format('Y-m-d') }}</td>
-                      <td class="px-4 d-flex">          
-                      </td>                
-                    </tr>
+                      <tr>
+                          @if ($d->sparepart_id)
+                              <td class="px-4">{{ $index + 1 }}</td>
+                              <td class="px-4">{{ $d->sparepart->name }}</td>
+                              <td class="px-4">{{ $d->sparepart->jumlah }}</td>
+                              <td class="px-4">{{ $d->sparepart->merk }}</td>
+                              <td class="px-4">{{ $d->sparepart->price }}</td>
+                              <td class="px-4">{{ $d->created_at->format('Y-m-d') }}</td>
+                          @else
+                              <td class="px-4">{{ $index + 1 }}</td>
+                              <td class="px-4">{{ $d->operational->type_cost }}</td>
+                              <td class="px-4">{{ $d->operational->category }}</td>
+                              <td class="px-4">{{ $d->operational->nominal }}</td>
+                              <td class="px-4">{{ $d->created_at->format('Y-m-d') }}</td>
+                          @endif
+                      </tr>
                   @endforeach
-                </tbody>
+              </tbody>
+              
               </table>   
             </div>     
           </div>

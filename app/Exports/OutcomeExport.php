@@ -18,13 +18,13 @@ class OutcomeExport implements FromCollection, WithHeadings
         // Menambahkan nomor urut pada setiap baris data
         $data = $outcome->map(function ($outcome, $key) {
             return [
-                $key + 1, // Nomor urut dimulai dari 1
+                $key + 1, 
                 $outcome->cost_type,
                 $outcome->sparepart->name,
                 $outcome->sparepart->jumlah,
                 $outcome->sparepart->merk,
                 $outcome->sparepart->price,
-                $outcome->created_at, // Mengambil nilai trans_time dari relasi Reservation
+                $outcome->created_at, 
             ];
         });
 
