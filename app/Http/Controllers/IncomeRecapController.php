@@ -35,7 +35,7 @@ class IncomeRecapController extends Controller
         }
 
         if ($date) {
-            $query->whereDate('reservations.tanggal_pemesanan', $date);
+            $query->whereDate('incomes.created_at', $date);
         }
 
         $data = $query->get();

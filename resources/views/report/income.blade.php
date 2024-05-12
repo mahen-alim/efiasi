@@ -15,7 +15,7 @@
                   <option value="Detailing Interior">Detailing Interior</option>
                   <option value="Detailing Eksterior">Detailing Eksterior</option>
                   <option value="Detailing Kaca Mobil">Detailing Kaca Mobil</option>
-                  <option value="Detailing Engine Bay">Detailing Engine Bay</option>
+                  <option value="Detailing Ruang Mesin">Detailing Ruang Mesin</option>
                   <option value="Detailing Velg & Ban">Detailing Velg & Ban</option>
                 </select>   
                 @error('income_type')
