@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\OutcomeExport;
 use App\Exports\ReportMoneyExport;
+use App\Models\Outcome;
 use App\Models\Report;
+use App\Models\Sparepart;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -24,15 +27,23 @@ class OutcomeRecapController extends Controller
         $keyword = $request->input('outcome_type');
         $date = $request->input('date');
 
-        $query = Report::query();
+        $query = Outcome::query();
 
-        if ($keyword) {
-            $query->where('tipe_service', 'LIKE', "%$keyword%");
+        // Menambahkan kondisi untuk jenis biaya dan tanggal yang dipilih
+        if ($keyword == 'Biaya Pembelian Variasi') {
+            $query->where('cost_type', 'LIKE', "%$keyword%");
         }
 
+        // Memeriksa apakah input tanggal sudah diberikan oleh pengguna
         if ($date) {
-            $query->whereDate('trans_time', $date);
+            // Mengonversi format tanggal ke format yang sesuai dengan format yang disimpan di kolom created_at
+            $formattedDate = date('Y-m-d', strtotime($date));
+            // Mencari data sparepart berdasarkan tanggal yang dipilih
+            $query->whereDate('created_at', $formattedDate);
         }
+
+        // Menambahkan kondisi untuk memastikan operational_id null
+        $query->whereNull('operational_id');
 
         $data = $query->get();
 
@@ -46,8 +57,9 @@ class OutcomeRecapController extends Controller
         return view('report.money_table_outcome', compact('data', 'failMessage'));
     }
 
+
     public function export()
     {
-        return Excel::download(new ReportMoneyExport, 'report_money.xlsx');
+        return Excel::download(new OutcomeExport, 'outcome_recap.xlsx');
     }
 }

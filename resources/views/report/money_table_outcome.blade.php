@@ -31,21 +31,24 @@
                     <tr>
                       <th class="text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
                       {{-- Statis --}}
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Sparepart</th> 
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Stok Barang</th>
-                      {{-- Dinamis --}}
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Jenis Layanan</th>
-                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
+                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Jenis Biaya</th> 
+                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Nama Variasi</th> 
+                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Jumlah Variasi</th> 
+                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Merek Variasi</th> 
+                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Harga Pemasangan</th> 
+                      <th class="text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Masuk</th>
                     </tr>
                 </thead>
                 <tbody class="hoverable">
                   @foreach ($data as $index => $d)
                     <tr>
                       <td class="px-4">{{ $index + 1 }}</td>
-                      <td class="px-4">{{ $d->sparepart}}</td>
-                      <td class="px-4">{{ $d->stock}}</td>
-                      <td class="px-4">{{ $d->tipe_service}}</td>
-                      <td class="px-4">{{ $d->trans_time}}</td>
+                      <td class="px-4">{{ $d->cost_type}}</td>
+                      <td class="px-4">{{ $d->sparepart->name }}</td>
+                      <td class="px-4">{{ $d->sparepart->jumlah }}</td>
+                      <td class="px-4">{{ $d->sparepart->merk }}</td>
+                      <td class="px-4">{{ $d->sparepart->price }}</td>
+                      <td class="px-4">{{ $d->created_at->format('Y-m-d') }}</td>
                       <td class="px-4 d-flex">          
                       </td>                
                     </tr>

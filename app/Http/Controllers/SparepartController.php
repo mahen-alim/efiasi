@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Outcome;
 use App\Models\sparepart;
 use Illuminate\Http\Request;
 
@@ -39,12 +40,12 @@ class SparepartController extends Controller
             'price' => $request->price,
         ]);
 
+        $outcome = Outcome::create([
+            'cost_type' => $sparepart->type,
+            'sparepart_id' => $sparepart->id,
+        ]);
         // Redirect dengan pesan sukses
         return redirect()->route('dashboard.sparepart.index')->with('success', 'Data variasi berhasil ditambahkan');
-
-        // return response()->json([
-        //     'success' => $sparepart,
-        // ]);
     }
 
     public function edit($id)

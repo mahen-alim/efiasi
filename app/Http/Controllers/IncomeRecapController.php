@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\IncomeExport;
 use App\Exports\ReportMoneyExport;
 use App\Models\Income;
 use App\Models\Report;
@@ -47,13 +48,10 @@ class IncomeRecapController extends Controller
 
         // Return view dengan data yang sesuai
         return view('report.money_table_income', compact('data', 'failMessage'));
-        // return response()->json([
-        //     'succes' => $data
-        // ]);
     }
 
     public function export()
     {
-        return Excel::download(new ReportMoneyExport, 'report_money.xlsx');
+        return Excel::download(new IncomeExport, 'income_recap.xlsx');
     }
 }

@@ -15,6 +15,7 @@
                     <option value="Biaya Transportasi">Biaya Transportasi</option>
                     <option value="Biaya Asuransi">Biaya Asuransi</option>
                     <option value="Biaya Keamanan">Biaya Keamanan</option>
+                    <option value="Biaya Keamanan">Biaya Pembelian Variasi</option>
                 </select>           
                 @error('outcome_type')
                   <div class="text-danger">{{ $message }}</div>

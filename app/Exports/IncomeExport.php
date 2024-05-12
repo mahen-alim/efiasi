@@ -7,7 +7,7 @@ use App\Models\Report;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ReportMoneyExport implements FromCollection, WithHeadings
+class IncomeExport implements FromCollection, WithHeadings
 {
     public function collection()
     {

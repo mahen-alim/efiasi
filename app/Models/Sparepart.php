@@ -11,13 +11,8 @@ class Sparepart extends Model
 
     protected $guarded = ['id'];
 
-    public function reports()
-    {
-        return $this->belongsToMany(Report::class, 'report_sparepart');
-    }
-
     public function outcomes()
     {
-        return $this->belongsTo(Outcome::class, 'sparepart_id', 'id');
+        return $this->hasMany(Outcome::class);
     }
 }

@@ -510,6 +510,45 @@
         });
     });
   </script>
+
+<script>
+  // Fungsi untuk mengisi harga secara otomatis
+  function fillPrice() {
+    // Mendapatkan nilai yang dipilih dari dropdown tipe variasi
+    var type = document.getElementById("exampleInputTypeVariation").value;
+
+    // Mendefinisikan harga berdasarkan tipe variasi
+    var price = 0;
+
+    // Memilih harga berdasarkan tipe variasi
+    switch (type) {
+      case "Variasi Lampu Mobil":
+        price = 100000; // Contoh harga untuk variasi lampu mobil
+        break;
+      case "Variasi Audio Mobil":
+        price = 150000; // Contoh harga untuk variasi audio mobil
+        break;
+      case "Variasi Stiker Mobil":
+        price = 50000; // Contoh harga untuk variasi stiker mobil
+        break;
+      case "Variasi Velg Mobil":
+        price = 200000; // Contoh harga untuk variasi velg mobil
+        break;
+      case "Variasi Kaca Mobil":
+        price = 300000; // Contoh harga untuk variasi kaca mobil
+        break;
+      default:
+        price = 0;
+    }
+
+    // Mengisi input harga dengan harga yang dipilih
+    document.getElementById("examplInputPriceVariation").value = price;
+  }
+
+  // Memanggil fungsi fillPrice() setiap kali dropdown tipe variasi berubah
+  document.getElementById("exampleInputTypeVariation").addEventListener("change", fillPrice);
+</script>
+
 </body>
 
 </html>
