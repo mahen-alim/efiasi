@@ -50,7 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route income recap
     Route::get('/report/income', [IncomeRecapController::class, 'index'])->name('dashboard.report.income.index');
     Route::get('/report/income/table', [IncomeRecapController::class, 'table'])->name('dashboard.report.income.table');
-    Route::get('/report/export', [IncomeRecapController::class, 'export'])->name('dashboard.report.export');
+    Route::get('/report/income/export', [IncomeRecapController::class, 'export'])->name('dashboard.report.income.export');
 
     // Route outcome recap
     Route::get('/report/outcome', [OutcomeRecapController::class, 'index'])->name('dashboard.report.outcome.index');

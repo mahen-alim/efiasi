@@ -13,18 +13,14 @@ class OutcomeExport implements FromCollection, WithHeadings
     public function collection()
     {
         // Mengambil semua data dari model Income dengan relasi Reservation
-        $outcome = Outcome::with('sparepart')->get();
+        $outcome = Outcome::all();
 
         // Menambahkan nomor urut pada setiap baris data
         $data = $outcome->map(function ($outcome, $key) {
             return [
-                $key + 1, 
+                $key + 1,
                 $outcome->cost_type,
-                $outcome->sparepart->name,
-                $outcome->sparepart->jumlah,
-                $outcome->sparepart->merk,
-                $outcome->sparepart->price,
-                $outcome->created_at, 
+                $outcome->created_at,
             ];
         });
 
@@ -36,10 +32,6 @@ class OutcomeExport implements FromCollection, WithHeadings
         return [
             'No',
             'Jenis Biaya',
-            'Nama Variasi',
-            'Jumlah Variasi',
-            'Merek Variasi',
-            'Harga Pemasangan',
             'Tanggal',
         ];
     }
