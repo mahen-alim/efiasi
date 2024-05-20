@@ -271,7 +271,7 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 developed by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">C3 Team</a>
+                <a href="" class="font-weight-bold" >C3 Team</a>
               </div>
             </div>
           </div>

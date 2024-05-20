@@ -3,6 +3,7 @@
 use App\Http\Controllers\apiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\userApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +35,11 @@ Route::prefix('reservations')->group(function () {
     Route::post('/post', [ReservationController::class, 'store']);  
     Route::put('/update/{id}', [ReservationController::class, 'update']);
     Route::delete('/delete/{id}', [ReservationController::class, 'destroy']);
+});
+
+Route::prefix('users')->group(function () {
+    Route::get('/get', [userApiController::class, 'index']);
+    Route::post('/post', [userApiController::class, 'store']);  
+    Route::put('/update/{id}', [userApiController::class, 'update']);
+    Route::delete('/delete/{id}', [userApiController::class, 'destroy']);
 });

@@ -231,13 +231,7 @@
             <li class="list-group-item border-0 ps-0 pb-0">
               <strong class="text-dark text-sm">Sosial Media:</strong> &nbsp;
               <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
-              </a>
-              <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
-              </a>
-              <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
+                <i class="ph ph-whatsapp-logo wa-logo" id="wa-logo"></i>
               </a>
             </li>
           </ul>
