@@ -11,6 +11,7 @@ use App\Http\Controllers\OutcomeRecapController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SparepartController;

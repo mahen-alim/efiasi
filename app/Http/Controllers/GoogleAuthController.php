@@ -21,6 +21,11 @@ class GoogleAuthController extends Controller
             $user = User::where('email', $google_user->getEmail())->first();
 
             if ($user) {
+                // Cek jika level user adalah 'END USER'
+                if ($user->level === 'END USER') {
+                    return redirect()->route('login')->withErrors(['error' => 'User level END USER is not allowed to login']);
+                }
+
                 Auth::login($user);
 
                 return redirect()->intended('dashboard');
@@ -34,14 +39,20 @@ class GoogleAuthController extends Controller
                     'quote' => '"Kode yang baik adalah seperti puisi; mereka memberikan makna dalam pengurangan yang paling kecil." - Dominic Licciardi',
                     'password' => bcrypt('12345'),
                     'profile_picture' => $google_user->getAvatar() ?? 'https://example.com/default-profile-picture.jpg',
+                    'level' => 'DEFAULT LEVEL' // Sesuaikan dengan level default yang diinginkan
                 ]);
+
+                // Cek jika level user baru adalah 'END USER'
+                if ($new_user->level === 'END USER') {
+                    return redirect()->route('login')->withErrors(['error' => 'User level END USER is not allowed to login']);
+                }
 
                 Auth::login($new_user);
 
                 return redirect()->intended('dashboard');
             }
         } catch (\Throwable $th) {
-            dd('Something went wrong'.$th->getMessage());
+            dd('Something went wrong: ' . $th->getMessage());
         }
     }
 }

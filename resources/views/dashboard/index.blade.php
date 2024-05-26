@@ -11,11 +11,6 @@
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pendapatan Hari Ini</p>
                 <h5 class="font-weight-bolder mb-0">
                   Rp. {{ $totalHargaLayanan->sum() }}
-                  {{-- @if ($persentaseKenaikanPendapatan > 0)
-                      <span class="text-success text-sm font-weight-bolder">+{{ $persentaseKenaikanPendapatan }}%</span>
-                  @elseif ($persentaseKenaikanPendapatan == 0)
-                      <span class="text-secondary text-sm font-weight-bolder">{{ $persentaseKenaikanPendapatan }}%</span>
-                  @endif --}}
                 </h5>           
               </div>
             </div>
@@ -37,11 +32,6 @@
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pelanggan Hari Ini</p>
                 <h5 class="font-weight-bolder mb-0">
                   {{ $totalPemesan }} <span class="font-ms mb-0">Pelanggan</span>
-                  {{-- @if ($persentaseKenaikanPelanggan > 0)
-                      <span class="text-success text-sm font-weight-bolder">+{{ $persentaseKenaikanPelanggan }}%</span>
-                  @elseif ($persentaseKenaikanPelanggan == 0)
-                      <span class="text-secondary text-sm font-weight-bolder">{{ $persentaseKenaikanPelanggan }}%</span>
-                  @endif --}}
                 </h5>
               </div>
             </div>
@@ -63,11 +53,6 @@
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Barang Masuk</p>
                 <h5 class="font-weight-bolder mb-0">
                   {{ $totalSparepart }}
-                  {{-- @if ($persentaseKenaikanSparepart > 0)
-                      <span class="text-success text-sm font-weight-bolder">+{{ $persentaseKenaikanSparepart }}%</span>
-                  @elseif ($persentaseKenaikanSparepart == 0)
-                      <span class="text-secondary text-sm font-weight-bolder">{{ $persentaseKenaikanSparepart }}%</span>
-                  @endif --}}
                 </h5>             
               </div>
             </div>
@@ -88,8 +73,6 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Barang Keluar</p>
                 <h5 class="font-weight-bolder mb-0">
-                  {{-- {{ $totalBarangKeluarConfirmed }} --}}
-                  {{-- <span class="text-success text-sm font-weight-bolder">+5%</span> --}}
                 </h5>
               </div>
             </div>
@@ -174,33 +157,34 @@
                         </span>
                     </div>
                   @else
-                      @foreach ($users as $user)
-                          @if ($user->level == 'END USER' && $user->services->isNotEmpty())
-                              <div class="timeline-block mb-3">
-                                  <span class="timeline-step">
-                                      <i class="fa-solid fa-user text-success"></i>
-                                  </span>
-                                  <div class="timeline-content">
-                                      <div class="d-flex" style="gap: 10px;">
-                                          <h6 class="text-dark text-sm font-weight-bold mb-0">{{$user->name}}</h6>
-                                          @if (count($user->services) > 0)
-                                              <i class="ph ph-whatsapp-logo wa-logo" id="wa-logo" data-phone="{{ $user->no_hp }}"></i>
-                                          @endif
-                                      </div>
-                                      <ul class="list-group mb-0">  
-                                          @foreach ($user->services as $service)
-                                              <a href="/notif" id="order-con-list" target="_blank">
-                                                  <li class="list-group-item d-flex justify-content-between align-items-center w-98 mt-2">
-                                                      <p class="mb-0" style="font-weight: normal;">{{ $service->tipe_service }}</p>
-                                                      <span class="badge bg-secondary rounded-pill">{{ $service->created_at->format('Y-m-d') }}</span>
-                                                  </li>
-                                              </a>
-                                          @endforeach
-                                      </ul>
-                                  </div>
+                  @foreach ($users as $user)
+                  @if ($user->level == 'END USER' && $user->services->isNotEmpty())
+                      <div class="timeline-block mb-3">
+                          <span class="timeline-step">
+                              <i class="fa-solid fa-user text-success"></i>
+                          </span>
+                          <div class="timeline-content">
+                              <div class="d-flex" style="gap: 10px;">
+                                  <h6 class="text-dark text-sm font-weight-bold mb-0">{{ $user->name }}</h6>
+                                  @if ($user->services->count() > 0)
+                                      <i class="ph ph-whatsapp-logo wa-logo" id="wa-logo" data-phone="{{ $user->no_hp }}"></i>
+                                  @endif
                               </div>
-                          @endif
-                      @endforeach
+                              <ul class="list-group mb-0">  
+                                  @foreach ($user->services as $service)
+                                      <a href="/notif" id="order-con-list" target="_blank">
+                                          <li class="list-group-item d-flex justify-content-between align-items-center w-98 mt-2">
+                                              <p class="mb-0" style="font-weight: normal;">{{ $service->tipe_service }}</p>
+                                              <span class="badge bg-secondary rounded-pill">{{ $service->created_at->format('Y-m-d') }}</span>
+                                          </li>
+                                      </a>
+                                  @endforeach
+                              </ul>
+                          </div>
+                      </div>
+                  @endif
+              @endforeach
+              
                   @endif
               </div>
             </div>

@@ -9,6 +9,12 @@ class Reservation extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    
+    protected $fillable = [
+        'jenis_mobil',
+        'keluhan',
+        'harga',
+        'gambar',
+        'tanggal_pemesanan',
+        'service_id'
+    ];
 }

@@ -19,6 +19,9 @@
                                       Servis: <span class="font-weight-regular">{{ $service->tipe_service }}</span>
                                   </h6>
                                   <h6 style="color: white; font-size: 15px;">
+                                    Durasi Pengerjaan: <span class="font-weight-regular">{{ $service->duration }} Jam</span>
+                                  </h6>
+                                  <h6 style="color: white; font-size: 15px;">
                                       Total Bayar: <span class="font-weight-regular">{{ $service->price }}</span>
                                   </h6>
                                   <h6 style="color: white; font-size: 15px;">

@@ -10,10 +10,6 @@
               <h6 class="mb-0 text-white" style="margin-top: -10px;">Informasi Bengkel</h6>
             </div>
             <div class="col-md-4 text-end">
-              {{-- <a href="{{ route('dashboard.profil.edit', ['id' => auth()->user()->id]) }}">
-                  <i class="fas fa-user-edit text-secondary text-sm text-white" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Edit Profile" data-bs-original-title="Edit Profile" style="margin-top: -20px;"></i>
-                  <span class="sr-only">Edit Info Bengkel</span>
-              </a>                 --}}
             </div>
           </div>
         </div>

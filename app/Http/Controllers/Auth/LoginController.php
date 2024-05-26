@@ -23,22 +23,41 @@ class LoginController extends Controller
     {
         // Validate if the user exists in the 'users' table based on email
         $credentials = $this->credentials($request);
-        if (! Auth::attempt($credentials)) {
+
+        // Attempt to authenticate the user with the provided credentials
+        if (!Auth::attempt($credentials)) {
             return false;
+        }
+
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        // Check if the user's level is 'END USER'
+        if ($user->level === 'END USER') {
+            // Logout the user
+            Auth::logout();
+
+            // Optionally, you can log the event or return a specific message
+            return response()->json(['status' => 'error', 'message' => 'User level END USER is not allowed to login'], 403);
         }
 
         return true;
     }
 
+    protected function credentials(Request $request)
+    {
+        return $request->only('email', 'password');
+    }
+
     public function showLoginForm()
     {
-        // Periksa apakah pengguna sudah login
+        // Check if the user is already logged in
         if (Auth::check()) {
-            // Jika sudah login, alihkan ke halaman yang sesuai
-            return redirect()->intended(RouteServiceProvider::HOME);
+            // If already logged in, redirect to the intended page
+            return redirect()->intended($this->redirectTo);
         }
 
-        // Jika belum login, tampilkan halaman login
+        // If not logged in, display the login page
         return view('auth.login');
     }
 }

@@ -34,30 +34,26 @@ class ReservationController extends Controller
             return response()->json(['error' => $validator->errors()], 400);
         }
 
+        // Mendapatkan ID pengguna yang sedang login
+        $user_id = Auth::id();
+
         // Membuat pesanan (reservation)
         $reservation = Reservation::create([
-            'service_id' => $request->input('service_id'),
             'jenis_mobil' => $request->input('jenis_mobil'),
             'keluhan' => $request->input('keluhan'),
             'gambar' => $request->input('gambar'),
+            'harga' => $request->input('harga'),
             'tanggal_pemesanan' => $request->input('tanggal_pemesanan'),
+            'detailing_dan_variasi' => $request->input('detailing_dan_variasi'),
+            'user_id' => $user_id, // tambahkan ini
         ]);
-        
-        // Query untuk mengambil data dari tabel services berdasarkan service_id pada $reservation
-        $serviceData = Service::where('id', $reservation->service_id)->first();
-
-        // Mengambil nilai tipe_service, duration, dan price dari hasil query
-        $tipe_service = $serviceData->tipe_service;
-        $duration = $serviceData->duration;
-        $price = $serviceData->price;
 
         // Membuat objek Income dengan menggunakan nilai yang telah diambil
         $income = Income::create([
-            'tipe_service' => $tipe_service,
+            'tipe_service' => $reservation->detailing_dan_variasi,
             'reservation_id' => $reservation->id,
             'car_type' => $reservation->jenis_mobil,
-            'total_price' => $price,
-            'duration' => $duration,
+            'total_price' => $reservation->harga,
         ]);
 
         return response()->json([
@@ -65,12 +61,11 @@ class ReservationController extends Controller
             'message' => 'Data pesanan berhasil disimpan'
         ], 200);
     }
-
     public function update(Request $request, $id)
     {
-        $service = Reservation::find($id);
+        $reservation = Reservation::find($id);
 
-        if (!$service) {
+        if (!$reservation) {
             return response()->json(['message' => 'Data pesanan tidak ditemukan'], 404);
         }
 
@@ -87,17 +82,17 @@ class ReservationController extends Controller
         }
 
         // Update atribut layanan
-        $service->update([
+        $reservation->update([
             'jenis_mobil' => $request->input('jenis_mobil'),
-            'price' => $request->input('price'),
             'keluhan' => $request->input('keluhan'),
             'harga' => $request->input('harga'),
             'gambar' => $request->input('gambar'),
             'tanggal_pemesanan' => $request->input('tanggal_pemesanan'),
+            'detailing_dan_variasi' => $request->input('detailing_dan_variasi'),
         ]);
 
         return response()->json([
-            'data' => $service,
+            'data' => $reservation,
             'message' => 'Data pesanan berhasil dirubah'
         ], 200);
     }

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\apiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MobileApi\OtpController;
+use App\Http\Controllers\MobileAPI\UsersMobileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\userApiController;
 use Illuminate\Http\Request;
@@ -43,3 +45,16 @@ Route::prefix('users')->group(function () {
     Route::put('/update/{id}', [userApiController::class, 'update']);
     Route::delete('/delete/{id}', [userApiController::class, 'destroy']);
 });
+
+Route::group(['prefix' => '/apieviasi'], function(){
+    Route::post('/login', [UsersMobileController::class, 'login']);
+    Route::post('/google', [UsersMobileController::class, 'signinGoogle']);
+    Route::post('/register', [UsersMobileController::class, 'register']);
+    Route::post('/otp', [OtpController::class, 'sendOtp']);
+    Route::post('/profile', [UsersMobileController::class, 'profile']);
+    Route::post('/pemesanan', [UsersMobileController::class, 'pemesanan']);
+    Route::post('/editprofile', [UsersMobileController::class, 'editProfile']);
+    Route::post('/kirimulasan', [UsersMobileController::class, 'kirimulasan']);
+    Route::post('/resetpassword', [UsersMobileController::class, 'resetpassword']);
+    Route::post('/history', [UsersMobileController::class, 'history']);
+}); 

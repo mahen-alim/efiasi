@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Models\Service;
 use App\Models\User;
 
+// controller untuk menampilkan history pesanan
 class NotifController extends Controller
 {
     public function index()

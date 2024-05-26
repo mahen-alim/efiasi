@@ -12,11 +12,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     use HasFactory;
 
     protected $guarded = ['id'];
@@ -29,5 +24,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function services()
     {
         return $this->hasMany(Service::class, 'user_id');
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'user_id');
     }
 }

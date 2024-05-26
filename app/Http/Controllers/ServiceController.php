@@ -57,11 +57,11 @@ class ServiceController extends Controller
         if ($request->file('file')) {
             $file = $request->file('file');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('img/dropzone', $filename, 'public'); // Simpan file pada direktori img/dropzone
+            $file->move(public_path('img'), $filename); // Move file to public/img directory
             $service->update([
-                'file' => '/storage/img/dropzone/' . $filename, // Simpan path file dalam database
+                'file' => '/img/' . $filename, // Save the file path in the database
             ]);
-        }
+        }        
 
         // Redirect ke halaman tertentu setelah data berhasil ditambahkan
         return redirect('/service-index')->with('success', 'Data detailing berhasil ditambahkan');

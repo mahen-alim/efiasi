@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Outcome;
-use App\Models\sparepart;
+use App\Models\Sparepart;
 use Illuminate\Http\Request;
 
 class SparepartController extends Controller
 {
     public function index()
     {
-        $sparepart = sparepart::paginate(5)->withQueryString();
+        $sparepart = Sparepart::paginate(5)->withQueryString();
 
         return view('sparepart.index', compact(['sparepart']));
     }
@@ -32,7 +32,7 @@ class SparepartController extends Controller
         ]);
 
         // Simpan data ke dalam tabel spareparts
-        $sparepart = sparepart::create([
+        $sparepart = Sparepart::create([
             'name' => $request->name,
             'type' => $request->type,
             'jumlah' => $request->jumlah,
@@ -50,7 +50,7 @@ class SparepartController extends Controller
 
     public function edit($id)
     {
-        $sparepart = sparepart::where('id', $id)->first();
+        $sparepart = Sparepart::where('id', $id)->first();
 
         return view('sparepart.edit', compact(['sparepart']));
     }
@@ -67,7 +67,7 @@ class SparepartController extends Controller
         ]);
 
         // Mencari data service
-        $sparepart = sparepart::find($id);
+        $sparepart = Sparepart::find($id);
 
         // Menangani kasus ketika data tidak ditemukan
         if (!$sparepart) {
@@ -90,7 +90,7 @@ class SparepartController extends Controller
     public function destroy($id)
     {
         // Mencari data service
-        $sparepart = sparepart::find($id);
+        $sparepart = Sparepart::find($id);
         $sparepart->delete();
 
         return redirect()->route('dashboard.sparepart.index')->with('success', 'Data variasi berhasil dihapus');
@@ -101,9 +101,9 @@ class SparepartController extends Controller
         $keyword = $request->input('name');
 
         if ($keyword) {
-            $sparepart = sparepart::where('name', 'LIKE', "%$keyword%")->get();
+            $sparepart = Sparepart::where('name', 'LIKE', "%$keyword%")->get();
         } else {
-            $sparepart = sparepart::all();
+            $sparepart = Sparepart::all();
         }
 
         return view('sparepart.index', compact('sparepart'));

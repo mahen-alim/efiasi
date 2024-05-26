@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -20,10 +21,11 @@ class userApiController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required',
-            'no_hp' => 'required',
-            'level' => 'required',
+            'type' => 'required|min:5',
+            'price' => 'required|min:5',
+            'description' => 'required|min:5|max:1000',
+            'benefit' => 'required|min:5|max:1000',
+            'duration' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -31,16 +33,17 @@ class userApiController extends Controller
         }
 
         // Membuat pesanan (reservation)
-        $users = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'no_hp' => $request->input('no_hp'),
-            'level' => $request->input('level'),
+        $users = Service::create([
+            'type' => $request->input('type'),
+            'price' => $request->input('price'),
+            'description' => $request->input('description'),
+            'benefit' => $request->input('benefit'),
+            'duration' => $request->input('duration'),
         ]);
 
         return response()->json([
             'success' => $users, // Mengembalikan pesanan yang dibuat
-            'message' => 'Data pengguna berhasil disimpan'
+            'message' => 'Data detailing berhasil disimpan'
         ], 200);
     }
 
