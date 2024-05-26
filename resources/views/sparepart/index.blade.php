@@ -6,10 +6,10 @@
     <div class="card mb-4">
       <div class="card-header pb-0">
         <h6>Variasi Table</h6>
-        <div class="d-flex">
-          <form action="{{ url('sparepart/search') }}" method="GET" class="flex-grow-1 me-10">
+        <div class="d-flex justify-content-between align-items-end flex-wrap">
+          <form action="{{ url('sparepart/search') }}" method="GET" class="flex-grow-1 me-3 mb-2 mb-lg-0">
             <div class="d-flex">
-                <input type="text" class="form-control me-2" name="name" placeholder="Search by variation name" style="height: 40px; width: 30%;">
+                <input type="text" class="form-control me-2" name="name" placeholder="Search by variation name" style="height: 40px; width: 220px;">
                 <button type="submit" class="btn" id="search-btn"><img src="{{ asset('img/search_new.png') }}" alt=""></button>
             </div>
           </form>         
@@ -17,7 +17,7 @@
         </div>        
       </div>
       <div class="card-body px-0 pt-0 pb-2">
-        <div class="table-responsive p-0">
+        <div class="table-responsive p-4">
           <table class="table align-items-center mb-0">
             <thead>
                 <tr>

@@ -238,3 +238,32 @@ body {
     font-size: 15px;
     font-weight: bold;
 }
+
+.card-header .d-flex {
+    flex-wrap: wrap;
+}
+
+.card-header form {
+    flex-grow: 1;
+    margin-bottom: 10px; /* Atur jarak bawah untuk form */
+}
+
+.card-header .btn {
+    white-space: nowrap; /* Agar teks tombol tidak terpotong */
+}
+
+@media (max-width: 576px) {
+    .card-header .d-flex {
+        flex-direction: column;
+    }
+
+    .card-header form {
+        width: 100%;
+        margin-bottom: 10px; /* Atur jarak bawah untuk form */
+    }
+
+    .card-header .btn {
+        width: 100%; /* Agar tombol mengambil seluruh lebar */
+        margin-top: 10px; /* Atur jarak atas untuk tombol */
+    }
+}
