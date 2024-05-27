@@ -11,10 +11,10 @@ class ModelRiview extends Model
 
     protected $table = 'ulasan';
     protected $primaryKey = "id_ulasan"; // Specify the correct primary key column
-    public $incrementing = true; 
+    public $incrementing = true;
     public $timestamps = true;
 
-    
+
     protected $fillable = [
         'id_ulasan',
         'ulasan',

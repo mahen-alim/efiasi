@@ -24,4 +24,8 @@ class Service extends Model
         return $this->hasOne(Income::class, 'service_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

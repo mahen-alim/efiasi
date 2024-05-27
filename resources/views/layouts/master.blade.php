@@ -99,16 +99,14 @@
             </div>
             <span class="nav-link-text ms-1">Pesanan</span>
             <?php
+              use App\Models\Reservation;
+              // Mengambil total data dari tabel reservations yang tidak terkait dengan user_id berlevel ADMIN
+              $totalPemesan = Reservation::whereHas('service.user', function($query) {
+                  $query->where('level', '<>', 'ADMIN');
+              })->count();
+              ?>
 
-            use App\Models\Reservation; // Sesuaikan namespace dengan model Reservation Anda
-            
-            // Mengambil total data dari tabel reservations
-            $totalReservations = Reservation::count();
-            
-            ?>
-            
-            <!-- Menampilkan total data dalam elemen HTML -->
-            <span class="badge rounded-pill" id="badge-notif">{{ $totalReservations }}</span>            
+              <span class="badge rounded-pill" id="badge-notif">{{ $totalPemesan }}</span>         
           </a>
         </li>
         <li class="nav-item mt-3">

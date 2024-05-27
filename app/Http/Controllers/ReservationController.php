@@ -34,26 +34,30 @@ class ReservationController extends Controller
             return response()->json(['error' => $validator->errors()], 400);
         }
 
-        // Mendapatkan ID pengguna yang sedang login
-        $user_id = Auth::id();
-
         // Membuat pesanan (reservation)
         $reservation = Reservation::create([
+            'service_id' => $request->input('service_id'),
             'jenis_mobil' => $request->input('jenis_mobil'),
             'keluhan' => $request->input('keluhan'),
             'gambar' => $request->input('gambar'),
-            'harga' => $request->input('harga'),
             'tanggal_pemesanan' => $request->input('tanggal_pemesanan'),
-            'detailing_dan_variasi' => $request->input('detailing_dan_variasi'),
-            'user_id' => $user_id, // tambahkan ini
         ]);
+
+        // Query untuk mengambil data dari tabel services berdasarkan service_id pada $reservation
+        $serviceData = Service::where('id', $reservation->service_id)->first();
+
+        // Mengambil nilai tipe_service, duration, dan price dari hasil query
+        $tipe_service = $serviceData->tipe_service;
+        $duration = $serviceData->duration;
+        $price = $serviceData->price;
 
         // Membuat objek Income dengan menggunakan nilai yang telah diambil
         $income = Income::create([
-            'tipe_service' => $reservation->detailing_dan_variasi,
+            'tipe_service' => $tipe_service,
             'reservation_id' => $reservation->id,
             'car_type' => $reservation->jenis_mobil,
-            'total_price' => $reservation->harga,
+            'total_price' => $price,
+            'duration' => $duration,
         ]);
 
         return response()->json([

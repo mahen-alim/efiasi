@@ -17,4 +17,13 @@ class Reservation extends Model
         'tanggal_pemesanan',
         'service_id'
     ];
+
+    protected $casts = [
+        'service_id' => 'integer',
+    ];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

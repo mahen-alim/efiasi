@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('services')->group(function () {
     Route::get('/get', [apiController::class, 'index']);
-    Route::post('/post', [apiController::class, 'store']);  
+    Route::post('/post', [apiController::class, 'store']);
     Route::put('/update/{id}', [apiController::class, 'update']);
     Route::delete('/delete/{id}', [apiController::class, 'destroy']);
     // Route::resource('/', apiController::class);
@@ -34,19 +34,19 @@ Route::prefix('services')->group(function () {
 
 Route::prefix('reservations')->group(function () {
     Route::get('/get', [ReservationController::class, 'index']);
-    Route::post('/post', [ReservationController::class, 'store']);  
+    Route::post('/post', [ReservationController::class, 'store']);
     Route::put('/update/{id}', [ReservationController::class, 'update']);
     Route::delete('/delete/{id}', [ReservationController::class, 'destroy']);
 });
 
 Route::prefix('users')->group(function () {
     Route::get('/get', [userApiController::class, 'index']);
-    Route::post('/post', [userApiController::class, 'store']);  
+    Route::post('/post', [userApiController::class, 'store']);
     Route::put('/update/{id}', [userApiController::class, 'update']);
     Route::delete('/delete/{id}', [userApiController::class, 'destroy']);
 });
 
-Route::group(['prefix' => '/apieviasi'], function(){
+Route::prefix('/apieviasi')->group(function () {
     Route::post('/login', [UsersMobileController::class, 'login']);
     Route::post('/google', [UsersMobileController::class, 'signinGoogle']);
     Route::post('/register', [UsersMobileController::class, 'register']);
@@ -57,4 +57,4 @@ Route::group(['prefix' => '/apieviasi'], function(){
     Route::post('/kirimulasan', [UsersMobileController::class, 'kirimulasan']);
     Route::post('/resetpassword', [UsersMobileController::class, 'resetpassword']);
     Route::post('/history', [UsersMobileController::class, 'history']);
-}); 
+});

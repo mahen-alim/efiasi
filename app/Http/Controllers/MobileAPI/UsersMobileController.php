@@ -120,51 +120,42 @@ class UsersMobileController extends Controller
                 'string',
                 'min:8',
                 'max:30',
-                'regex:/[^\w\s]/',
+                'regex:/[^\w\s]/', // Setidaknya satu karakter spesial
             ],
             'no_hp' => 'required|string|max:15|unique:users,no_hp',
             'alamat' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['status' => 'error', 'message' => $validator->errors()->first()], 400);
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->errors()->first()
+            ], 400);
         }
 
-        $name = $request->input('nama_lengkap');
-        $username = $request->input('username');
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $phone = $request->input('no_hp');
-        $address = $request->input('alamat');
+        // Buat akun baru
+        $user = User::create([
+            'name' => $request->input('nama_lengkap'),
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'no_hp' => $request->input('no_hp'),
+            'alamat' => $request->input('alamat'),
+            'level' => 'END USER'
+        ]);
 
-        // cek email & no hp exist atau tidak
-        $isExistEmail = json_decode($this->isExistEmail($request)->getContent(), true);
-        $isExistPhone = json_decode($this->isExistPhone($request)->getContent(), true);
-
-        if ($isExistEmail['status'] === 'success') {
-            return response()->json(['status' => 'error', 'message' => 'Email sudah terdaftar'], 400);
-        } elseif ($isExistPhone['status'] === 'success') {
-            return response()->json(['status' => 'error', 'message' => 'Nomor HP sudah terdaftar'], 400);
-        } else {
-            // create akun
-            $user = User::create([
-                'name' => $name,
-                'username' => $username,
-                'email' => $email,
-                'password' => bcrypt($password),
-                'no_hp' => $phone,
-                'alamat' => $address,
-                'level' => 'END USER'
-            ]);
-
-            if (!$user) {
-                return response()->json(['status' => 'error', 'message' => 'Gagal membuat akun'], 400);
-            } else {
-                return response()->json(['status' => 'success', 'message' => 'Register berhasil'], 200);
-            }
+        if (!$user) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Gagal membuat akun'
+            ], 500);
         }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Register berhasil'
+        ], 200);
     }
-
 
     public function createUser(Request $request, User $user)
     {
@@ -184,7 +175,6 @@ class UsersMobileController extends Controller
             return ['status' => 'error', 'message' => 'Akun gagal dibuat'];
         }
     }
-
 
     public function signinGoogle(Request $request)
     {
