@@ -11,7 +11,7 @@ class userApiController extends Controller
 {
     public function index()
     {
-        $users = User::where('level', 'END USER')->get();
+        $users = User::all();
 
         return response()->json([
             'success' => $users

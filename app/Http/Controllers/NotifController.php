@@ -11,18 +11,35 @@ class NotifController extends Controller
 {
     public function index()
     {
-        // Eager load users with their related services including the 'tipe_service' column
-        $users = User::with('services')->where('level', '!=', 'ADMIN')->get(); // Tambahkan ->get() untuk mengambil hasil
+        // Eager load users with their related services and reservations
+        $users = User::with('services.reservations')->where('level', '!=', 'ADMIN')->get();
 
         return view('notif.index', compact('users'));
     }
 
     public function destroy($id)
     {
-        // Mencari data service
-        $users = Service::find($id);
-        $users->delete();
+        // Mencari data user berdasarkan id
+        $user = User::find($id);
 
-        return redirect('/notif')->with('success', 'Pesanan berhasil dibatalkan');
+        // Pastikan user ditemukan
+        if ($user) {
+            // Hapus layanan yang terkait dengan user ini
+            foreach ($user->services as $service) {
+                // Hapus reservasi yang terkait dengan layanan ini
+                foreach ($service->reservations as $reservation) {
+                    $reservation->delete();
+                }
+                // Hapus layanan itu sendiri
+                $service->delete();
+            }
+
+            // Hapus user itu sendiri
+            $user->delete();
+
+            return redirect('/notif')->with('success', 'Pesanan berhasil dihapus');
+        } else {
+            return redirect('/notif')->with('error', 'Pesanan tidak ditemukan');
+        }
     }
 }

@@ -23,11 +23,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function services()
     {
-        return $this->hasMany(Service::class, 'user_id');
+        return $this->hasMany(Service::class);
     }
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class, 'user_id');
+        return $this->hasManyThrough(Reservation::class, Service::class);
     }
 }

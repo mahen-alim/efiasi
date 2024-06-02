@@ -18,6 +18,7 @@ use App\Http\Controllers\SparepartController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return view('welcome');
@@ -80,7 +81,10 @@ Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('goog
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callback']);
 // Route untuk autentikasi Laravel
 Auth::routes(['verify' => true]);
-
+Route::get('/run-migrations', function () {
+    Artisan::call('migrate');
+    return 'Migrations run successfully';
+});
 // Route::get('/session/create', [SessionController::class, 'create']);
 // Route::get('/session/show', [SessionController::class, 'show']);
 // Route::get('/session/delete', [SessionController::class, 'delete']);

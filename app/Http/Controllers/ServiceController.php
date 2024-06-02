@@ -15,7 +15,7 @@ class ServiceController extends Controller
     {
         // Eager load users with their related services including the 'tipe_service' column
         $service = Service::paginate(5)->withQueryString();
-
+        
         return view('service.index', compact('service'));
     }
 

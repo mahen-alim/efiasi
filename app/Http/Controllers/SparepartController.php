@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Operational;
 use App\Models\Outcome;
 use App\Models\Sparepart;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ class SparepartController extends Controller
     public function index()
     {
         $sparepart = Sparepart::paginate(5)->withQueryString();
+        $operational = Operational::all();
 
         return view('sparepart.index', compact(['sparepart']));
     }

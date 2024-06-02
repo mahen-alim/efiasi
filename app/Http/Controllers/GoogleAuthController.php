@@ -30,16 +30,17 @@ class GoogleAuthController extends Controller
 
                 return redirect()->intended('dashboard');
             } else {
+                // Pastikan nilai 'DEFAULT LEVEL' sesuai dengan batasan kolom 'level'
                 $new_user = User::create([
                     'name' => $google_user->getName(),
                     'email' => $google_user->getEmail(),
                     'google_id' => $google_user->getId(),
                     'alamat' => 'Nganjuk', // Ganti 'Alamat default' dengan alamat yang sesuai dari Google
-                    'no_hp' => 1234567890, // Assign the value directly as an integer
+                    'no_hp' => '1234567890', // Assign the value directly as a string
                     'quote' => '"Kode yang baik adalah seperti puisi; mereka memberikan makna dalam pengurangan yang paling kecil." - Dominic Licciardi',
                     'password' => bcrypt('12345'),
                     'profile_picture' => $google_user->getAvatar() ?? 'https://example.com/default-profile-picture.jpg',
-                    'level' => 'DEFAULT LEVEL' // Sesuaikan dengan level default yang diinginkan
+                    'level' => 'ADMIN' // Sesuaikan dengan level default yang sesuai
                 ]);
 
                 // Cek jika level user baru adalah 'END USER'
@@ -52,7 +53,7 @@ class GoogleAuthController extends Controller
                 return redirect()->intended('dashboard');
             }
         } catch (\Throwable $th) {
-            dd('Something went wrong: ' . $th->getMessage());
+            return redirect()->route('login')->withErrors(['error' => 'Something went wrong: ' . $th->getMessage()]);
         }
     }
 }

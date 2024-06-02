@@ -15,7 +15,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $users = User::with('services')->where('level', '!=', 'ADMIN')->get();
+        $users = User::with('services')->where('level', '==', 'END USER')->get();
         $sparepart = Sparepart::all();
         $totalSparepart = $sparepart->count();
         $totalPelanggan = $users->count();
