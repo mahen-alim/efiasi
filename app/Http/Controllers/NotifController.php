@@ -11,11 +11,15 @@ class NotifController extends Controller
 {
     public function index()
     {
-        // Eager load users with their related services and reservations
-        $users = User::with('services.reservations')->where('level', '!=', 'ADMIN')->get();
+        // Eager load users with their related services and reservations, and order by name in ascending order
+        $users = User::with('services.reservations')
+            ->where('level', '!=', 'ADMIN')
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('notif.index', compact('users'));
     }
+
 
     public function destroy($id)
     {
@@ -33,9 +37,6 @@ class NotifController extends Controller
                 // Hapus layanan itu sendiri
                 $service->delete();
             }
-
-            // Hapus user itu sendiri
-            $user->delete();
 
             return redirect('/notif')->with('success', 'Pesanan berhasil dihapus');
         } else {
